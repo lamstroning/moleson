@@ -1,0 +1,27 @@
+<div class="kt-login__body kt-register kt-type-account">
+	<div class="logo-row">
+		<div class="logo-small"></div>
+	</div>
+	<div class="account-type">
+		<div class="account-type-title">Тип аккаунта</div>
+		<div class="account-type-container">
+			<div class="account-type-card"  (click)="switchChoice(1)">
+				<div class="account-type-card-hole" [class.account-type-card-hole-active]="this.choice === 1"></div>
+				<div id="ur-lico" class="account-type-card-img"></div>
+				<div class="account-type-card-name">Юридическое лицо</div>
+			</div>
+			<div class="account-type-card"  (click)="switchChoice(2)">
+			<div class="account-type-card-hole" [class.account-type-card-hole-active]="this.choice === 2"></div>
+			<div id="fiz-lico" class="account-type-card-img"></div>
+			<div class="account-type-card-name">Физическое лицо</div>
+		</div>
+		</div>
+	</div>
+	<div class="kt-login__actions">
+		<button *ngIf="this.nextStep !== 'none'" routerLink="/auth/register" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">Далее</button>
+	</div>
+	<div class="kt-login__register">
+		<span>У вас уже есть аккаунт?</span>
+		<a href="javascript:;" routerLink="/auth/login" class="kt-link kt-login__signup-link">Войти</a>
+	</div>
+</div>

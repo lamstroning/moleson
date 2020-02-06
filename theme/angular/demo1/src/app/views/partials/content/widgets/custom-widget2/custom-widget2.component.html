@@ -1,0 +1,45 @@
+<div class="kt-widget12 kt-custom-widget2">
+	<div #slider class="slider-move-area">
+		<div *ngFor="let element of this.cottages"
+			 class="kt-widget12__slide">
+			<div class="kt-widget12__content">
+				<div class="kt-widget12__item">
+					<div class="kt-widget12__info">
+						<div class="kt-widget12__img" [style.background-image]="'url('+element.imgSrc+')'">
+							<div class="kt-widget12__img-row">
+								<div class="kt-widget12__img-marker">{{element.state}}</div>
+								<div class="kt-widget12__img-income">доходность: {{element.income}}%</div>
+							</div>
+							<div class="kt-widget12__img-title"> {{element.title}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="kt-widget12__item">
+					<div class="kt-widget12__info">
+						<span class="kt-widget12__desc progress-bar-title">{{element.price}}₽</span>
+						<div class="kt-widget12__progress">
+							<div class="progress kt-progress--sm">
+								<div class="progress-bar bg-success" role="progressbar" [style.width]="this.percentProgress"
+									 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+						</div>
+						<div class="kt-widget12__stat">{{this.percentProgress}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="kt-widget12__chart">
+				<div class="kt-custom-widget-desc">{{element.desc}}</div>
+				<div class="kt-custom-widget-more">
+					<div (click)="element.like = !element.like;" class="kt-custom-widget-more-like-btn"><i class="fa fa-heart"
+																   [style.color]="element.like ? '#883eac' : 'black'"></i>
+					</div>
+					<div class="kt-custom-widget-more-more-btn">Подробнее</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="slide-bar">
+		<div *ngFor="let slide of this.cottages" [class.slide-bar-option-active]="slide.show"
+			 (click)="this.nextSlide(slide)" class="slide-bar-option"></div>
+	</div>
+</div>

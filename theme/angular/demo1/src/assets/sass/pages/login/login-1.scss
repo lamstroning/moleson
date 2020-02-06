@@ -1,0 +1,501 @@
+//
+// Page - User Login 1
+// Pages SASS files are compiled into separate css files
+//
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+// Login Base
+.mat-form-field-wrapper {
+	max-height: 45px;
+}
+.kt-login.kt-login--v1 {
+	background-image: url(/assets/media/bg/custom/background_1.png);
+	background-position: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+    // Aside
+    .kt-login__aside {
+        width: 605px;
+        padding: 3rem 3.5rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .kt-login__logo {
+            display: flex;
+        }
+
+        .kt-login__title {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .kt-login__subtitle {
+            font-size: 1.2rem;
+            font-weight: 200;
+            margin: 2.5rem 0 3.5rem 0;
+            color: rgba(#fff, 0.7);
+        }
+
+        .kt-login__info {
+            display: flex;
+            justify-content: space-between;
+
+            .kt-login__menu {
+                > a {
+                    text-decoration: none;
+                    color: #fff;
+                    margin-right: 2rem;
+                    display: inline-block;
+
+                    @include kt-link-color(rgba(#fff, 0.7), #fff);
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .kt-login__copyright {
+                color: rgba(#fff, 0.4);
+            }
+        }
+    }
+	.kt-code{
+		.kt-login__form {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+		.code-container {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			.form-group {
+				height: 50%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+			.input-code::placeholder {
+				color: white;
+			}
+			.input-code {
+				width:100%;
+				text-align: center;
+				height: 109px;
+				background: rgba(87, 30, 125, 0.5);
+				border-radius: 52px;
+				color: white;
+				font-size: 24px!important;
+			}
+		}
+	}
+    // Wrapper
+    .kt-login__wrapper {
+
+
+        // Head
+        .kt-login__head {
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: right;
+
+            .kt-login__signup-label {
+                color: kt-base-color(label, 2);
+            }
+
+            .kt-login__signup-link {
+                color: kt-brand-color();
+            }
+        }
+		.kt-register {
+			background-image: url(/assets/media/bg/custom/background_2.png);
+			background-position: 50%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			.kt-login__btn-primary {
+				border-radius: 23px;
+				font-weight: 500;
+				font-size: 18px;
+				background-color: transparent;
+				box-shadow: none;
+				height: 50px;
+				width: 50%;
+				border: 1px solid white;
+				padding-left: 2.75rem;
+				padding-right: 2.75rem;
+			}
+
+		}
+		.kt-type-account{
+			justify-content: space-between!important;
+			padding: 40px 0;
+			.kt-login__actions {
+				width: 430px;
+				min-height: 50px;
+				justify-content: center;
+				display: flex;
+				margin-top: 50px;
+			}
+			.accept-row {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				.btn {
+					background: #F1E8F5;
+					max-width: 165px;
+					border: none;
+					margin-top: 20px;
+					border-radius: 0;
+					color:  #883EAC;
+				}
+			}
+		}
+		.logo-row{
+			padding-left: 40px;
+			align-self: flex-start;
+			.logo-small {
+				width: 106px;
+				height: 106px;
+				background-image: url("/assets/media/company-logos/custom/logo.svg");
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+		}
+		.account-type {
+			width: 100%;
+			max-width: 720px;
+			dispaly: flex;
+			flex-direction: column;
+			.account-type-title {
+				font-size: 36px;
+				text-align: center;
+				color: #EFEDFB;
+			}
+			.account-type-container {
+				margin-top: 60px;
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+				.account-user-img
+				{
+					width: 280px;
+					height: 280px;
+					background-image: url("/assets/media/users/custom/user.png");
+					border-radius: 50%;
+					opacity: 0.7;
+					margin: 0 auto;
+				}
+				.account-type-card:last-child {
+					transform-origin: 0 100%;
+				}
+				.account-type-card:last-child:hover {
+					transform: rotate(1deg);
+				}
+				.account-type-card:first-child {
+					transform-origin: 100% 100%;
+				}
+				.account-type-card:first-child:hover {
+					transform: rotate(-1deg);
+				}
+				.account-type-card {
+					width: 320px;
+					transition: 0.2s;
+					cursor: pointer;
+					height: 376px;
+					background: rgba(50, 5, 68, 0.5);
+					border-radius: 4px;
+					position: relative;
+					display: flex;
+					justify-content: center;
+					flex-direction: column;
+
+					.account-type-card-hole.account-type-card-hole-active {
+						background-color: #58ff42;
+						transform: scale(-1, 1);
+						background-image: unset;
+					}
+					.account-type-card-hole {
+						background-image: url(/assets/media/bg/custom/background_2.png);
+						background-size: cover;
+						transition: 0.2s;
+						position: absolute;
+						right: 16px;
+						background-color: #525252;
+						top: 16px;
+						width: 26px;
+						height: 26px;
+						border-radius: 50%;
+					}
+					#fiz-lico{
+						background-image: url("/assets/media/icons/custom/fiz-lico.svg");
+					}
+					#ur-lico{
+						background-image: url("/assets/media/icons/custom/ur-lico.svg");
+					}
+					.account-type-card-img {
+						width: 120px;
+						min-height: 100px;
+						background-size: contain;
+						margin: 0 auto;
+						background-repeat: no-repeat;
+						background-position: 50%;
+					}
+					.account-type-card-name {
+						margin-top: 40px;
+						font-size: 28px;
+						color: #EFEDFB;
+						text-align: center;
+					}
+				}
+			}
+		}
+        // Body
+        .kt-login__body {
+            display: flex;
+            justify-content: space-around;
+			flex-direction: column;
+            align-items: center;
+            height: 100%;
+
+			//hover effect for link
+			.kt-link:hover:after {
+				border-bottom: 1px solid white;
+			}
+            // Form Wrapper
+            .kt-login__form {
+                width: 100%;
+                max-width: 430px;
+
+				.login-logo {
+					background-image: url("/assets/media/company-logos/custom/logo.svg");
+					width: 180px;
+					height: 180px;
+					background-repeat: no-repeat;
+					background-size: contain;
+					margin: 0 auto;
+				}
+
+                .kt-login__title {
+                    display: block;
+                    text-align: center;
+                    text-decoration: none;
+					margin-top:20px;
+                    > h3 {
+                        font-size: 36px;
+                        color: #EFEDFB;
+                    }
+                }
+
+                // Form
+                .kt-form {
+                    .form-group {
+                        padding: 0;
+                        margin: 0 auto;
+						.mat-form-field-underline {
+							display: none;
+						}
+						.mat-form-field-label {
+							display: none;
+						}
+						.custom-input::placeholder {color: white}
+						.custom-input {
+							width: 100%;
+							background: #0000005c;
+							color: white;
+							border-radius: 23px;
+							padding: 10px;
+							border: none;
+							height: 46px;
+							margin: 10px 0;
+						}
+						.mat-checkbox-frame {
+							border-color: white;
+							border-width: 1px;
+						}
+						.password-action-row{
+							height: 46px;
+							display: flex;
+							padding: 0 25px;
+							align-items: flex-end;
+							justify-content: space-between;
+								.kt-login__link-forgot {
+									font-weight: bold;
+									color: white;
+									font-size: 16px;
+								}
+								.mat-checkbox-label {
+									margin: auto;
+									margin-top: 5px;
+									color: white;
+								}
+						}
+                        .form-control {
+                            border: none;
+                            height: 50px;
+                            margin-top: 1.25rem;
+                            background-color: rgba(#f7f7f9, 0.7);
+                            padding-left: 1.25rem;
+                            padding-right: 1.25rem;
+                            transition: background-color 0.3s ease;
+
+                            &:focus {
+                                transition: background-color 0.3s ease;
+                                background-color: #f7f7f9;
+                            }
+                        }
+                    }
+                }
+
+                // Action
+                .kt-login__actions {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 3rem 0;
+
+                    .kt-login__link-forgot {
+                        @include kt-link-color(kt-base-color(label, 2), kt-brand-color());
+                    }
+
+                    .kt-login__btn-secondary,
+                    .kt-login__btn-primary {
+						border-radius: 23px;
+						font-weight: 500;
+						font-size: 18px;
+						background-color: transparent;
+						box-shadow: none;
+						height: 50px;
+						width: 50%;
+						border: 1px solid white;
+						padding-left: 2.75rem;
+						padding-right: 2.75rem;
+                    }
+					.kt-login__btn-primary:hover {
+						box-shadow: none!important;
+						background: white;
+						color: #71309e;
+					}
+                }
+
+                // Divider
+                .kt-login__divider {
+                    margin: 1rem 0 2rem 0;
+
+                    &:not(:first-child):not(:last-child) {
+                        font-weight: 400;
+                        color: #b5b2c3;
+                        font-size: 1rem;
+                    }
+                }
+				.mat-form-field-subscript-wrapper {
+					margin-top: 0.54166667em;
+					top: 60px;
+					left: 10px;
+				}
+
+				.mat-form-field-infix {
+					border-top: none;
+					> input {
+						font-size: 18px;
+					}
+				}
+
+                // Options
+                .kt-login__options {
+                    display: flex;
+                    justify-content: center;
+                    max-width: 100%;
+
+                    > a {
+                        text-decoration: none;
+                        flex: 1;
+                        justify-content: center;
+                        align-items: center;
+                        display: flex;
+
+                        &:not(:last-child) {
+                            margin: 0 1.5rem 0 0;
+                        }
+                    }
+                }
+            }
+			.kt-login__register {
+				color: white;
+				text-align: center;
+				font-size: 18px;
+				> a {
+					color: white;
+					font-weight: bold;
+					margin-left: 20px;
+				}
+			}
+        }
+    }
+
+    @include kt-desktop {
+        // Aside
+        .kt-login__aside {
+            flex: 1;
+        }
+    }
+
+    @include kt-tablet-and-mobile() {
+        // Aside
+        .kt-login__aside {
+            width: 100%;
+            height: auto;
+            padding: 2rem 1.5rem;
+
+            .kt-login__logo {
+                margin-bottom: 2.5rem;
+            }
+
+            .kt-login__info {
+                margin-top: 2rem;
+            }
+
+            .kt-login__subtitle {
+                margin: 2rem 0;
+            }
+        }
+
+        // Wrapper
+        .kt-login__wrapper {
+            padding: 3rem 1.5rem;
+
+            .kt-login__head {
+                padding-left: 2rem;
+                right: 2rem;
+            }
+
+            .kt-login__body {
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				flex-direction: column;
+				height: 100%;
+
+                .kt-login__form {
+                    .kt-login__options {
+                        > a {
+                            &:not(:first-child):not(:last-child) {
+                                margin: 0 0.8rem;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
