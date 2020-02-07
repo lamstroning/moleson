@@ -1,5 +1,5 @@
 // Angular
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 /**
  * Sample context menu dropdown
@@ -10,5 +10,5 @@ import { Component } from '@angular/core';
 	styleUrls: ['./context-menu2.component.scss']
 })
 export class ContextMenu2Component {
-
+	@Input() title = 'экспорт';
 }

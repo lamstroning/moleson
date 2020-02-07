@@ -16,6 +16,10 @@ const routes: Routes = [
 		canActivate: [AuthGuard],
 		children: [
 			{
+				path: 'terminal',
+				loadChildren: () => import('app/views/pages/terminal/terminal.module').then(m => m.TerminalModule),
+			},
+			{
 				path: 'catalog-card-detail/:id',
 				loadChildren: () => import('app/views/pages/catalog-card-detail/catalog-card-detail.module').then(m => m.CatalogCardDetailModule),
 			},

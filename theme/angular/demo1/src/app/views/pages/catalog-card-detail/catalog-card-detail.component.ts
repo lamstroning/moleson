@@ -183,7 +183,7 @@ export class CatalogCardDetailComponent implements OnInit {
                 </div>
                 <div class="row justify-content-center licince-accept">
                     <div class="col-xl-3">
-						<button mat-raised-button class="w-100" [style.background-color]="'#8F49B1'" [style.color]="'white'">Подтвердить сделку</button>
+						<button mat-raised-button class="w-100" (click)="closeDialog()" [style.background-color]="'#8F49B1'" routerLink="/terminal/" [style.color]="'white'">Подтвердить сделку</button>
                     </div>
                 </div>
 			</div>

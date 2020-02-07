@@ -41,7 +41,8 @@ export class Widget12Component implements OnInit {
 					{
 						fill: true,
 						// borderWidth: 0,
-						backgroundColor: color(this.layoutConfigService.getConfig('colors.state.brand')).alpha(0.6).rgbString(),
+						// backgroundColor: color(this.layoutConfigService.getConfig('colors.state.brand')).alpha(0.6).rgbString(),
+						backgroundColor: color('#F1E8F5').rgbString(),
 						borderColor: color(this.layoutConfigService.getConfig('colors.state.brand')).alpha(0).rgbString(),
 
 						pointHoverRadius: 4,
@@ -51,12 +52,13 @@ export class Widget12Component implements OnInit {
 						pointHoverBackgroundColor: this.layoutConfigService.getConfig('colors.state.brand'),
 						pointHoverBorderColor: Chart.helpers.color('#000000').alpha(0.1).rgbString(),
 
-						data: [20, 40, 50, 25, 35, 60, 30]
+						data: [20, 25, 20, 25, 35, 32, 52]
 					},
 					{
 						fill: true,
 						// borderWidth: 0,
-						backgroundColor: color(this.layoutConfigService.getConfig('colors.state.brand')).alpha(0.2).rgbString(),
+						// backgroundColor: color(this.layoutConfigService.getConfig('colors.state.brand')).alpha(0.2).rgbString(),
+						backgroundColor: color('#E0E0E0').rgbString(),
 						borderColor: color(this.layoutConfigService.getConfig('colors.state.brand')).alpha(0).rgbString(),
 
 						pointHoverRadius: 4,
@@ -66,7 +68,7 @@ export class Widget12Component implements OnInit {
 						pointHoverBackgroundColor: this.layoutConfigService.getConfig('colors.state.brand'),
 						pointHoverBorderColor: Chart.helpers.color('#000000').alpha(0.1).rgbString(),
 
-						data: [25, 45, 55, 30, 40, 65, 35]
+						data: [10, 40, 20, 20, 40, 20, 10]
 					}
 				]
 			};
