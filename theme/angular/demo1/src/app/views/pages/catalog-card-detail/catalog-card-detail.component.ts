@@ -136,11 +136,11 @@ export class CatalogCardDetailComponent implements OnInit {
 					</div>
 				</div>
 				<div class="row justify-content-center">
-					<div class="col-xl-3 d-flex justify-content-center">
+					<div class="col-xl-3 mt-4 d-flex justify-content-center">
 						<button mat-raised-button class="w-100" [style.background-color]="'#F4EDF5'" [style.color]="'#8F49B1'">Посмотреть документы</button>
 						<div class="btn-ico" [style.background-color]="'#8F49B1'"></div>
 					</div>
-					<div class="col-xl-3 d-flex justify-content-center">
+					<div class="col-xl-3 mt-4 d-flex justify-content-center">
 						<button (click)="animateScroll(this.slider.scrollWidth / 2, true)" mat-raised-button class="w-100" [style.background-color]="'#8F49B1'" [style.color]="'white'">Инвестировать</button>
 					</div>
 				</div>

@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {LayoutConfigService} from "../../../../../core/_base/layout";
+import {LayoutConfigService, SubheaderService} from "../../../../../core/_base/layout";
+import {CatalogItem} from "../../../../../core/_base/layout/services/subheader.service";
 
 @Component({
   selector: 'kt-custom-widget2',
@@ -12,25 +13,32 @@ export class CustomWidget2Component implements OnInit {
 	// Public properties
 	@Input() data: { labels: string[], datasets: any[] };
 	@Input() type = 'line';
+	@Input() showLike = true;
+	@Input() showMore = true;
+	@Input() showDesc = true;
+	@Input() showArrow = true;
+	@Input() showSideBar = true;
 	@ViewChild('chart', {static: true}) chart: ElementRef;
 	@ViewChild('slider', {static: true}) sliderArea: ElementRef;
 
 	timeout = true;
 	//del -->
-	percentProgress = '40%';
 	des = 'Участок 30 га (земли ИЖС) на 24 км Московского тракта г.Тюмени для строительства современного коттеджного поселка с интересной концепцией. Участок примыкает к деревне Успенка Тюменского района.'
 	//<-- del
-	cottages: Slide[] = [
-		{id: 0, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 17500000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage1.png', income: 17, show: true},
-		{id: 1, state: 'Акция', title: 'Коттеджный поселок “Апрелевка”', price: 22501000, like: true, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage2.png', income: 24, show: false},
-		{id: 2, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 11200000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage3.png', income: 12, show: false},
-		{id: 3, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 1400000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage4.png', income: 7, show: false},
-	];
+	// cottages: Slide[] = [
+	// 	{id: 0, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 17500000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage1.png', income: 17, show: true},
+	// 	{id: 1, state: 'Акция', title: 'Коттеджный поселок “Апрелевка”', price: 22501000, like: true, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage2.png', income: 24, show: false},
+	// 	{id: 2, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 11200000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage3.png', income: 12, show: false},
+	// 	{id: 3, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 1400000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage4.png', income: 7, show: false},
+	// ];
+	cottages: CatalogItem[];
 	/**
 	 * Component constructor
 	 * @param layoutConfigService
+	 * @param subheaderService
 	 */
-	constructor(private layoutConfigService: LayoutConfigService) {
+	constructor(private layoutConfigService: LayoutConfigService, public subheaderService: SubheaderService) {
+		this.cottages = subheaderService.catalog;
 	}
 
 	/**
@@ -43,7 +51,7 @@ export class CustomWidget2Component implements OnInit {
 	ngOnInit(): void {
 
 	}
-	nextSlide(slide: Slide) {
+	nextSlide(slide: CatalogItem) {
 		// this.sliderArea.nativeElement.scrollLeft = (slide.id * this.sliderArea.nativeElement.clientWidth);
 		if (!this.timeout) {
 			return ;
@@ -51,7 +59,6 @@ export class CustomWidget2Component implements OnInit {
 		this.timeout = false;
 		let distance = slide.id * this.sliderArea.nativeElement.clientWidth;
 		let direction = distance > this.sliderArea.nativeElement.scrollLeft;
-		debugger;
 		console.log('distance:' + distance);
 		this.animateScroll(distance, direction);
 		for (let item of this.cottages) {
@@ -82,14 +89,14 @@ export class CustomWidget2Component implements OnInit {
 	}
 }
 
-interface Slide {
-	id: number;
-	state: string;
-	income: number;
-	title: string;
-	imgSrc: string;
-	price: number;
-	desc: string;
-	like: boolean;
-	show: boolean;
-}
+// interface Slide {
+// 	id: number;
+// 	state: string;
+// 	income: number;
+// 	title: string;
+// 	imgSrc: string;
+// 	price: number;
+// 	desc: string;
+// 	like: boolean;
+// 	show: boolean;
+// }

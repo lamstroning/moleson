@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
 import { PartialsModule } from '../../partials/partials.module';
 import {TerminalComponent} from "./terminal.component";
+import {NgbCarouselModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
 	imports: [
@@ -18,6 +19,7 @@ import {TerminalComponent} from "./terminal.component";
 				component: TerminalComponent
 			},
 		]),
+		NgbCarouselModule,
 	],
 	providers: [],
 	declarations: [
