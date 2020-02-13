@@ -203,7 +203,7 @@ server.post('/api/users/register', (req, res) => {
   {
       console.log("registration rejected!");
       console.log(promise);
-      res.status(400).send(promise);
+      res.status(403).send(promise);
   }
   promise.then(fullfiled, rejected);
 });
