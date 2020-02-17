@@ -11,8 +11,11 @@
 		<form class="kt-login__form kt-form" [formGroup]="registerForm" autocomplete="off">
 			<div class="form-group">
 				<mat-form-field>
+					<div class="row">
+						<div class="label-form">Введите имя</div>
+					</div>
 					<mat-label>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</mat-label>
-					<input class="custom-input" matInput type="text" placeholder="Имя" formControlName="fullname"/>
+					<input class="custom-input" matInput type="text" formControlName="fullname"/>
 					<mat-error *ngIf="isControlHasError('fullname','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
@@ -26,8 +29,11 @@
 			</div>
 			<div class="form-group">
 				<mat-form-field>
+					<div class="row">
+						<div class="label-form">Введите email</div>
+					</div>
 					<mat-label>{{ 'AUTH.INPUT.EMAIL' | translate }}</mat-label>
-					<input class="custom-input" matInput type="email" placeholder="{{ 'AUTH.INPUT.EMAIL' | translate }}" formControlName="email" autocomplete="off"/>
+					<input class="custom-input" matInput type="email" formControlName="email" autocomplete="off"/>
 					<mat-error *ngIf="isControlHasError('email','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
@@ -44,8 +50,11 @@
 			</div>
 			<div class="form-group">
 				<mat-form-field>
+					<div class="row">
+						<div class="label-form">Введите имя пользователя</div>
+					</div>
 					<mat-label>Username</mat-label>
-					<input class="custom-input" matInput type="text" placeholder="Username" formControlName="username"/>
+					<input class="custom-input" matInput type="text" formControlName="username"/>
 					<mat-error *ngIf="isControlHasError('username','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
@@ -59,8 +68,11 @@
 			</div>
 			<div class="form-group">
 				<mat-form-field>
+					<div class="row">
+						<div class="label-form">Введите пароль</div>
+					</div>
 					<mat-label>{{ 'AUTH.INPUT.PASSWORD' | translate }}</mat-label>
-					<input class="custom-input" matInput type="password" placeholder="{{ 'AUTH.INPUT.PASSWORD' | translate }}" formControlName="password" autocomplete="off"/>
+					<input class="custom-input" matInput type="password" formControlName="password" autocomplete="off"/>
 					<mat-error *ngIf="isControlHasError('password','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
@@ -74,8 +86,11 @@
 			</div>
 			<div class="form-group">
 				<mat-form-field>
+					<div class="row">
+						<div class="label-form">Повторите пароль</div>
+					</div>
 					<mat-label>{{ 'AUTH.INPUT.CONFIRM_PASSWORD' | translate }}</mat-label>
-					<input class="custom-input" matInput type="password" placeholder="{{ 'AUTH.INPUT.CONFIRM_PASSWORD' | translate }}" formControlName="confirmPassword" autocomplete="off"/>
+					<input class="custom-input" matInput type="password" formControlName="confirmPassword" autocomplete="off"/>
 					<mat-error *ngIf="isControlHasError('confirmPassword','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
@@ -99,7 +114,8 @@
 			<!--begin::Action-->
 			<div class="kt-login__actions">
 				<a href="javascript:;" routerLink="/auth/forgot-password" class="kt-link kt-login__link-forgot">
-					{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}
+<!--					{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}-->
+					забыли пароль?
 				</a>
 				<button routerLink="/auth/login" [disabled]="loading" id="kt_login_signup_cancel" class="btn btn-secondary btn-elevate kt-login__btn-secondary">{{ 'AUTH.GENERAL.BACK_BUTTON' | translate }}</button>
 				<button (click)="submit()" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">{{ 'AUTH.GENERAL.SUBMIT_BUTTON' | translate }}</button>

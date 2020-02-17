@@ -24,7 +24,7 @@ export class User extends BaseModel {
         this.password = '';
         this.email = '';
         this.roles = [];
-        this.fullname = '';
+        this.fullname = 'Александр';
         this.accessToken = 'access-token-' + Math.random();
         this.refreshToken = 'access-token-' + Math.random();
         this.pic = './assets/media/users/default.jpg';

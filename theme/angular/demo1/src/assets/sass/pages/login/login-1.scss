@@ -299,8 +299,9 @@
                 // Form
                 .kt-form {
                     .form-group {
-                        padding: 0;
-                        margin: 0 auto;
+						.label-form {
+							color: white;
+						}
 						.mat-form-field-underline {
 							display: none;
 						}
