@@ -1,0 +1,95 @@
+<div class="catalog-detail">
+	<div class="row">
+		<div class="col-xl-8 p-0">
+			<div class="catalog-detail-img" [style.background-image]="'url('+this.catalogItem.detailImg+')'">
+				<div class="card-item-marker">{{this.catalogItem.marker}}</div>
+			</div>
+		</div>
+		<div class="col-xl-4">
+			<div class="catalog-detail-info-block">
+				<div class="catalog-detail-info-block-cost">
+					<div class="catalog-detail-info-block-price">
+						{{this.catalogItem.price}}$
+					</div>
+					<div class="catalog-detail-info">Общая сумма инвестиций</div >
+				</div>
+				<div class="catalog-detail-info-block-info">
+					<h3 class="catalog-detail-title">Краткое описание проекта</h3>
+					<div class="catalog-detail-info-block-info-short-desc">Крупный научный и культурный центр, крупный транспортный узел на пересечении железнодорожной линии Санкт-Петербург — Москва и автомагистрали «Россия».<br> В 2018 году признан самым инвестиционно благоприятным городом России.</div>
+				</div>
+				<div class="progress-bar-container">
+					<div class="progress-bar-done">
+						<div class="progress-bar-done-section">
+							<b>{{subheaderService.getPrecent(this.catalogItem.price, this.catalogItem.introduced)}}% </b> <span> Проинвестировно</span>
+						</div>
+						<div class="progress-bar-done-section">
+							<b>{{this.catalogItem.price - this.catalogItem.introduced}}$</b> <span> осталось</span>
+						</div>
+					</div>
+					<div class="progress-bar-count-investor"><b>63 </b> <span> Инвестора</span></div>
+					<div class="kt-widget12__progress">
+						<div class="progress kt-progress--sm">
+							<div class="progress-bar bg-success" role="progressbar" [style.width]="subheaderService.getPrecent(this.catalogItem.price, this.catalogItem.introduced) + '%'"
+								 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+								<div class="bg-success-remains">{{this.catalogItem.introduced}}$</div></div>
+						</div>
+					</div>
+				</div>
+				<div (click)="openDialog()" class="catalog-detail-info-block-btn">Инвестировать</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-5">
+		<div class="col-xl-12">
+			<h2 class="catalog-detail-title">Описание проекта</h2>
+			<div class="catalog-detail-desc">
+				Крупный научный и культурный центр, крупный транспортный узел на пересечении железнодорожной линии Санкт-Петербург — Москва и автомагистрали «Россия». В 2018 году признан самым инвестиционно благоприятным городом России. Философия проекта. В основе проекта — отношение к недвижимости как к гармоничной, сбалансированной среде проживания, работы или места проведения досуга. Качественно новый формат жизни.
+			</div>
+		</div>
+	</div>
+	<div class="row mt-5">
+		<div class="col-xl-6">
+			<h2 class="catalog-detail-title">Особенности проекта</h2>
+			<div class="catalog-detail-desc">
+				<ul class="style-line">
+					<li>Коттеджный посёлок расположен на первой береговой линии от реки Волга</li>
+					<li>Транспортная доступность: 7 минут от центра Твери; скоростное шоссе до Москвы</li>
+					<li>Охраняемая огороженная территория посёлка</li>
+				</ul>
+				<div class="row tizer-row">
+					<div class="col-4">
+						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer1.svg'"></div>
+						<div class="tizer-item-cost">1500$</div>
+						<div class="tizer-item-title">Минимальная сумма</div>
+					</div>
+					<div class="col-4">
+						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer2.svg'"></div>
+						<div class="tizer-item-cost">15 000$</div>
+						<div class="tizer-item-title">Средний доход</div>
+					</div>
+					<div class="col-4">
+						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer3.svg'"></div>
+						<div class="tizer-item-cost">3 месяца</div>
+						<div class="tizer-item-title">Средний период окупаемости</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-6">
+			<h2 class="catalog-detail-title">Преимущества проекта</h2>
+			<div class="catalog-detail-desc">
+				<ul>
+					<li>хорошая экология</li>
+					<li>красота природы</li>
+					<li>близость леса и водоёма</li>
+					<li>Единый стиль</li>
+					<li>Благоустроенные общественные рекреационные зоны</li>
+					<li>Спортивно-оздоровительная инфраструктура</li>
+					<li>Близость городской инфраструктуры (детские сады, школы, мед. учреждения)</li>
+					<li>Благоустроенная рекреационная зона с пляжем и лодочной станцией</li>
+					<li>Безопасность (ограждённая территория/КПП на въездах/система видеонаблюдения/круглосуточное патрулирование)</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

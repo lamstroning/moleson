@@ -1,0 +1,29 @@
+<!--begin::Body-->
+<div class="kt-login__body kt-register kt-type-account kt-code">
+	<!--begin::Signin-->
+	<div class="logo-row">
+		<div class="logo-small"></div>
+	</div>
+	<div class="kt-login__form">
+		<div class="kt-login__title">
+			<h3>Регистрация</h3>
+		</div>
+
+		<kt-auth-notice></kt-auth-notice>
+		<div class="code-container">
+			<input class="input-code" matInput type="text" placeholder="Код из СМС" formControlName="fullname"/>
+			<div class="kt-login__actions">
+				<button routerLink="/auth/register/welcome" id="kt_login_signin_submit"
+						class="btn btn-primary btn-elevate kt-login__btn-primary"
+						[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">Войти
+				</button>
+			</div>
+		</div>
+		<div class="kt-login__register">
+			<span>У вас уже есть аккаунт?</span>
+			<a href="javascript:;" routerLink="/auth/login" class="kt-link kt-login__signup-link">Войти</a>
+		</div>
+		<!--end::Action-->
+	</div>
+</div>
+
