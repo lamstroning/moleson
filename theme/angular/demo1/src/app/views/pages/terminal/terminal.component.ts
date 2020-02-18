@@ -8,7 +8,7 @@ import {SubheaderService} from "../../../core/_base/layout";
 })
 
 export class TerminalComponent implements OnInit {
-  constructor(public subheaderService: SubheaderService) {
+  constructor(public  subheaderService: SubheaderService) {
 
   }
   catalogItem = this.subheaderService.catalog[0];

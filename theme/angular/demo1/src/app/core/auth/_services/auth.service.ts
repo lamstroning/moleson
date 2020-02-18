@@ -18,7 +18,7 @@ export class AuthService {
     constructor(private http: HttpClient) {}
     // Authentication/Authorization
     login(email: string, password: string): Observable<User> {
-        return this.http.post<User>(API_USERS_URL, { email, password });
+        return this.http.post<User>(API_USERS_URL + '/login', { email, password });
     }
 
     getUserByToken(): Observable<User> {
@@ -31,7 +31,7 @@ export class AuthService {
     register(user: User): Observable<any> {
         const httpHeaders = new HttpHeaders();
         httpHeaders.set('Content-Type', 'application/json');
-        return this.http.post<User>(API_USERS_URL, user, { headers: httpHeaders })
+        return this.http.post<User>(API_USERS_URL + '/register', user, { headers: httpHeaders })
             .pipe(
                 map((res: User) => {
                     return res;
@@ -74,14 +74,14 @@ export class AuthService {
 	updateUser(_user: User): Observable<any> {
         const httpHeaders = new HttpHeaders();
         httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.put(API_USERS_URL, _user, { headers: httpHeaders });
+		      return this.http.put(API_USERS_URL + 'updateUser', _user, { headers: httpHeaders });
 	}
 
     // CREATE =>  POST: add a new user to the server
 	createUser(user: User): Observable<User> {
     	const httpHeaders = new HttpHeaders();
      httpHeaders.set('Content-Type', 'application/json');
-		   return this.http.post<User>(API_USERS_URL, user, { headers: httpHeaders});
+		   return this.http.post<User>(API_USERS_URL + '/createUser', user, { headers: httpHeaders});
 	}
 
     // Method from server should return QueryResultsModel(items: any[], totalsCount: number)

@@ -144,10 +144,18 @@
 		}
 	}
 }
+
+
 .line-separate {
 	width: 1px;
 	background-color: #F4EDF5;
 	height: 200px;
+}
+@media screen and (max-width:700px) {
+	.line-separate {
+		height: 10px;
+		background-color: transparent;
+	}
 }
 .size-investor {
 	color: black;

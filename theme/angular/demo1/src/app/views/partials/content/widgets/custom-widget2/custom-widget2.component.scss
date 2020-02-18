@@ -137,5 +137,20 @@
 			background: #6D21A7;
 		}
 	}
+	.slider-arrow {
+		width: 50px;
+		background-position: 50%;
+		height: 242px;
+		background-repeat: no-repeat;
+		position: absolute;
+		background-image: url(/assets/media/icons/custom/arrow-left.svg);
+	}
+
+	.slider-arrow.slider-arrow-right {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+		right: 30px;
+
+	}
 }
 

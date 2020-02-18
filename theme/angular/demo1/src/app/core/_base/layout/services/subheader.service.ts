@@ -28,12 +28,12 @@ export class SubheaderService {
 	disabled$: Subject<boolean> = new Subject<boolean>();
 	client: Client = {id: 0, avatar: '/assets/media/users/custom/user1.png', name: 'Леонид Гаврилов', percent: 12, position: 'Физическое лицо'};
 	catalog: CatalogItem[] = [
-		{id: 0, client: this.client, favorite: false, introduced: 1500, marker: 'Новое', price: 10000, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage2.png', detailImg:'/assets/media/products/cottage/cottage3-big.png'},
-		{id: 1, client: this.client, favorite: false, introduced: 25000, marker: 'Проверенные', price: 35200, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage3.png', detailImg:'/assets/media/products/cottage/cottage3-big.png'},
-		{id: 2, client: this.client, favorite: false, introduced: 1000, marker: 'Новое', price: 21200, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage4.png', detailImg:'/assets/media/products/cottage/cottage3-big.png'},
-		{id: 3, client: this.client, favorite: false, introduced: 32300, marker: 'Новое', price: 45600, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage3.png', detailImg:'/assets/media/products/cottage/cottage3-big.png'},
-		{id: 4, client: this.client, favorite: false, introduced: 23200, marker: 'Проверенные', price: 24800, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage2.png', detailImg:'/assets/media/products/cottage/cottage3-big.png'},
-		{id: 5, client: this.client, favorite: false, introduced: 12300, marker: 'Проверенные', price: 45600, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage4.png', detailImg:'/assets/media/products/cottage/cottage3-big.png'},
+		{id: 0, client: this.client, favorite: false, introduced: 1500, marker: 'Новое', price: 10000, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage2.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show:true, like:false},
+		{id: 1, client: this.client, favorite: false, introduced: 25000, marker: 'Проверенные', price: 35200, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage3.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
+		{id: 2, client: this.client, favorite: false, introduced: 1000, marker: 'Новое', price: 21200, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage4.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
+		{id: 3, client: this.client, favorite: false, introduced: 32300, marker: 'Новое', price: 45600, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage3.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
+		{id: 4, client: this.client, favorite: false, introduced: 23200, marker: 'Проверенные', price: 24800, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage2.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
+		{id: 5, client: this.client, favorite: false, introduced: 12300, marker: 'Проверенные', price: 45600, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage4.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
 	];
 	showSection(catalog:CatalogItem):boolean {
 		let section:string;
@@ -258,5 +258,7 @@ export interface CatalogItem {
 	title: string;
 	client: Client;
 	favorite: boolean;
+	show: boolean;
+	like: boolean;
 	introduced: number;
 }
