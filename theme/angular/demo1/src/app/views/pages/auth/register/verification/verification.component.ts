@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./verification.component.scss']
 })
 export class VerificationComponent implements OnInit {
+	sex =  [
+		'Мужской',
+		'Женский',
+	];
 
   constructor() { }
 
