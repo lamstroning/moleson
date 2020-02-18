@@ -27,6 +27,7 @@ import { CompanyAccountComponent } from './register/typeAccount/company-account/
 import { CodeComponent } from './register/typeAccount/code/code.component';
 import { WelcomeComponent } from './register/welcome/welcome.component';
 import { VerificationComponent } from './register/verification/verification.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 const routes: Routes = [
 	{
@@ -71,6 +72,10 @@ const routes: Routes = [
 				path: 'register/verification',
 				component: VerificationComponent,
 			},
+			{
+				path: 'register/welcome',
+				component: WelcomeComponent,
+			},
 		]
 	}
 ];
@@ -88,7 +93,8 @@ const routes: Routes = [
 		MatCheckboxModule,
 		TranslateModule.forChild(),
 		StoreModule.forFeature('auth', authReducer),
-		EffectsModule.forFeature([AuthEffects])
+		EffectsModule.forFeature([AuthEffects]),
+		MatRadioModule
 	],
 	providers: [
 		InterceptService,

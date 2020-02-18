@@ -117,6 +117,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	 * Form Submit
 	 */
 	submit() {
+		console.log('.');
 		const controls = this.registerForm.controls;
 
 		// check form
@@ -143,6 +144,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 		_user.fullname = controls.fullname.value;
 		_user.password = controls.password.value;
 		_user.roles = [];
+
 		this.auth.register(_user).pipe(
 			tap(user => {
 				if (user) {
