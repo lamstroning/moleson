@@ -1,0 +1,67 @@
+.verification-form {
+	max-width: 929px;
+	width: 100%;
+	padding: 55px;
+	max-height: 100vh;
+	overflow-y: scroll;
+	margin: 0 auto;
+	background-color: white;
+	opacity: 0.95;
+	.choice-avatar-row{
+		width:100%;
+		display:flex;
+		justify-content: flex-end;
+		.choice-avatar:hover {
+			.choice-avatar-add {
+				height: 60px;
+			}
+		}
+		.choice-avatar {
+			width: 120px;
+			height: 120px;
+			border-radius: 50%;
+			cursor: pointer;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			border: 1px solid black;
+			.choice-avatar-add {
+				transition: 0.2s;
+				background-color: black;
+				opacity: 0.7;
+				height: 0px;
+				overflow: hidden;
+				text-align: center;
+				border-bottom-left-radius: 50%;
+				border-bottom-right-radius: 50%;
+			}
+		}
+	}
+	.file-area {
+		border: 1px dashed #6D21A7;
+		max-width: 160px;
+		height: 90px;
+		border-radius: 8px;
+	}
+	.file-area > .file-drop{
+		border: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+	 input {
+		 margin-bottom: 30px;
+		width: 80%;
+		max-width:  430px;
+		padding: 10px 20px;
+		background-color: white;
+		border: 1px solid #6D21A7;
+		border-radius: 23px;
+	}
+	.input-label {
+		margin-right: 20px;
+		font-size: 16px;
+		color: #959CB6;
+	}
+}
