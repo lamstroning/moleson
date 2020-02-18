@@ -33,7 +33,7 @@ let userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    unique: true, //this field don't prohibit duplicates, it says that this in an index field
+    unique: true,
     required: true,
     trim: true
   },
@@ -64,6 +64,7 @@ let userSchema = new mongoose.Schema({
 });
 
 userSchema.plugin(uniqueValidator);
+
 userSchema.methods.setPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto.pbkdf2Sync(password, this.salt,
@@ -86,7 +87,7 @@ userSchema.methods.generateJwt = function() {
     name: this.name,
     accessLevel: this.accessLevel,
     exp: expiry.getTime() / 1000, //This acts weired
-  }, 'thisIsSecret'); //string thisIsSecret in production should be replaced with getting secret from .env
+  }, 'SecretString_18_02_2020_for_sph_dev_server'); //string thisIsSecret in production should be replaced with getting secret from .env
 };
 
 module.exports = mongoose.model('User', userSchema, "users");//?

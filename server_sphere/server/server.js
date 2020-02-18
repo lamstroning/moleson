@@ -8,33 +8,31 @@ server.use(Parser.json());
 
 server.get("/api/users", (req, res) =>
 {
-  const json_udata = {
-    id: 3,
-    username: 'guest',
-    password: 'demo',
-    email: 'guest@demo.com',
-    accessToken: 'access-token-d2dff7b82f784de584b60964abbe45b9',
-    refreshToken: 'access-token-c999ccfe74aa40d0aa1a64c5e620c1a5',
-    roles: [3], // Guest
-    pic: './assets/media/users/default.jpg',
-    fullname: 'Ginobili Maccari',
-    occupation: 'CFO',
-    companyName: 'Keenthemes',
-    phone: '456669067892',
-    address: {
-      addressLine: '1467  Griffin Street',
-      city: 'Phoenix',
-      state: 'Arizona',
-      postCode: '85012'
-    },
-    socialNetworks: {
-      linkedIn: 'https://linkedin.com/guest',
-      facebook: 'https://facebook.com/guest',
-      twitter: 'https://twitter.com/guest',
-      instagram: 'https://instagram.com/guest'
+  // Method from server should return QueryResultsModel(items: any[], totalsCount: number)
+  // items => filtered/sorted result
+  const userModel = require("./DB_schema/users.js");
+  const get_users = require('./controlers/get_users.js');
+  let promise = get_users();
+ // console.log(promise);
+  function fullfiled(result)
+  {
+    let i = 0;
+    while (result[i])
+    {
+      result[i]['hash'] = undefined;
+      result[i]['salt'] = undefined;
+      i++;
     }
-  };
-  res.status(201).send(json_udata);
+    QRModel = {"items" : result, "totalsCount" : result.length};
+    res.status(200).send(QRModel);
+  }
+  function rejected(error)
+  {
+    res.status(500).send(error);
+  }
+  promise.then(fullfiled, rejected);
+ // json_udata = userModel.find();
+  //res.status(201).send(json_udata);
 });
 
 server.get("/api/permissions", (req, res) =>
