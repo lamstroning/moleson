@@ -95,6 +95,7 @@ export class MenuConfig {
 					root: true,
 					bullet: 'dot',
 					icon: 'flaticon2-browser-2',
+					page: '/auth/register/verification'
 				},
 				{section: 'Администрирование'},
 				{
