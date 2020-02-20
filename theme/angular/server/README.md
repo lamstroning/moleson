@@ -1,1 +1,0 @@
-# smetrama_server
