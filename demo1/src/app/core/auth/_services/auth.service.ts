@@ -23,9 +23,9 @@ export class AuthService {
 
     getUserByToken(): Observable<User> {
         const userToken = localStorage.getItem(environment.authTokenKey);
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Authorization', 'Bearer ' + userToken);
-        return this.http.get<User>(API_USERS_URL, { headers: httpHeaders });
+        let httpHeaders = new HttpHeaders();
+        httpHeaders = httpHeaders.set('Authorization', 'Bearer ' + userToken);
+        return this.http.get<User>(API_USERS_URL + '/byJWT', { headers: httpHeaders });
     }
 
     register(user: User): Observable<any> {
