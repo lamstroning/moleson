@@ -27,7 +27,6 @@ export class AuthService {
         httpHeaders = httpHeaders.set('Authorization', 'Bearer ' + userToken);
         return this.http.get<User>(API_USERS_URL + '/byJWT', { headers: httpHeaders });
     }
-
     register(user: User): Observable<any> {
         const httpHeaders = new HttpHeaders();
         httpHeaders.set('Content-Type', 'application/json');
