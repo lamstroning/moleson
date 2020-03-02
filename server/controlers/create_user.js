@@ -8,6 +8,7 @@ module.exports = async function createUser(json) {
   }
   let newUser = new userModel(json);
   newUser.setPassword(json["password"]);
+  newUser.generateJwt();
   let promise = newUser.save();
   return (promise);
 };

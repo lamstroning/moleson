@@ -33,7 +33,7 @@ let userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    unique: true, //this field don't prohibit duplicates, it says that this in an index field
+    unique: true,
     required: true,
     trim: true
   },
@@ -53,17 +53,19 @@ let userSchema = new mongoose.Schema({
   },
   accessLevel: {
     type: Number,
-    //required: true,
+    //required: true,gi
   },
   //address : addressSchema,
   //socialNetworks: snSchema, typeError: Invalid schema configuration: 'Model' is not a valid type at path 'address'
   //accessToken: String,
+  JWT: String,
   refreshToken: String,
   hash: String, //this is password hashed by sha512
   salt: String
 });
 
 userSchema.plugin(uniqueValidator);
+
 userSchema.methods.setPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto.pbkdf2Sync(password, this.salt,
@@ -80,13 +82,13 @@ userSchema.methods.generateJwt = function() {
   let expiry = new Date();
   expiry.setDate(expiry.getDate() + 7); //token will expire in 7 days
 
-  return jwt.sign({
+  return this.JWT = jwt.sign({
     _id: this.id,
     email: this.email,
     name: this.name,
     accessLevel: this.accessLevel,
     exp: expiry.getTime() / 1000, //This acts weired
-  }, 'thisIsSecret'); //string thisIsSecret in production should be replaced with getting secret from .env
+  }, 'SecretString_18_02_2020_for_sph_dev_server'); //string thisIsSecret in production should be replaced with getting secret from .env
 };
 
 module.exports = mongoose.model('User', userSchema, "users");//?

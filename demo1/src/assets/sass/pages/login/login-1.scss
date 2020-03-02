@@ -15,11 +15,15 @@
 .mat-form-field-wrapper {
 	max-height: 45px;
 }
-.kt-login.kt-login--v1 {
+.img-bg-screen {
 	background-image: url(/assets/media/bg/custom/background_1.png);
 	background-position: 50%;
 	background-size: cover;
+	height: 100%;
 	background-repeat: no-repeat;
+}
+.kt-login.kt-login--v1 {
+
     // Aside
     .kt-login__aside {
         width: 605px;
@@ -118,10 +122,7 @@
             }
         }
 		.kt-register {
-			background-image: url(/assets/media/bg/custom/background_2.png);
-			background-position: 50%;
-			background-size: cover;
-			background-repeat: no-repeat;
+
 			.kt-login__btn-primary {
 				border-radius: 23px;
 				font-weight: 500;

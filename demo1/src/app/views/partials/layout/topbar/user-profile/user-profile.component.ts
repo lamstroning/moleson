@@ -39,7 +39,6 @@ export class UserProfileComponent implements OnInit {
 	ngOnInit(): void {
 		this.user$ = this.store.pipe(select(currentUser));
 	}
-
 	/**
 	 * Log out
 	 */
