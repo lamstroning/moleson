@@ -57,8 +57,8 @@ let userSchema = new mongoose.Schema({
   },
   //address : addressSchema,
   //socialNetworks: snSchema, typeError: Invalid schema configuration: 'Model' is not a valid type at path 'address'
-  //accessToken: String,
-  JWT: String,
+  accessToken: String,
+  //JWT: String,
   refreshToken: String,
   hash: String, //this is password hashed by sha512
   salt: String
@@ -82,7 +82,7 @@ userSchema.methods.generateJwt = function() {
   let expiry = new Date();
   expiry.setDate(expiry.getDate() + 7); //token will expire in 7 days Todo make token expire time work as expected
 
-  return this.JWT = jwt.sign({
+  return this.accessToken = jwt.sign({
     _id: this.id,
     email: this.email,
     name: this.name,

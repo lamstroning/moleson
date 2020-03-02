@@ -106,9 +106,12 @@ export class CodeComponent implements OnInit {
 			.pipe(
 				tap(user => {
 					if (user) {
+						debugger;//*
 						this.store.dispatch(new Login({authToken: user.accessToken}));
 						this.router.navigateByUrl(this.returnUrl); // Main page
 					} else {
+						debugger;//*По какой-то причине ни один из дебагеров не вызывается
+						console.log("empty user!");
 						this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
 					}
 				}),

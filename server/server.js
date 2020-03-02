@@ -17,10 +17,10 @@ server.get("/api/users/byJWT", (req, res) =>
   let promise = get_user(token);
   function fullfiled(result)
   {
-    console.log('fulfiled');
-    let QRModel = {"items" : result, "totalsCount" : 1};
-    console.log(QRModel);
-    res.status(200).send(QRModel);
+    console.log('fullfiled');
+    //let QRModel = {"items" : result, "totalsCount" : 1};
+    //console.log(QRModel);
+    res.status(200).send(result[0]); //result is a query object, result[0] - json user info
   }
   function rejected(error)
   {
