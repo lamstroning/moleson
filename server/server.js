@@ -6,6 +6,30 @@ let Parser = require('body-parser');
 server.use(Parser.urlencoded({ extended: false }));
 server.use(Parser.json());
 
+server.get("/api/users/byJWT", (req, res) =>
+{
+  const get_user = require('./controlers/get_user_by_jwt.js');
+  if (req.headers['authorization'] === undefined) {
+    res.status(401).send('Header is undefined!');
+    return;
+  }
+  let token = (req.headers['authorization'].split(' '))[1];
+  let promise = get_user(token);
+  function fullfiled(result)
+  {
+    console.log('fullfiled');
+    //let QRModel = {"items" : result, "totalsCount" : 1};
+    //console.log(QRModel);
+    res.status(200).send(result[0]); //result is a query object, result[0] - json user info
+  }
+  function rejected(error)
+  {
+    console.log('/api/users/byJWT rejected');
+    res.status(500).send(error);
+  }
+  promise.then(fullfiled, rejected);
+});
+
 server.get("/api/users", (req, res) =>
 {
   // Method from server should return QueryResultsModel(items: any[], totalsCount: number)
@@ -13,7 +37,6 @@ server.get("/api/users", (req, res) =>
   const userModel = require("./DB_schema/users.js");
   const get_users = require('./controlers/get_users.js');
   let promise = get_users();
- // console.log(promise);
   function fullfiled(result)
   {
     let i = 0;
@@ -23,7 +46,7 @@ server.get("/api/users", (req, res) =>
       result[i]['salt'] = undefined;
       i++;
     }
-    QRModel = {"items" : result, "totalsCount" : result.length};
+    let QRModel = {"items" : result, "totalsCount" : result.length};
     res.status(200).send(QRModel);
   }
   function rejected(error)
@@ -31,8 +54,6 @@ server.get("/api/users", (req, res) =>
     res.status(500).send(error);
   }
   promise.then(fullfiled, rejected);
- // json_udata = userModel.find();
-  //res.status(201).send(json_udata);
 });
 
 server.get("/api/permissions", (req, res) =>
@@ -148,47 +169,8 @@ server.get("/api/roles", (req, res) =>
   res.status(201).send(roles);
 });
 
-/*server.post("/api/users", (req, res) =>
-{
-  const json_udata = {
-    id: 3,
-    username: 'guest',
-    password: 'demo',
-    email: 'guest@demo.com',
-    accessToken: 'access-token-d2dff7b82f784de584b60964abbe45b9',
-    refreshToken: 'access-token-c999ccfe74aa40d0aa1a64c5e620c1a5',
-    roles: [3], // Guest
-    pic: './assets/media/users/default.jpg',
-    fullname: 'Ginobili Maccari',
-    occupation: 'CFO',
-    companyName: 'Keenthemes',
-    phone: '456669067892',
-    address: {
-      addressLine: '1467  Griffin Street',
-      city: 'Phoenix',
-      state: 'Arizona',
-      postCode: '85012'
-    },
-    socialNetworks: {
-      linkedIn: 'https://linkedin.com/guest',
-      facebook: 'https://facebook.com/guest',
-      twitter: 'https://twitter.com/guest',
-      instagram: 'https://instagram.com/guest'
-    }
-  };
-  res.status(201).send(json_udata);
-});*/
-
-/*server.get('/*', (req, res) =>
-{
-  console.log("Got a get request!");
-  res.sendStatus(200);
-});*/
-
 server.post('/api/users/register', (req, res) => {
- // console.log('get post request on /api/users');
   const incoming = req.body;
-// console.log(incoming);
   const createUser = require('./controlers/create_user.js');
   let promise = createUser(incoming);
   function fullfiled(result)
