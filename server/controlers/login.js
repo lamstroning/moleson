@@ -13,13 +13,14 @@ module.exports = function login(json, response) {
     }
     delete json["password"];
     userModel.findOne(json, function (err, res) {
-        if (err)
+        if (err) {
             console.log(err.message);
+        }
         else if (res)
         {
             console.log("Found!");
             if (res.validPassword(pswd))
-                sendJSONresponse(response, 200, res.generateJwt());
+                sendJSONresponse(response, 200, res);
             else
                 sendJSONresponse(response, 403, "Invalid password!");
         }
