@@ -15,16 +15,11 @@ server.get("/api/users/byJWT", (req, res) =>
   }
   let token = (req.headers['authorization'].split(' '))[1];
   let promise = get_user(token);
-  function fullfiled(result)
-  {
-    console.log('fullfiled');
-    //let QRModel = {"items" : result, "totalsCount" : 1};
-    //console.log(QRModel);
+  function fullfiled(result) {
     res.status(200).send(result[0]); //result is a query object, result[0] - json user info
   }
-  function rejected(error)
-  {
-    console.log('/api/users/byJWT rejected');
+  function rejected(error) {
+    console.log('/api/users/byJWT rejected: ' + error);
     res.status(500).send(error);
   }
   promise.then(fullfiled, rejected);
@@ -36,16 +31,10 @@ server.get("/api/users", (req, res) =>
   // items => filtered/sorted result
   const userModel = require("./DB_schema/users.js");
   const get_users = require('./controlers/get_users.js');
+  //TODO add permission check
   let promise = get_users();
   function fullfiled(result)
   {
-    let i = 0;
-    while (result[i])
-    {
-      result[i]['hash'] = undefined;
-      result[i]['salt'] = undefined;
-      i++;
-    }
     let QRModel = {"items" : result, "totalsCount" : result.length};
     res.status(200).send(QRModel);
   }

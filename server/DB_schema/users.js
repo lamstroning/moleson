@@ -58,10 +58,13 @@ let userSchema = new mongoose.Schema({
   //address : addressSchema,
   //socialNetworks: snSchema, typeError: Invalid schema configuration: 'Model' is not a valid type at path 'address'
   accessToken: String,
-  //JWT: String,
-  refreshToken: String,
+ // refreshToken: String,
   hash: String, //this is password hashed by sha512
-  salt: String
+  salt: String,
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
 });
 
 userSchema.plugin(uniqueValidator);
