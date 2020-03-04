@@ -21,7 +21,7 @@
 			<div class="form-group">
 				<mat-form-field>
 					<div class="row">
-						<div class="label-form">Введите номер телефона</div>
+						<div class="label-form">Введите email</div>
 					</div>
 					<input class="custom-input" matInput type="email"  formControlName="email" autocomplete="off"/>
 					<mat-error *ngIf="isControlHasError('email','required')">
@@ -62,7 +62,7 @@
 						<a href="javascript:;">Запомнить меня</a>
 					</mat-checkbox>
 					<a href="javascript:;" routerLink="/auth/forgot-password" class="kt-link kt-login__link-forgot">
-						забыли пароль?
+						Забыли пароль?
 					</a>
 				</div>
 			</div>

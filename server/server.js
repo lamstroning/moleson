@@ -15,16 +15,11 @@ server.get("/api/users/byJWT", (req, res) =>
   }
   let token = (req.headers['authorization'].split(' '))[1];
   let promise = get_user(token);
-  function fullfiled(result)
-  {
-    console.log('fullfiled');
-    //let QRModel = {"items" : result, "totalsCount" : 1};
-    //console.log(QRModel);
+  function fullfiled(result) {
     res.status(200).send(result[0]); //result is a query object, result[0] - json user info
   }
-  function rejected(error)
-  {
-    console.log('/api/users/byJWT rejected');
+  function rejected(error) {
+    console.log('/api/users/byJWT rejected: ' + error);
     res.status(500).send(error);
   }
   promise.then(fullfiled, rejected);
@@ -36,16 +31,10 @@ server.get("/api/users", (req, res) =>
   // items => filtered/sorted result
   const userModel = require("./DB_schema/users.js");
   const get_users = require('./controlers/get_users.js');
+  //TODO add permission check
   let promise = get_users();
   function fullfiled(result)
   {
-    let i = 0;
-    while (result[i])
-    {
-      result[i]['hash'] = undefined;
-      result[i]['salt'] = undefined;
-      i++;
-    }
     let QRModel = {"items" : result, "totalsCount" : result.length};
     res.status(200).send(QRModel);
   }
@@ -56,117 +45,14 @@ server.get("/api/users", (req, res) =>
   promise.then(fullfiled, rejected);
 });
 
-server.get("/api/permissions", (req, res) =>
-{
-  const permissions = [
-  {
-    id: 1,
-    name: 'accessToECommerceModule',
-    level: 1,
-    title: 'eCommerce module'
-  },
-  {
-    id: 2,
-    name: 'accessToAuthModule',
-    level: 1,
-    title: 'Users Management module'
-  },
-  {
-    id: 3,
-    name: 'accessToMailModule',
-    level: 1,
-    title: 'Mail module'
-  },
-  {
-    id: 4,
-    name: 'canReadECommerceData',
-    level: 2,
-    parentId: 1,
-    title: 'Read'
-  },
-  {
-    id: 5,
-    name: 'canEditECommerceData',
-    level: 2,
-    parentId: 1,
-    title: 'Edit'
-  },
-  {
-    id: 6,
-    name: 'canDeleteECommerceData',
-    level: 2,
-    parentId: 1,
-    title: 'Delete'
-  },
-  {
-    id: 7,
-    name: 'canReadAuthData',
-    level: 2,
-    parentId: 2,
-    title: 'Read'
-  },
-  {
-    id: 8,
-    name: 'canEditAuthData',
-    level: 2,
-    parentId: 2,
-    title: 'Edit'
-  },
-  {
-    id: 9,
-    name: 'canDeleteAuthData',
-    level: 2,
-    parentId: 2,
-    title: 'Delete'
-  },
-  {
-    id: 10,
-    name: 'canReadMailData',
-    level: 2,
-    parentId: 3,
-    title: 'Read'
-  },
-  {
-    id: 11,
-    name: 'canEditMailData',
-    level: 2,
-    parentId: 3,
-    title: 'Edit'
-  },
-  {
-    id: 12,
-    name: 'canDeleteMailData',
-    level: 2,
-    parentId: 3,
-    title: 'Delete'
-  },
-];
-  res.status(201).send(permissions);
+server.get("/api/permissions", (req, res) => {
+  const fp = require("./config/permissions_fake");
+  res.status(201).send(fp.permissions);
 });
 
-server.get("/api/roles", (req, res) =>
-{
-  const roles = [
-  {
-    id: 1,
-    title: 'Administrator',
-    isCoreRole: true,
-    permissions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-  },
-  {
-    id: 2,
-    title: 'Manager',
-    isCoreRole: false,
-    permissions: [3, 4, 10]
-  },
-  {
-    id: 3,
-    title: 'Guest',
-    isCoreRole: false,
-    permissions: []
-  }
-];
-  res.status(201).send(roles);
+server.get("/api/roles", (req, res) => {
+  const fp = require("./config/permissions_fake");
+  res.status(201).send(fp.roles);
 });
 
 server.post('/api/users/register', (req, res) => {
