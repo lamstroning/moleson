@@ -14,6 +14,9 @@
 	<div class="kt-login__register accept-row">
 		<span>Ваш аккаунт <b>неверифицирован.</b> Не хотите сделать это прямо сейчас?</span>
 <!--		<a href="javascript:;" routerLink="/auth/login" class="kt-link kt-login__signup-link">Войти</a>-->
-		<button routerLink="/auth/register/verification" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">Пройти верификацию</button>
+		<div class="row">
+			<button routerLink="/auth/register/verification" id="kt_login_signin_submit" class="btn btn-primary next-btn btn-elevate kt-login__btn-primary">Пройти верификацию</button>
+			<button routerLink="/auth/login" class="btn btn-primary next-btn btn-elevate kt-login__btn-primary">Пройти верификацию позже</button>
+		</div>
 	</div>
 </div>
