@@ -28,15 +28,15 @@ export class SubheaderService {
 	disabled$: Subject<boolean> = new Subject<boolean>();
 	client: Client = {id: 0, avatar: '/assets/media/users/custom/user1.png', name: 'Леонид Гаврилов', percent: 12, position: 'Физическое лицо'};
 	catalog: CatalogItem[] = [
-		{id: 0, client: this.client, favorite: false, introduced: 1500, marker: 'Новое', price: 10000, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage2.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show:true, like:false},
-		{id: 1, client: this.client, favorite: false, introduced: 25000, marker: 'Проверенные', price: 35200, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage3.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
-		{id: 2, client: this.client, favorite: false, introduced: 1000, marker: 'Новое', price: 21200, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage4.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
-		{id: 3, client: this.client, favorite: false, introduced: 32300, marker: 'Новое', price: 45600, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage3.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
-		{id: 4, client: this.client, favorite: false, introduced: 23200, marker: 'Проверенные', price: 24800, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage2.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
-		{id: 5, client: this.client, favorite: false, introduced: 12300, marker: 'Проверенные', price: 45600, title: '24-й км Калужского шоссе', img: '/assets/media/products/cottage/cottage4.png', detailImg:'/assets/media/products/cottage/cottage3-big.png', show: false, like:false},
+		{id: 0, client: this.client, favorite: false, introduced: 1500, marker: 'Новое', price: 10000, title: 'Coliseum', img: '/assets/media/products/colize.jpg', detailImg: '/assets/media/products/colize.jpg', show: true, like: false},
+		{id: 1, client: this.client, favorite: false, introduced: 25000, marker: 'Проверенные', price: 35200, title: 'KFC', img: '/assets/media/products/kfc.jpg', detailImg: '/assets/media/products/kfc.jpg', show: false, like: false},
+		{id: 2, client: this.client, favorite: false, introduced: 1000, marker: 'Новое', price: 21200, title: 'McDonald’s', img: '/assets/media/products/mc.jpg', detailImg: '/assets/media/products/mc.jpg', show: false, like: false},
+		{id: 3, client: this.client, favorite: false, introduced: 32300, marker: 'Новое', price: 45600, title: 'Starbucks', img: '/assets/media/products/starb.jpg', detailImg: '/assets/media/products/starb.jpg', show: false, like: false},
+		{id: 4, client: this.client, favorite: false, introduced: 23200, marker: 'Проверенные', price: 24800, title: 'My coffee', img: '/assets/media/products/mycoffee.jpg', detailImg: '/assets/media/products/mycoffee.jpg', show: false, like: false},
+		{id: 5, client: this.client, favorite: false, introduced: 12300, marker: 'Проверенные', price: 45600, title: 'Top gun', img: '/assets/media/products/topgun.jpg', detailImg: '/assets/media/products/topgun.jpg', show: false, like: false},
 	];
-	showSection(catalog:CatalogItem):boolean {
-		let section:string;
+	showSection(catalog: CatalogItem): boolean {
+		let section: string;
 		for (const item of this.filter) {
 			if (item.active) {
 				section = item.title;
@@ -56,7 +56,7 @@ export class SubheaderService {
 		{id: 1, title: 'Избранные', active: false},
 		{id: 2, title: 'Проверенные', active: false},
 	];
-	filterState(menuItem:Filter) {
+	filterState(menuItem: Filter) {
 		if (menuItem.active) {
 			menuItem.active = false;
 			return ;
@@ -66,7 +66,7 @@ export class SubheaderService {
 		}
 		menuItem.active = true;
 	}
-	getPrecent(aim:number, sum: number) {
+	getPrecent(aim: number, sum: number) {
 		return ((sum / (aim / 100)).toFixed(1));
 	}
 	// Private properties

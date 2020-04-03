@@ -42,6 +42,7 @@ export class SplashScreenComponent implements OnInit {
 		// init splash screen, see loader option in layout.config.ts
 		const loaderConfig = this.layoutConfigService.getConfig('loader');
 		this.loaderLogo = objectPath.get(loaderConfig, 'logo');
+		// this.loaderLogo = './src/assets/media/logos/sphere/logo.svg';
 		this.loaderType = objectPath.get(loaderConfig, 'type');
 		this.loaderMessage = objectPath.get(loaderConfig, 'message');
 

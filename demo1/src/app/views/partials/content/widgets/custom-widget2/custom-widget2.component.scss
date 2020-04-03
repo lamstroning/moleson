@@ -27,7 +27,7 @@
 								.kt-widget12__img-marker {
 									padding: 5px 10px;
 									font-weight: 600;
-									background: linear-gradient(180deg, #6D21A7 0%, #883BAC 100%);
+									background: #fcb12e;
 									border-radius: 4px;
 									display: flex;
 									justify-content: center;
@@ -52,15 +52,18 @@
 							text-align: center;
 							font-weight: 600 !important;
 							font-size: 18px !important;
-							color: #7226A8 !important;
+							color: #fcb12e !important;
 						}
 
 						.kt-widget12__progress {
 							padding: 0 40px;
 
 							.kt-progress--sm {
+								background-color: #0a2439 !important;
+								border: 1px solid #fcb12e;
 								.progress-bar {
-									background-color: #883eac !important;
+									background-color: #fcb12e !important;
+
 								}
 
 								.bg-success {
@@ -72,7 +75,7 @@
 							width: 100%;
 							text-align: center;
 							font-size: 18px;
-							color: #6C7293;
+							color: #0a2439;
 							font-weight: bold;
 						}
 					}
@@ -89,11 +92,14 @@
 					max-width: 140px;
 					margin: 24px auto;
 					display: flex;
+
 					justify-content: space-between;
 
 					.kt-custom-widget-more-like-btn {
+						border: 1px solid #fcb12e;
+						transition: all 0.2s ease 0s;
 						cursor: pointer;
-						background: #F4EDF5;
+						background: #0a2439;
 						width: 32px;
 						height: 32px;
 						align-items: center;
@@ -103,8 +109,9 @@
 
 					.kt-custom-widget-more-more-btn {
 						cursor: pointer;
-						background: #F4EDF5;
-						color: #883EAC;
+						background: #0a2439;
+						border: 1px solid #fcb12e;
+						color: #fcb12e;
 						font-size: 11px;
 						padding: 5px 15px;
 						align-items: center;
@@ -130,11 +137,13 @@
 			cursor: pointer;
 			transition: 0.5s;
 			height: 13px;
-			border: 1px solid #6D21A7;
+			border: 1px solid #fcb12e;
+			background: #0a2439;
 		}
 
 		.slide-bar-option-active {
-			background: #6D21A7;
+			border: 1px solid #fcb12e;
+			background: #fcb12e;
 		}
 	}
 	.slider-arrow {
@@ -154,3 +163,7 @@
 	}
 }
 
+.kt-timeline-v2 .kt-timeline-v2__items .kt-timeline-v2__item .kt-timeline-v2__item-cricle > i {
+	top: -11px;
+	left: -6px;
+}

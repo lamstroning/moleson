@@ -4,7 +4,10 @@
 // Most of the changes can be achieved via global or layout level sass variable changes.
 //
 
+.kt-portlet.kt-portlet--height-fluid {
+	background-color: #0a2439;
 
+}
 .custom-defult-btn:hover {
 	border-color: #9e52ad;
 	background: #9e52ad;
@@ -65,16 +68,16 @@
 }
 //icon color
 .kt-svg-icon.kt-svg-icon--warning g [fill] {
-	fill: #883bac!important;
+	fill: #0a2439!important;
 }
 .kt-svg-icon.kt-svg-icon--success g [fill] {
-	fill: #883bac !important;
+	fill: #0a2439 !important;
 }
 .kt-svg-icon.kt-svg-icon--brand g [fill] {
-	fill: #883bac !important;
+	fill: #0a2439 !important;
 }
 .kt-svg-icon.kt-svg-icon--danger g [fill] {
-	fill: #883bac !important;
+	fill: #0a2439 !important;
 }
 
 //left menu styles
@@ -161,4 +164,47 @@ li.kt-menu__item.kt-menu__item--submenu > .kt-menu__toggle {
 			justify-content: center;
 		}
 	}
+}
+.kt-portlet .kt-portlet__head .kt-portlet__head-label .kt-portlet__head-title {
+	color: #fcb12e;
+	font-weight: bold;
+}
+.kt-custom-widget-desc {
+	color: #fcb12e;
+}
+.btn.btn-label-brand, #full-screen-chart .btn.btn-label-brand{
+	background-color: rgb(252, 177, 46)!important;
+	color: #0a2439!important;
+}
+.btn.btn-label-brand:hover, #full-screen-chart .btn.btn-label-brand:hover {
+	background-color: rgb(252, 177, 46)!important;
+	color: #0a2439!important;
+}
+.kt-timeline-v2 .kt-timeline-v2__items .kt-timeline-v2__item .kt-timeline-v2__item-cricle {
+	top: 0.2rem;
+	border: none;
+	background-color: #fcb12e;
+	width: 20px;
+	height: 20px;
+}
+.kt-timeline-v2 .kt-timeline-v2__items .kt-timeline-v2__item .kt-timeline-v2__item-cricle > i {
+	top: -1px;
+	left: 4px;
+	color: #0a2439;
+}
+.kt-timeline-v2:before {
+	background-color: #fcb12e;
+
+}
+.kt-aside--enabled .kt-header.kt-header--fixed {
+	background-color: #0a2439;
+}
+.kt-container.kt-container--fluid {
+	background-color: #0a2439;
+}
+div#kt_content {
+	background-color: #0b2539;
+}
+.mat-dialog-container{
+	background-color: #071827;
 }

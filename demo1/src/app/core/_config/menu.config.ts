@@ -11,14 +11,14 @@ export class MenuConfig {
 					translate: 'MENU.DASHBOARD',
 				},
 				{
-					title: 'Каталог проектов',
+					title: 'Каталог франшиз',
 					root: true,
 					alignment: 'left',
 					toggle: 'click',
 					page: '/catalog-project'
 				},
 				{
-					title: 'Мои проекты',
+					title: 'Мои франшизы',
 					root: true,
 					alignment: 'left',
 					toggle: 'click',
@@ -37,7 +37,7 @@ export class MenuConfig {
 					translate: 'MENU.DASHBOARD',
 					bullet: 'dot',
 				},
-				{section: 'Инвестиции'},
+				{section: 'Франшизы'},
 				{
 					title: 'Управление',
 					root: true,
@@ -45,7 +45,7 @@ export class MenuConfig {
 					icon: 'flaticon2-browser-2',
 					submenu : [
 						{
-							title: 'Мои инвестиции',
+							title: 'Мои франшизы',
 							bullet: 'line',
 							icon: '',
 						},
@@ -76,14 +76,14 @@ export class MenuConfig {
 				},
 				{section: 'Объекты и проекты'},
 				{
-					title: 'Мои проекты',
+					title: 'Мои франшизы',
 					root: true,
 					bullet: 'dot',
 					icon: 'flaticon2-browser-2',
 					page: '/my-project'
 				},
 				{
-					title: 'Каталог проектов',
+					title: 'Каталог франшиз',
 					root: true,
 					bullet: 'dot',
 					icon: 'flaticon2-browser-2',

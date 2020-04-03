@@ -13,7 +13,7 @@
 		padding: 10px 15px;
 		opacity: 0.8;
 		border-radius: 3px;
-		color: #883EAC;
+		color: #fcb12e;
 		display: inline-block;
 	}
 
@@ -26,26 +26,26 @@
 	justify-content: center;
 	display: flex;
 	align-items: center;
-	background: #883EAC;
+	background: #fcb12e;
 	font-size: 24px;
 	color: white;
 	height: 56px;
 }
 .catalog-detail-info-block-price {
 	font-size: 26px;
-	color: #6C7293;
+	color: #fcb12e;
 	font-weight: bold;
 }
 h2.catalog-detail-title{
-	color: #883dac;
+	color: #fcb12e;
 	font-size: 32px;
 }
 h3.catalog-detail-title{
-	color: #883dac;
+	color: #fcb12e;
 	font-size: 24px;
 }
 .catalog-detail-info {
-	color: #883dac;
+	color: #fcb12e;
 	font-size: 18px;
 }
 .catalog-detail-desc {
@@ -70,6 +70,7 @@ h3.catalog-detail-title{
 .progress-bar-done-section {
 	> b	{
 		font-size: 24px;
+		color: #fcb12e;
 	}
 }
 .tizer-item-cost {
@@ -79,7 +80,7 @@ h3.catalog-detail-title{
 	text-align: center;
 }
 .tizer-item-title {
-	color: #883EAC;
+	color: #fcb12e;
 	font-size: 18px;
 	text-align: center;
 	line-height: normal;
@@ -98,7 +99,7 @@ h3.catalog-detail-title{
 }
 .progress-bar-count-investor {
 	display: flex;
-	color: #883DAC;
+	color: #fcb12e;
 }
 
 .kt-widget12__progress {
@@ -107,7 +108,7 @@ h3.catalog-detail-title{
 .progress-bar-done {
 	display: flex;
 	justify-content: space-between;
-	color: #6C7293;
+	color: #fcb12e;
 }
 .progress.kt-progress--sm {
 	height: 30px;
@@ -116,7 +117,7 @@ h3.catalog-detail-title{
 }
 
 .bg-success {
-	background-color: #DEC0EB !important;
+	background-color: #fcb12e!important;
 	border-radius: 19px;
 	color: white;
 	height: 100%;
@@ -183,12 +184,12 @@ h3.catalog-detail-title{
 				padding: 10px 15px;
 				opacity: 0.8;
 				border-radius: 3px;
-				color: #883EAC;
+				color: #fcb12e;
 			}
 			.card-item-cost {
 				font-size: 24px;
 				padding: 10px;
-				background: rgba(136, 62, 172, 0.6);
+				background: #fcb12e;
 				color: white;
 			}
 		}
@@ -197,11 +198,12 @@ h3.catalog-detail-title{
 		font-size: 14px;
 		text-align: center;
 		font-weight: bold;
+		color: #fcb12e;
 	}
 
 	.grid-col-modal-info {
 		text-align: center;
-		color: #883BAC;
+		color: #fcb12e;
 		font-size: 30px;
 	}
 	.font-bold {
@@ -219,7 +221,7 @@ h3.catalog-detail-title{
 	width: 100%;
 	text-align: center;
 	font-size: 38px;
-	color: #883BAC;
+	color: #fcb12e;
 }
 .card-item-user {
 	display: flex;
@@ -232,11 +234,11 @@ h3.catalog-detail-title{
 			padding-left: 20px;
 			.card-item-user-info-name {
 				font-size: 14px;
-				color: #6C7293;
+				color: #fcb12e;
 			}
 			.card-item-user-info-position {
 				font-size: 13px;
-				color: #A7ABC3;
+				color: #fcb12e;
 			}
 		}
 		.card-item-user-avatar {
@@ -255,12 +257,12 @@ h3.catalog-detail-title{
 		.card-item-user-cost-precent {
 			text-align: center;
 			font-size: 18px;
-			color: #883DAC;
+			color: #fcb12e;
 			font-weight: bold;
 		}
 		.card-item-user-cost-info {
 			font-size: 12px;
-			color: #959CBD;
+			color: #fcb12e;
 			text-align: center;
 		}
 	}
@@ -294,7 +296,7 @@ h3.catalog-detail-title{
 		color: #8F49B1;
 	}
 	font-size: 20px;
-	color: #6C7293;
+	color: #fcb12e;
 }
 
 .deal-block-cost {
@@ -305,7 +307,7 @@ h3.catalog-detail-title{
 	.line-block-line{
 		height: 4px;
 		width: 35px;
-		background-color: #6C7293;
+		background-color: #fcb12e;
 
 	}
 	display: flex;
@@ -314,4 +316,10 @@ h3.catalog-detail-title{
 }
 .licince-accept {
 	margin: 10px 0;
+}
+div#kt_wrapper {
+	background-color: #0a2439;
+}
+body {
+	color: #fcb12e;
 }

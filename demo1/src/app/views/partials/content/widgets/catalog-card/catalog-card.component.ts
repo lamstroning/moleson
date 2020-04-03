@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SubheaderService} from "../../../../../core/_base/layout";
-import {ActivatedRoute} from "@angular/router";
+import {SubheaderService} from '../../../../../core/_base/layout';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'kt-catalog-card',
@@ -13,10 +13,10 @@ export class CatalogCardComponent implements OnInit {
 
 
 	// маршурут к детальной странице связанной с id
-	id:number;
+	id: number;
 
 	constructor(public  subheaderService: SubheaderService, private activatedRoute: ActivatedRoute) {
-		this.id = activatedRoute.snapshot.params['id'];
+		this.id = activatedRoute.snapshot.params.id;
 	}
 
   ngOnInit() {

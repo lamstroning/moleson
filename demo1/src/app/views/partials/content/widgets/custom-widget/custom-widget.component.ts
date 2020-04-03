@@ -14,7 +14,7 @@ import { LayoutConfigService } from '../../../../../core/_base/layout';
 export class CustomWidgetComponent implements OnInit {
 	// Public properties
 	@Input() data: { labels: string[], datasets: any[] };
-	@Input() color = '#883BAC';
+	@Input() color = '#fcb12e';
 	@Input() type = 'line';
 	@ViewChild('chart', {static: true}) chart: ElementRef;
 
@@ -42,7 +42,7 @@ export class CustomWidgetComponent implements OnInit {
 						lineTension: 0,
 						fill: true,
 						borderColor: color(this.layoutConfigService.getConfig('colors.state.brand')).alpha(0).rgbString(),
-						backgroundColor: color(this.color).alpha(0.6).rgbString(),
+						backgroundColor: color(this.color).rgbString(),
 						pointHoverRadius: 4,
 						pointHoverBorderWidth: 12,
 						pointBackgroundColor: Chart.helpers.color('#000000').alpha(0).rgbString(),

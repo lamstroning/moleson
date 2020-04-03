@@ -23,14 +23,9 @@ export class CustomWidget2Component implements OnInit {
 
 	timeout = true;
 	//del -->
-	des = 'Участок 30 га (земли ИЖС) на 24 км Московского тракта г.Тюмени для строительства современного коттеджного поселка с интересной концепцией. Участок примыкает к деревне Успенка Тюменского района.'
+	des = 'Сolizeum – это сеть киберспортивных клубов и арен. На данный момент функционируют 5 клубов, которые стабильно приносят доход и окупают себя. В стадии открытия и поиска помещения еще 20. Сеть является ведущим игроком на рынке киберспорта, вызывает доверие у клиентов и становится все известнее на федеральном уровне и даже за рамками ниши.'
 	//<-- del
-	// cottages: Slide[] = [
-	// 	{id: 0, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 17500000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage1.png', income: 17, show: true},
-	// 	{id: 1, state: 'Акция', title: 'Коттеджный поселок “Апрелевка”', price: 22501000, like: true, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage2.png', income: 24, show: false},
-	// 	{id: 2, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 11200000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage3.png', income: 12, show: false},
-	// 	{id: 3, state: 'Новый проект', title: 'Коттеджный поселок “Дубки”', price: 1400000, like: false, desc: this.des, imgSrc: '/assets/media/products/cottage/cottage4.png', income: 7, show: false},
-	// ];
+
 	cottages: CatalogItem[];
 	/**
 	 * Component constructor

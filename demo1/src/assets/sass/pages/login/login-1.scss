@@ -213,7 +213,7 @@
 					transition: 0.2s;
 					cursor: pointer;
 					height: 376px;
-					background: rgba(50, 5, 68, 0.5);
+					background: #0a2439;
 					border-radius: 4px;
 					position: relative;
 					display: flex;
@@ -221,12 +221,11 @@
 					flex-direction: column;
 
 					.account-type-card-hole.account-type-card-hole-active {
-						background-color: #58ff42;
+						background-color: #fcb12e;
 						transform: scale(-1, 1);
 						background-image: unset;
 					}
 					.account-type-card-hole {
-						background-image: url(/assets/media/bg/custom/background_2.png);
 						background-size: cover;
 						transition: 0.2s;
 						position: absolute;
@@ -274,12 +273,14 @@
 			}
             // Form Wrapper
             .kt-login__form {
-                width: 100%;
-                max-width: 430px;
+				padding: 20px;
+			    width: 100%;
+			    background-color: #0a2439e6;
+			    max-width: 430px;
 
 				.login-logo {
 					background-image: url("/assets/media/company-logos/custom/logo.svg");
-					width: 180px;
+					width: 100%;
 					height: 180px;
 					background-repeat: no-repeat;
 					background-size: contain;
@@ -384,8 +385,8 @@
                     }
 					.kt-login__btn-primary:hover {
 						box-shadow: none!important;
-						background: white;
-						color: #71309e;
+					    background: #fcb12e;
+					    color: #fffff3;
 					}
                 }
 
