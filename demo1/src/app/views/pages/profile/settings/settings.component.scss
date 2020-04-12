@@ -1,0 +1,35 @@
+button.btn.custom-catalog-btn {
+	background-color: #fcb12e;
+
+}
+button.btn.custom-catalog-btn:hover {
+	background-color: #fcb12e;
+}
+.full-width {
+	width: 100%;
+}
+button.btn.full-width.custom-catalog-btn {
+	margin: 0;
+
+}
+
+button.btn.full-width.custom-catalog-btn {
+	color: white;
+	margin-left: 0;
+	margin-top: 10px;
+}
+label.custom-control-label {
+	color: #fbb02e;
+	font-size: 21px;
+}
+.custom-control-input:focus ~ .custom-control-label::before {
+	box-shadow: 0 0 0 0.2rem rgba(252, 177, 46, 0.1);
+}
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+	border-color: #fcb12e;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+	color: #fff;
+	border-color: #fcb12e;
+	background-color: #fcb12e;
+}
