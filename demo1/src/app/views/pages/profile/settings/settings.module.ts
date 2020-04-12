@@ -1,30 +1,32 @@
 // Angular
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 // Core Module
-import { CoreModule } from '../../../core/core.module';
-import { PartialsModule } from '../../partials/partials.module';
-import {TerminalComponent} from './terminal.component';
+import { CoreModule } from '../../../../core/core.module';
+import { PartialsModule } from '../../../partials/partials.module';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import { SettingsComponent } from './settings.component';
 
 @NgModule({
 	imports: [
-		CommonModule,
 		PartialsModule,
 		CoreModule,
 		RouterModule.forChild([
 			{
 				path: '',
-				component: TerminalComponent
+				component: SettingsComponent,
+
 			},
 		]),
 		NgbCarouselModule,
 	],
 	providers: [],
+	exports: [
+		SettingsComponent
+	],
 	declarations: [
-		TerminalComponent,
+		SettingsComponent
 	]
 })
-export class TerminalModule {
+export class SettingsModule {
 }

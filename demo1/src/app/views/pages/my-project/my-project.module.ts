@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 // Core Module
 import { CoreModule } from '../../../core/core.module';
 import { PartialsModule } from '../../partials/partials.module';
-import {MyProjectComponent} from "./my-project.component";
+import {MyProjectComponent} from './my-project.component';
 
 @NgModule({
 	imports: [

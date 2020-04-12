@@ -20,6 +20,10 @@ const routes: Routes = [
 				loadChildren: () => import('app/views/pages/terminal/terminal.module').then(m => m.TerminalModule),
 			},
 			{
+				path: 'profile',
+				loadChildren: () => import('app/views/pages/profile/profile.module').then(m => m.ProfileModule),
+			},
+			{
 				path: 'catalog-card-detail/:id',
 				loadChildren: () => import('app/views/pages/catalog-card-detail/catalog-card-detail.module').then(m => m.CatalogCardDetailModule),
 			},

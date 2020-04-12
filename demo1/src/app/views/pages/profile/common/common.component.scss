@@ -1,0 +1,38 @@
+button.btn.custom-catalog-btn {
+	background-color: #fcb12e;
+
+}
+button.btn.custom-catalog-btn:hover {
+	background-color: #fcb12e;
+}
+.full-width {
+	width: 100%;
+}
+button.btn.full-width.custom-catalog-btn {
+	margin: 0;
+
+}
+.profile-img {
+	width: 100%;
+	height: 200px;
+	background-image: url(/assets/media/icons/svg/profile.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+label.active {
+	position: relative;
+	top: 10px;
+	color: white;
+}
+input.form-control {
+	margin-top: 10px;
+	background-color: #0a2439;
+	color: white;
+	border-color: #fcb12e;
+}
+
+button.btn.full-width.custom-catalog-btn {
+	color: white;
+	margin-left: 0;
+	margin-top: 10px;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SubheaderService} from "../../../core/_base/layout";
+import {SubheaderService} from '../../../core/_base/layout';
 
 @Component({
   selector: 'kt-terminal',

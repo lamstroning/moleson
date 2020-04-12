@@ -22,7 +22,7 @@ export class MenuConfig {
 					root: true,
 					alignment: 'left',
 					toggle: 'click',
-					page: '/my-project'
+					page: '/profile'
 				},
 			]
 		},

@@ -88,7 +88,7 @@ server.delete('/db/deleteUser', (req, res) => {
   res.sendStatus(200);
 });
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 server.listen(port, function() {
   connect();
   console.log('server listening on port ' + port);

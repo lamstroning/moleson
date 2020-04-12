@@ -1,0 +1,20 @@
+nav.page-nav__menu {
+	display: flex;
+}
+
+a.page-nav__link.page-nav__link--active {
+	border-bottom: 1px solid;
+}
+
+a.page-nav__link {margin: 0 20px;padding: 10px 0;font-size: 20px;border-bottom: 1px solid transparent;transition: 0.2s;color: #fbb02e;display: block;}
+
+a.page-nav__link:hover {
+	border-bottom: 1px solid;
+}
+
+.page-nav__about {
+	max-width: 780px;
+	font-size: 15px;
+	color: #fbb02e;
+	padding: 20px;
+}
