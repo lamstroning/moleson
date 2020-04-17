@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'kt-common',
-  templateUrl: './common.component.html',
-  styleUrls: ['./common.component.scss']
+	selector: 'kt-common',
+	templateUrl: './common.component.html',
+	styleUrls: ['./common.component.scss']
 })
 export class CommonComponent implements OnInit {
 
-  constructor() { }
+	constructor(private activateRoute: ActivatedRoute) {
+	}
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
 }

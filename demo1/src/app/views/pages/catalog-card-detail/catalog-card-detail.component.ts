@@ -1,9 +1,9 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SubheaderService} from '../../../core/_base/layout'
-import {CatalogItem} from "../../../core/_base/layout/services/subheader.service";
-import {MatDialog,MatDialogRef} from "@angular/material"
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {SubheaderService} from '../../../core/_base/layout';
+import {CatalogItem} from '../../../core/_base/layout/services/subheader.service';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
 	selector: 'kt-catalog-card-detail',
@@ -14,21 +14,23 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 export class CatalogCardDetailComponent implements OnInit {
 	catalogItem: CatalogItem;
 	precent: string;
-	constructor(private activateRoute: ActivatedRoute, public subheaderService: SubheaderService, private router: Router, public dialog: MatDialog)
-	{
-		for (let item of subheaderService.catalog) {
-			if (item.id === parseInt(activateRoute.snapshot.params['id'])) {
+	constructor(private activateRoute: ActivatedRoute,
+				         public subheaderService: SubheaderService,
+				         private router: Router,
+				         public dialog: MatDialog) {
+		for (const item of subheaderService.catalog) {
+			if (item.id === +activateRoute.snapshot.params.id) {
 				this.catalogItem = item;
 				this.precent = subheaderService.getPrecent(item.price, item.introduced);
 				break ;
 			}
 		}
-		if (this.catalogItem === undefined){
-			router.navigate(['error/404'])
+		if (this.catalogItem === undefined) {
+			router.navigate(['error/404']);
 		}
 	}
 	openDialog() {
-		this.dialog.open(FirstDialog,{
+		this.dialog.open(FirstDialog, {
 			width: '1140px',
 			data: {
 				precent:  this.precent,
@@ -137,11 +139,11 @@ export class CatalogCardDetailComponent implements OnInit {
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-xl-3 mt-4 d-flex justify-content-center">
-						<button mat-raised-button class="w-100" [style.background-color]="'#F4EDF5'" [style.color]="'#8F49B1'">Посмотреть документы</button>
-						<div class="btn-ico" [style.background-color]="'#8F49B1'"></div>
+						<button mat-raised-button class="w-100" [style.background-color]="'#fcb12e'" [style.color]="'white'">Посмотреть документы</button>
+						<div class="btn-ico" [style.background-color]="'#fcb12e'"></div>
 					</div>
 					<div class="col-xl-3 mt-4 d-flex justify-content-center">
-						<button (click)="animateScroll(this.slider.scrollWidth / 2, true)" mat-raised-button class="w-100" [style.background-color]="'#8F49B1'" [style.color]="'white'">Инвестировать</button>
+						<button (click)="animateScroll(this.slider.scrollWidth / 2, true)" mat-raised-button class="w-100" [style.background-color]="'#fcb12e'" [style.color]="'white'">Инвестировать</button>
 					</div>
 				</div>
             </div>
@@ -183,7 +185,7 @@ export class CatalogCardDetailComponent implements OnInit {
                 </div>
                 <div class="row justify-content-center licince-accept">
                     <div class="col-xl-3">
-						<button mat-raised-button class="w-100" (click)="closeDialog()" [style.background-color]="'#8F49B1'" routerLink="/terminal/" [style.color]="'white'">Подтвердить сделку</button>
+						<button mat-raised-button class="w-100" (click)="closeDialog()" [style.background-color]="'#fcb12e'" routerLink="/terminal/" [style.color]="'white'">Подтвердить сделку</button>
                     </div>
                 </div>
 			</div>
@@ -204,8 +206,8 @@ export class FirstDialog {
 	closeDialog() {
 		this.dialogRef.close();
 	}
-	animateScroll(distance:number, direction:boolean) {
-		let stop:boolean;
+	animateScroll(distance: number, direction: boolean) {
+		let stop: boolean;
 		if (direction) {
 			stop = this.sliderArea.nativeElement.scrollLeft + 100 >= distance;
 		} else {
@@ -223,9 +225,9 @@ export class FirstDialog {
 				return ;
 			}
 			this.animateScroll(distance, direction);
-		}.bind(this), 10)
+		}.bind(this), 10);
 	}
-	getPrecent(sum: number, aim: number, remains:string){
+	getPrecent(sum: number, aim: number, remains: string) {
 		if (aim === 0) {
 			return 0;
 		}

@@ -6,38 +6,38 @@
 			</div>
 		</div>
 		<div class="input-label">Имя</div>
-		<input type="text">
+		<input name="fullName"type="text">
 		<div class="input-label">Фамилия</div>
-		<input type="text">
+		<input name="surname"type="text">
 		<div class="input-label">Отчество</div>
-		<input type="text">
+		<input type="text" name="middleName">
 		<div class="input-label">Выберите пол</div>
 		<mat-radio-group class="example-radio-group">
-			<mat-radio-button class="example-radio-button" *ngFor="let sexItem of sex" [value]="sexItem">
+			<mat-radio-button class="example-radio-button" name="sex" *ngFor="let sexItem of sex" [value]="sexItem">
 				{{sexItem}}
 			</mat-radio-button>
 		</mat-radio-group>
 		<div class="input-label">Дата рождения</div>
-		<input type="text">
+		<input name="birthday" type="text">
 		<div class="input-label">Гражданство</div>
-		<input type="text">
+		<input name="citizenship" type="text">
 		<div class="input-label">Номер паспорта</div>
-		<input type="text">
+		<input name="passportSerial" type="text">
 		<div class="input-label">Кем выдан</div>
-		<input type="text">
+		<input name="passportGive" type="text">
 		<div class="input-label">Дата выдачи</div>
-		<input type="text">
+		<input name="passportGiveDate" type="text">
 		<div class="input-label">Код подразделения</div>
-		<input type="text">
+		<input name="passportCode" type="text">
 		<div class="input-label">Адрес регистрации</div>
-		<input type="text">
+		<input name="passportAddress" type="text">
 		<div class="input-label">СНИЛС</div>
-		<input type="text">
+		<input name="SNILS" type="text">
 		<div class="input-label">ИНН</div>
-		<input type="text">
+		<input name="INN" type="text">
 		<div class="input-label">Скан паспорта</div>
 		<div class="file-area">
-			<input class="file-drop" type="files">
+			<input name="scansFiles" class="file-drop" type="files">
 		</div>
 		<br>
 

@@ -24,6 +24,13 @@ export class MenuConfig {
 					toggle: 'click',
 					page: '/profile'
 				},
+				{
+					title: 'Партнерам',
+					root: true,
+					alignment: 'left',
+					toggle: 'click',
+					page: '/partners'
+				},
 			]
 		},
 		aside: {
@@ -101,7 +108,22 @@ export class MenuConfig {
 					title: 'Пользователи',
 					root: true,
 					bullet: 'dot',
+					page: '/users',
 					icon: 'flaticon2-browser-2',
+				},
+				{
+					title: 'Объекты',
+					root: true,
+					bullet: 'dot',
+					icon: 'flaticon2-browser-2',
+					page: '/objects'
+				},
+				{
+					title: 'Реферальная система',
+					root: true,
+					bullet: 'dot',
+					icon: 'flaticon2-browser-2',
+					page: '/referal'
 				},
 			]
 		},

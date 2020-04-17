@@ -1,0 +1,10 @@
+<div class="page-nav__wrap">
+	<nav class="page-nav__menu">
+		<a *ngFor="let menu of this.menItems" class="page-nav__link" routerLinkActive="page-nav__link--active" routerLink="{{menu.link}}">{{menu.name}}</a>
+	</nav>
+	<div *ngIf="this.menuDesc" class="page-nav__main">
+		<div class="page-nav__about">
+			{{this.menuDesc}}
+		</div>
+	</div>
+</div>

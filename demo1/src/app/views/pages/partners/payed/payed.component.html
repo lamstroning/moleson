@@ -1,0 +1,143 @@
+<div class="page-nav__addon">Баланс основного счёта: <strong>0 $</strong></div>
+<div class="page-nav__addon">Баланс партнёрского  счёта: <strong>0 $</strong>
+</div>
+<div class="tabs__body js-tabs-body">
+	<div class="tabs__item js-tabs-item is-active" id="tab_partner">
+		<div class="card">
+			<div class="card__head">
+				<h5 class="card__title">
+					Новый перевод </h5>
+			</div>
+			<div class="card__body">
+				<form class="form" method="post" onsubmit="return checkAgree(this);">
+					<input type="hidden" name="_csrf-frontend"
+						   value="OGytwy_uzwzGUi3DPzqrB-qeEGwv7kRJh8lDoHlx3OReKuyiX6Wnbp8VGIlrbJM1o-pFJVifPnvygHDYPSaxlA==">
+					<input type="hidden" name="transfer_type" value="1">
+					<div class="profile-form__body">
+						<div class="form__row">
+							<div class="form__col_6-12">
+								<div class="form__line">
+									<div class="form__input">
+										<label class="form__input-label">Сумма перевода</label>
+										<input class="form__input-field" name="transfer_sum" id="main_acc_sum" type="text">
+									</div>
+								</div>
+							</div>
+							<div class="form__col_6-12">
+								<div class="form__line">
+									<div class="selector">
+										<input class="selector__inp" name="wallet_type"
+											   id="wallet_type" type="hidden">
+										<div class="selector__label">Счёт</div>
+										<div class="selector__value" data-val=""></div>
+										<div class="selector__drop">
+											<ul class="selector__list">
+												<li data-val="1">С основного счёта</li>
+												<li data-val="2">С партнерского счёта</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form__line">
+							<div class="form__input">
+								<label class="form__input-label">Email получателя</label>
+								<input class="form__input-field" name="reciever" type="text">
+								<input type="hidden" name="reciever_id" value="">
+							</div>
+							<div class="form__linked">
+								<button class="btn btn--light" type="button">
+									Найти получателя
+								</button>
+							</div>
+						</div>
+						<div class="form__line form__line--last">
+							<h4 class="form__title">
+								К оплате: <span class="receiver-sum"></span> $
+								<br>
+								Получатель: <span class="receiver-name"></span>
+							</h4>
+							<div class="form__note">
+								Средства с любого счёта поступают на основной счёт вашего партнёра.
+							</div>
+						</div>
+
+					</div>
+					<div class="profile-form__bttm">
+						<div class="form__line form__line--last">
+							<label class="form__checkbox">
+								<input class="form__checkbox-field" name="confirm" type="checkbox">
+								<span class="form__checkbox-label">
+                                        Соглашаюсь с условиями совершения перевода                                    </span>
+							</label>
+						</div>
+						<div class="form__row">
+							<div class="form__col_8-12">
+								<div class="form__line form__line--last">
+									<input id="send_funds_button" disabled="" type="submit" name="process_send_money"
+										   class="btn btn--blue btn--wide" value="Перевести">
+								</div>
+							</div>
+							<div class="form__col_4-12">
+								<div class="form__line form__line--last">
+									<button class="btn btn--outlined btn--wide" type="reset">Отменить</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="tabs__item js-tabs-item" id="tab_main">
+		<div class="card">
+			<div class="card__head">
+				<h5 class="card__title">
+					Перевод на основной счёт </h5>
+			</div>
+			<div class="card__body">
+				<form class="form" method="post" onsubmit="return checkAgree(this);">
+					<input type="hidden" name="_csrf-frontend">
+					<div class="profile-form__body">
+						<div class="form__line">
+							<div class="form__input">
+								<label class="form__input-label">Сумма перевода</label>
+								<input class="form__input-field" type="text" name="own_partner_acc" id="own_partner_acc">
+							</div>
+						</div>
+						<div class="form__note">
+							Внимание! Обратный перевод средств с основного счёта на партнёрский невозможен.
+						</div>
+
+					</div>
+					<div class="profile-form__bttm">
+						<div class="form__line form__line--last">
+							<label class="form__checkbox">
+								<input class="form__checkbox-field" name="confirm" type="checkbox">
+								<span class="form__checkbox-label">
+                                              Соглашаюсь с условиями совершения перевода                                            </span>
+							</label>
+						</div>
+						<div class="form__row">
+							<div class="form__col_8-12">
+								<div class="form__line form__line--last">
+									<input type="submit" name="process_send_money" id="process_send_money" disabled=""
+										   class="btn btn--blue btn--wide" value="Перевести">
+								</div>
+							</div>
+							<div class="form__col_4-12">
+								<div class="form__line form__line--last">
+									<button class="btn btn--outlined btn--wide" type="reset">Отменить</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

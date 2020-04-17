@@ -6,7 +6,6 @@ import {BaseComponent} from './views/theme/base/base.component';
 import {ErrorPageComponent} from './views/theme/content/error-page/error-page.component';
 // Auth
 import {AuthGuard} from './core/auth';
-import {CatalogCardDetailComponent} from "./views/pages/catalog-card-detail/catalog-card-detail.component";
 
 const routes: Routes = [
 	{path: 'auth', loadChildren: () => import('app/views/pages/auth/auth.module').then(m => m.AuthModule)},
@@ -16,12 +15,28 @@ const routes: Routes = [
 		canActivate: [AuthGuard],
 		children: [
 			{
+				path: 'users',
+				loadChildren: () => import('app/views/pages/users/users.module').then(m => m.UsersModule)
+			},
+			{
 				path: 'terminal',
 				loadChildren: () => import('app/views/pages/terminal/terminal.module').then(m => m.TerminalModule),
 			},
 			{
+				path: 'referal',
+				loadChildren: () => import('app/views/pages/referal/referal.module').then(m => m.ReferalModule),
+			},
+			{
 				path: 'profile',
 				loadChildren: () => import('app/views/pages/profile/profile.module').then(m => m.ProfileModule),
+			},
+			{
+				path: 'objects',
+				loadChildren: () => import('app/views/pages/objects/objects.module').then(m => m.ObjectsModule),
+			},
+			{
+				path: 'partners',
+				loadChildren: () => import('app/views/pages/partners/partners.module').then(m => m.PartnersModule),
 			},
 			{
 				path: 'catalog-card-detail/:id',

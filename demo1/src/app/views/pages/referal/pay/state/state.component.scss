@@ -1,0 +1,11 @@
+label.active {
+	width: 49%;
+}
+@media screen and (max-width: 768px){
+	label.active {
+		width: 100%;
+	}
+}
+.form-row {
+	justify-content: space-between;
+}

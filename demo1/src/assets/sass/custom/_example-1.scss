@@ -3,21 +3,29 @@
 // Here you can put your custom sass code, use global SASS mixings and variables to override the theme or add new styles according to your requirements.
 // Most of the changes can be achieved via global or layout level sass variable changes.
 //
-
+body {
+	background-color: #0a2439;
+	color:#fcb12e;
+}
+.card{
+	background-color: #0a2439;
+	border-color: #0a2439;
+	color: #fcb12e;
+}
 .kt-portlet.kt-portlet--height-fluid {
 	background-color: #0a2439;
 
 }
 
 .custom-defult-btn:hover {
-	border-color: #9e52ad;
-	background: #9e52ad;
+	border-color: #fcb12e;
+	background: #fcb12e;
 }
 
 .custom-defult-btn {
-	background: #903BAD;
+	background: #fcb12e;
 	color: white;
-	border-color: #903BAD;
+	border-color: #fcb12e;
 	font-size: 10px;
 }
 
@@ -37,8 +45,8 @@
 	.kt-notification__custom {
 
 		> a:hover {
-			border-color: #903BAD !important;
-			background-color: #903BAD !important;
+			border-color: #fcb12e !important;
+			background-color: #fcb12e !important;
 			opacity: 1;
 			color: white !important;
 		}
@@ -47,8 +55,8 @@
 			opacity: 0.5;
 			color: white !important;
 			transition: 0.2s;
-			background-color: #903BAD !important;
-			border-color: #903BAD !important;
+			background-color: #fcb12e !important;
+			border-color: #fcb12e !important;
 		}
 	}
 }
@@ -266,4 +274,16 @@ a.kt-notification__item.dropdown-item:hover {
 
 i.flaticon2-rocket-1.kt-font-danger {
 	color: #fcb12e !important;
+}
+button.btn.custom-catalog-btn {
+	color: white;
+	background-color: #fcb12e;
+}
+.full-width {
+	width: 100%;
+	margin: 0;
+	margin-top: 20px;
+}
+.kt-aside-menu .kt-menu__nav > .kt-menu__item:last-child {
+	margin-bottom: 80px;
 }

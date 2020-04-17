@@ -1,0 +1,812 @@
+<kt-portlet [class]="'kt-portlet--height-fluid kt-custom-chart'">
+	<kt-portlet-header [title]="'График'">
+
+	</kt-portlet-header>
+	<kt-portlet-body>
+<section class="group">
+
+	<div class="group__body">
+		<div class="structure">
+			<div class="comrade structure__head">
+				<ul class="comrade__head">
+					<li class="comrade__data comrade__data--btns">
+						<div class="mod_txt-blue js-show-tooltip" data-tooltip="Зарегистрированный клиент, который подписал партнёрское соглашение в личном кабинете, получает квалификацию «Партнёр».
+                        С этого момента у него появляется возможность получать вознаграждение с четырёх уровней глубины партнёрской структуры.
+                        <ul class='tippy-defs'>
+                        <li><i>От инвестиций партнёров 1-го уровня</i><b>15 %</b></li>
+                        <li><i>От инвестиций партнёров 2-го уровня</i><b>4 %</b></li>
+                        <li><i>От инвестиций партнёров 3-го уровня</i><b>2 %</b></li>
+                        <li><i>От инвестиций партнёров 4-го уровня</i><b>1 %</b></li>
+                        </ul>"></div>
+					</li>
+					<li class="comrade__data comrade__data--info" onclick="sort('fio', 'sort-az');">
+						Имя и фамилия партнёра гражданство / уровень / статус                    </li>
+					<li class="comrade__data comrade__data--summ" data-name="Сумма покупок" onclick="sort('summ', 'sort-az');">
+						Сумма покупок                    </li>
+					<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+						Наличие рассрочки                    </li>
+					<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов" onclick="sort('clients', 'sort-az');">
+						Кол-во клиентов                    </li>
+					<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре" onclick="sort('summBuy', 'sort-az');">
+						Покупки в структуре                    </li>
+					<li class="comrade__data comrade__data--date" data-name="Дата регистрации" onclick="sort('date', 'sort-az');">
+						Дата регистрации                    </li>
+				</ul>
+			</div>
+			<div class="structure__body">
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79378774545</b></li>
+                        <li><i>Почта</i><b>st@next-team.ru</b></li>
+                        <li><i>Дата визита</i><b> 11.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11772' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Тагир Садретдинов                </div>
+								/
+								1-й уровень /
+								Партнер            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 11.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11772">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+73952357596</b></li>
+                        <li><i>Почта</i><b>ksakhaev@yandex.ru</b></li>
+                        <li><i>Дата визита</i><b>Не было</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11905' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Константин Сахаев                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 12.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11905">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<a class="nav-btn  comrade__btn js-structure-expand" role="button" data-loaded="0" data-level="1" data-user-id="11908">
+							</a>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+380937621025</b></li>
+                        <li><i>Почта</i><b>weterochik@gmail.com</b></li>
+                        <li><i>Дата визита</i><b> 16.12.2019</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11908' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Сергей Курасов                </div>
+								Украина /
+								1-й уровень /
+								Партнер            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							1000 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">3</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">1000 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 12.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11908">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79530177635</b></li>
+                        <li><i>Почта</i><b>volkovvp84@mail.ru</b></li>
+                        <li><i>Дата визита</i><b> 18.11.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11942' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Владимир Волков                </div>
+								/
+								1-й уровень /
+								Партнер            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 12.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11942">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+375297078467</b></li>
+                        <li><i>Почта</i><b>dantist2068@rambler.ru</b></li>
+                        <li><i>Дата визита</i><b> 12.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11943' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									олег нестеров                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 12.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11943">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<a class="nav-btn  comrade__btn js-structure-expand" role="button" data-loaded="0" data-level="1" data-user-id="11957">
+							</a>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+380939611433</b></li>
+                        <li><i>Почта</i><b>zarabotok123@yandex.ru</b></li>
+                        <li><i>Дата визита</i><b> 13.04.2020</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11957' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Марина Сукач                </div>
+								Украина /
+								1-й уровень /
+								Партнер            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							500 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">23</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">30169 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 12.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11957">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79381317188</b></li>
+                        <li><i>Почта</i><b>boiko.vit2018@yandex.ru</b></li>
+                        <li><i>Дата визита</i><b>Не было</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11959' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									vitalik boiko                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 12.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11959">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79517855432</b></li>
+                        <li><i>Почта</i><b>arton-power@yandex.ru</b></li>
+                        <li><i>Дата визита</i><b> 13.08.2019</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11974' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Алексей Мельников                 </div>
+								Россия /
+								1-й уровень /
+								Партнер            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 13.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11974">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79898002388</b></li>
+                        <li><i>Почта</i><b>gerasim0708835@gmail.com</b></li>
+                        <li><i>Дата визита</i><b> 29.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_11999' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Sergey Chemodurov                </div>
+								/
+								1-й уровень /
+								Партнер            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 13.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="11999">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79020004447</b></li>
+                        <li><i>Почта</i><b>bigbrother-undory@rambler.ru</b></li>
+                        <li><i>Дата визита</i><b> 13.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12003' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Жорж Сидоров                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 13.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12003">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79372720021</b></li>
+                        <li><i>Почта</i><b>uljanovsk@inbox.ru</b></li>
+                        <li><i>Дата визита</i><b> 13.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12004' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Еврахий Дроздов                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 13.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12004">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+77712242927</b></li>
+                        <li><i>Почта</i><b>madina12345684@gmail.com</b></li>
+                        <li><i>Дата визита</i><b> 14.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12026' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Мадина Мильчакова                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 13.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12026">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79505380622</b></li>
+                        <li><i>Почта</i><b>rantur@mail.ru</b></li>
+                        <li><i>Дата визита</i><b> 13.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12029' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Александр Распопов                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 13.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12029">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+375292491419</b></li>
+                        <li><i>Почта</i><b>prokshiz@gmail.com</b></li>
+                        <li><i>Дата визита</i><b> 13.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12033' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Сергей Прокшиц                </div>
+								/
+								1-й уровень /
+								Партнер            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 13.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12033">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79040015636</b></li>
+                        <li><i>Почта</i><b>cherkassenoks@mail.ru</b></li>
+                        <li><i>Дата визита</i><b> 23.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12119' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Игорь Промыслов                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 14.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12119">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+375298884935</b></li>
+                        <li><i>Почта</i><b>anastasiya18.10@mail.ru</b></li>
+                        <li><i>Дата визита</i><b> 22.10.2017</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12124' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Дмитрий Макаров                </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 14.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12124">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79870085139</b></li>
+                        <li><i>Почта</i><b>sumba2122@gmail.com</b></li>
+                        <li><i>Дата визита</i><b>Не было</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12140' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Андрей  Кащеев                 </div>
+								/
+								1-й уровень /
+								Клиент            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 14.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12140">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+380503821281</b></li>
+                        <li><i>Почта</i><b>vadim.lubetsky@gmail.com</b></li>
+                        <li><i>Дата визита</i><b> 31.10.2019</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12141' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Вадим Любецкий                </div>
+								/
+								1-й уровень /
+								Партнер            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 14.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12141">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+79876162652</b></li>
+                        <li><i>Почта</i><b>husainova-z@inbox.ru</b></li>
+                        <li><i>Дата визита</i><b>Не было</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12158' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Зайтуна Хусаинова                </div>
+								/
+								1-й уровень /
+								Не активирован            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 14.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12158">
+
+					</div>
+				</div>
+
+
+
+				<div class="comrade structure__item">
+					<ul class="comrade__info comrade__info--top">
+						<li class="comrade__data comrade__data--btns">
+							<i class="comrade__user com"></i>
+						</li>
+						<li class="comrade__data comrade__data--info">
+							<div class="comrade__name js-show-tooltip-comrade" data-tooltip="
+                    Информация:
+                    <ul class='tippy-defs tippy-defs--top'>
+                        <li><i>Телефон</i><b>+380636814394</b></li>
+                        <li><i>Почта</i><b>nash1414@gmail.com</b></li>
+                        <li><i>Дата визита</i><b>Не было</b></li>
+                    </ul>
+                    <textarea class='tippy-input' id='user_12166' placeholder='Добавить заметку...'></textarea>
+                " aria-expanded="false">
+								<div>
+									Александр Шиховец                </div>
+								/
+								1-й уровень /
+								Не активирован            </div>
+						</li>
+						<li class="comrade__data comrade__data--summ" data-name="Сумма покупок">
+							0 $
+						</li>
+						<li class="comrade__data comrade__data--debt" data-name="Наличие рассрочки">
+							Нет                    </li>
+						<li class="comrade__data comrade__data--count" data-name="Кол-во клиентов">0</li>
+						<li class="comrade__data comrade__data--gain" data-name="Покупки в структуре">0 $
+						</li>
+						<li class="comrade__data comrade__data--date" data-name="Дата регистрации"> 14.10.2017</li>
+					</ul>
+					<div class="comrade__team" data-user-id="12166">
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="page-paging">
+				<ul class="paging" id="paging_content">
+					<li class="paging__page"><a onclick="$('#page_to_go').val('1');$('#search_transaction_form').submit();return false;" class="paging__link  is-active" href="#">1</a></li><li class="paging__page"><a onclick="$('#page_to_go').val('2');$('#search_transaction_form').submit();return false;" class="paging__link " href="#">2</a></li><li class="paging__page"><a onclick="$('#page_to_go').val('3');$('#search_transaction_form').submit();return false;" class="paging__link " href="#">3</a></li><li class="paging__page"><a onclick="$('#page_to_go').val('4');$('#search_transaction_form').submit();return false;" class="paging__link " href="#">4</a></li><li class="paging__page"><a onclick="$('#page_to_go').val('5');$('#search_transaction_form').submit();return false;" class="paging__link " href="#">5</a></li><li class="paging__dots">...</li><li class="paging__page"><a onclick="$('#page_to_go').val('18');$('#search_transaction_form').submit();return false;" class="paging__link " href="#">18</a></li>                </ul>
+				<p id="load_document" style="display:none;text-align:center;"><img src="/img/loader.gif"></p>
+			</div>
+
+		</div>
+	</div>
+</section>
+	</kt-portlet-body>
+</kt-portlet>

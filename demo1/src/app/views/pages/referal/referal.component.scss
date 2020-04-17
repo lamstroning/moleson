@@ -1,0 +1,31 @@
+label.active {
+	width: 49%;
+}
+@media screen and (max-width: 768px){
+	label.active {
+		width: 100%;
+	}
+}
+.form-row {
+	justify-content: space-between;
+}
+.link-form {
+	display: flex;
+	justify-content: space-between;
+	font-size: 14px;
+	margin: 10px 0;
+}
+.link-form-container {
+	padding-right: 16px;
+	max-height: 500px;
+	overflow-y: auto;
+}
+.link-form-container::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 7px;
+}
+.link-form-container::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background-color: rgb(251, 176, 46);
+	-webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
+}

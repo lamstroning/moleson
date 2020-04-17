@@ -1,0 +1,41 @@
+.dialog-img {
+	height: 200px;
+	position: relative;
+	width: 100%;
+	background-image: url(/assets/media/icons/empty-img.svg);
+	background-size: contain;
+	cursor: pointer;
+	background-repeat: no-repeat;
+}
+label.inputName {
+	color: #fcb12e;
+}
+.form-control  {
+	margin-left: 20px;
+	width: 80%;
+	color: white;
+	background-color: #071827;
+	border-color: #fcb12e;
+}.form-control:focus  {
+	 background-color: #071827;
+	 border-color: #fcb12e;
+ }
+.row {
+	margin-top:10px;
+
+}
+textarea.form-control {
+	width: calc(100% - 20px)!important;
+	margin-right: 20px;
+	resize: none;
+	height: 100px;
+}
+
+input#pct {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}

@@ -118,7 +118,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	 * Form Submit
 	 */
 	submit() {
-		console.log('.');
 		const controls = this.registerForm.controls;
 
 		// check form

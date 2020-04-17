@@ -1,0 +1,62 @@
+.obj-name {
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 0 10px;
+}
+
+.obj-settings {
+	display: flex;
+	justify-content: flex-end;
+}
+input#newName {
+	height: 30px;
+	color: white;
+	padding: 0 10px;
+	border: 1px solid #fcb12e;
+	background-color: #0a2439;
+}
+
+select#newState {
+	height: 30px;
+	color: white;
+	border: 1px solid #fcb12e;
+	border-left: none;
+	background-color: #0a2439;
+}
+
+button#newAdd {
+	height: 30px;
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+}
+.obj-edit {
+	background-image: url(/assets/media/icons/edit.svg);
+	min-width: 20px;
+	height: 20px;
+	cursor: pointer;
+	margin-left: 10px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.btn.custom-catalog-btn.category-btn:first-child{
+	margin-left: 0;
+}
+.btn.custom-catalog-btn.category-btn {
+	border-color: #fcb12e;
+	margin: 0 5px;
+	background-color: transparent;
+}
+.obj-remove {
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-size: contain;
+	min-width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	background-image: url(/assets/media/icons/svg/cross.svg);
+}
+.obj-row-name {
+	font-size: 20px;
+	padding: 0;
+}

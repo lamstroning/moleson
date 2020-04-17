@@ -1,3 +1,4 @@
+
 <div class="row">
 	<div class="col-12 col-xl-6">
 		<kt-portlet [class]="'kt-portlet--height-fluid kt-custom-chart'">
@@ -6,6 +7,10 @@
 			</kt-portlet-header>
 			<kt-portlet-body>
 				<form>
+					<div class="custom-control custom-switch">
+						<input type="checkbox" class="custom-control-input" id="authSwitch">
+						<label class="custom-control-label" for="authSwitch">Двухфакторная фантификация</label>
+					</div>
 					<button class="btn full-width custom-catalog-btn" type="submit">Сохранить</button>
 				</form>
 			</kt-portlet-body>

@@ -1,0 +1,73 @@
+<!--<kt-portlet [class]="'kt-portlet&#45;&#45;height-fluid kt-custom-chart'">-->
+<!--	<kt-portlet-header [title]="'Добавить'">-->
+<!--	</kt-portlet-header>-->
+<!--	<kt-portlet-body>-->
+<div class="row">
+	<div class="col-12 col-md-6">
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<label class="inputName">Статус</label>
+			</div>
+			<div class="col-9">
+				<select id="newState" class="form-control" value="Активно" [(ngModel)]="newState">
+					<option selected="selected" value="Активно">Активно</option>
+					<option value="Завершено">Завершено</option>
+					<option value="Ожидает">Ожидает</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<label class="inputName">Наименование</label>
+			</div>
+			<div class="col-9">
+				<input class="form-control" [(ngModel)]="newName">
+			</div>
+		</div>
+		<div class="row">					<div class="col-12 col-md-3">
+			<label class="inputName">Сумма инвестиций</label>
+		</div>
+			<div class="col-9"><input class="form-control" type="text"></div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<label class="inputName">Доходность</label>
+			</div>
+			<div class="col-9"><input class="form-control" type="text"></div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<label class="inputName">Окупаемость</label>
+			</div>
+			<div class="col-9"><input class="form-control" type="text"></div>
+		</div>
+	</div>
+	<div class="col-12 col-md-6">
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<label class="inputName">Картинка</label>
+			</div>
+			<div class="col-12 col-md-9">
+				<label id="imgs" for="pct"class="dialog-img">
+					<input (change)="this.addImage($event.target)" type="file" id="pct">
+				</label>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+		<label class="inputName">Краткое описание</label>
+		<textarea class="form-control"></textarea>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+		<label class="inputName">Детальное описание</label>
+		<textarea class="form-control"></textarea>
+	</div>
+</div>
+<div class="row"></div>
+<button class="btn  custom-catalog-btn" (click)="this.addNew()">Добавить</button>
+<!--	</kt-portlet-body>-->
+<!--</kt-portlet>-->
