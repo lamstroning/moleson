@@ -49,8 +49,8 @@ export {
 
 // EFFECTS
 export { AuthEffects } from './_effects/auth.effects';
-export { PermissionEffects } from './_effects/permission.effects';
-export { RoleEffects } from './_effects/role.effects';
+// export { PermissionEffects } from './_effects/permission.effects';
+// export { RoleEffects } from './_effects/role.effects';
 export { UserEffects } from './_effects/user.effects';
 
 // REDUCERS

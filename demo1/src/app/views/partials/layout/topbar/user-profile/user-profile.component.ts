@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 // State
 import { AppState } from '../../../../../core/reducers';
-import { currentUser, Logout, User } from '../../../../../core/auth';
+import {currentAuthToken, currentUser, Logout, User} from '../../../../../core/auth';
+import {environment} from '../../../../../../environments/environment';
 
 @Component({
 	selector: 'kt-user-profile',

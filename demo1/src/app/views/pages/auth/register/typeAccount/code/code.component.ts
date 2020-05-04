@@ -3,11 +3,10 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Subject} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../../../../../core/auth/_services";
-import {AuthNoticeService, Login} from "../../../../../../core/auth";
+import {AuthNoticeService} from "../../../../../../core/auth";
 import {TranslateService} from "@ngx-translate/core";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../../../../core/reducers";
-import {finalize, takeUntil, tap} from "rxjs/operators";
 
 @Component({
   selector: 'kt-code',
@@ -85,44 +84,7 @@ export class CodeComponent implements OnInit {
 	/**
 	 * Form Submit
 	 */
-	submit() {
-		const controls = this.loginForm.controls;
-		/** check form */
-		if (this.loginForm.invalid) {
-			Object.keys(controls).forEach(controlName =>
-				controls[controlName].markAsTouched()
-			);
-			return;
-		}
 
-		this.loading = true;
-
-		const authData = {
-			email: controls.email.value,
-			password: controls.password.value
-		};
-		this.auth
-			.login(authData.email, authData.password)
-			.pipe(
-				tap(user => {
-					if (user) {
-						debugger;//*
-						this.store.dispatch(new Login({authToken: user.accessToken}));
-						this.router.navigateByUrl(this.returnUrl); // Main page
-					} else {
-						debugger;//*По какой-то причине ни один из дебагеров не вызывается
-						console.log("empty user!");
-						this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
-					}
-				}),
-				takeUntil(this.unsubscribe),
-				finalize(() => {
-					this.loading = false;
-					this.cdr.markForCheck();
-				})
-			)
-			.subscribe();
-	}
 
 	/**
 	 * Checking control validation

@@ -12,13 +12,14 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../../core/reducers';
 // Auth
 import { AuthNoticeService, AuthService, Login } from '../../../../core/auth';
+import {HttpClient} from '@angular/common/http';
 
 /**
  * ! Just example => Should be removed in development
  */
 const DEMO_PARAMS = {
-	EMAIL: 'admin@demo.com',
-	PASSWORD: 'demo'
+	EMAIL: 'lexashob@yandex.ru',
+	PASSWORD: '1234'
 };
 
 @Component({
@@ -32,7 +33,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 	loading = false;
 	isLoggedIn$: Observable<boolean>;
 	errors: any = [];
-
 	private unsubscribe: Subject<any>;
 
 	private returnUrl: any;
@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	 * @param fb: FormBuilder
 	 * @param cdr
 	 * @param route
+	 * @param http
 	 */
 	constructor(
 		private router: Router,
@@ -59,7 +60,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 		private store: Store<AppState>,
 		private fb: FormBuilder,
 		private cdr: ChangeDetectorRef,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private http: HttpClient
 	) {
 		this.unsubscribe = new Subject();
 	}
@@ -96,12 +98,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 	 */
 	initLoginForm() {
 		// demo message to show
-		if (!this.authNoticeService.onNoticeChanged$.getValue()) {
-			const initialNotice = `Use account
-			<strong>${DEMO_PARAMS.EMAIL}</strong> and password
-			<strong>${DEMO_PARAMS.PASSWORD}</strong> to continue.`;
-			this.authNoticeService.setNotice(initialNotice, 'info');
-		}
+		// if (!this.authNoticeService.onNoticeChanged$.getValue()) {
+		// 	const initialNotice = `Use account
+		// 	<strong>${DEMO_PARAMS.EMAIL}</strong> and password
+		// 	<strong>${DEMO_PARAMS.PASSWORD}</strong> to continue.`;
+		// 	this.authNoticeService.setNotice(initialNotice, 'info');
+		// }
 
 		this.loginForm = this.fb.group({
 			email: [DEMO_PARAMS.EMAIL, Validators.compose([
@@ -132,9 +134,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 			);
 			return;
 		}
-
 		this.loading = true;
-
 		const authData = {
 			email: controls.email.value,
 			password: controls.password.value
@@ -143,8 +143,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 			.login(authData.email, authData.password)
 			.pipe(
 				tap(user => {
-					if (user) {
-						this.store.dispatch(new Login({authToken: user.accessToken}));
+					if (user.status === 'success') {
+						this.store.dispatch(new Login({authToken: user.data.accessToken}));
+						console.log(user.data.accessToken);
 						this.router.navigateByUrl(this.returnUrl); // Main page
 					} else {
 						this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
@@ -156,7 +157,40 @@ export class LoginComponent implements OnInit, OnDestroy {
 					this.cdr.markForCheck();
 				})
 			)
-			.subscribe();
+			.subscribe(next => console.log(next), err => {
+				console.log(err);
+				if (err.status === 401) {
+					this.authNoticeService.setNotice('Подвердите ваш Email', 'danger');
+				} else if (err.status === 404) {
+					this.authNoticeService.setNotice('Пользователь не найден', 'danger');
+				}
+			});
+		// this.auth
+		// 	.login(authData.email, authData.password)
+		// 	.pipe(
+		// 		tap(user => {
+		// 			if (user.status === 'success') {
+		// 				this.store.dispatch(new Login({authToken: user.data.accessToken}));
+		// 				console.log(user.data.accessToken);
+		// 				this.router.navigateByUrl(this.returnUrl); // Main page
+		// 			} else {
+		// 				this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
+		// 			}
+		// 		}),
+		// 		takeUntil(this.unsubscribe),
+		// 		finalize(() => {
+		// 			this.loading = false;
+		// 			this.cdr.markForCheck();
+		// 		})
+		// 	)
+		// 	.subscribe(next => console.log(next), err => {
+		// 		console.log(err);
+		// 		if (err.status === 401) {
+		// 			this.authNoticeService.setNotice('Подвердите ваш Email', 'danger');
+		// 		} else if (err.status === 404) {
+		// 			this.authNoticeService.setNotice('Пользователь не найден', 'danger');
+		// 		}
+		// 	});
 	}
 
 	/**

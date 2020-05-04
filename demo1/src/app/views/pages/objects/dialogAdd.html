@@ -2,6 +2,9 @@
 <!--	<kt-portlet-header [title]="'Добавить'">-->
 <!--	</kt-portlet-header>-->
 <!--	<kt-portlet-body>-->
+<div class="close">
+	<div class="close-ico" (click)="dialogRef.close()"></div>
+</div>
 <div class="row">
 	<div class="col-12 col-md-6">
 		<div class="row">
@@ -9,10 +12,12 @@
 				<label class="inputName">Статус</label>
 			</div>
 			<div class="col-9">
+
 				<select id="newState" class="form-control" value="Активно" [(ngModel)]="newState">
-					<option selected="selected" value="Активно">Активно</option>
-					<option value="Завершено">Завершено</option>
-					<option value="Ожидает">Ожидает</option>
+					<option *ngFor="let status of serv.franchisesStatus" selected="selected" value="{{status._id}}">{{status.title}}</option>
+<!--					<option selected="selected" value="Активно">Активно</option>-->
+<!--					<option value="Завершено">Завершено</option>-->
+<!--					<option value="Ожидает">Ожидает</option>-->
 				</select>
 			</div>
 		</div>
@@ -21,25 +26,27 @@
 				<label class="inputName">Наименование</label>
 			</div>
 			<div class="col-9">
-				<input class="form-control" [(ngModel)]="newName">
+								<input class="form-control" [(ngModel)]="newName">
+
 			</div>
 		</div>
 		<div class="row">					<div class="col-12 col-md-3">
 			<label class="inputName">Сумма инвестиций</label>
 		</div>
-			<div class="col-9"><input class="form-control" type="text"></div>
+
+			<div class="col-9"><input class="form-control" type="text" [(ngModel)]="money"></div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-3">
 				<label class="inputName">Доходность</label>
 			</div>
-			<div class="col-9"><input class="form-control" type="text"></div>
+			<div class="col-9"><input class="form-control" type="text" [(ngModel)]="profitability"></div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-3">
 				<label class="inputName">Окупаемость</label>
 			</div>
-			<div class="col-9"><input class="form-control" type="text"></div>
+			<div class="col-9"><input class="form-control" [(ngModel)]="payback" type="text"></div>
 		</div>
 	</div>
 	<div class="col-12 col-md-6">
@@ -48,7 +55,7 @@
 				<label class="inputName">Картинка</label>
 			</div>
 			<div class="col-12 col-md-9">
-				<label id="imgs" for="pct"class="dialog-img">
+				<label id="imgs" for="pct" class="dialog-img" [style.background-image]="'url(' + urlImg + ')'">
 					<input (change)="this.addImage($event.target)" type="file" id="pct">
 				</label>
 			</div>
@@ -58,16 +65,18 @@
 <div class="row">
 	<div class="col-12">
 		<label class="inputName">Краткое описание</label>
-		<textarea class="form-control"></textarea>
+		<textarea class="form-control" [(ngModel)]="shortDescription"></textarea>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
 		<label class="inputName">Детальное описание</label>
-		<textarea class="form-control"></textarea>
+		<textarea class="form-control"  [(ngModel)]="detailedDescription"></textarea>
 	</div>
 </div>
 <div class="row"></div>
-<button class="btn  custom-catalog-btn" (click)="this.addNew()">Добавить</button>
+
+<button *ngIf="data.mode" class="btn custom-catalog-btn" (click)="this.edit()">Изменить</button>
+<button *ngIf="!data.mode" class="btn custom-catalog-btn" (click)="this.addNew()">Добавить</button>
 <!--	</kt-portlet-body>-->
 <!--</kt-portlet>-->

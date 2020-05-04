@@ -13,7 +13,7 @@ export interface UsersState extends EntityState<User> {
     listLoading: boolean;
     actionsloading: boolean;
     totalCount: number;
-    lastCreatedUserId: number;
+    lastCreatedUserId: string;
     lastQuery: QueryParamsModel;
     showInitWaitingMessage: boolean;
 }
@@ -41,7 +41,7 @@ export function usersReducer(state = initialUsersState, action: UserActions): Us
             ...state
         };
         case UserActionTypes.UserCreated: return adapter.addOne(action.payload.user, {
-            ...state, lastCreatedUserId: action.payload.user.id
+            ...state, lastCreatedUserId: action.payload.user._id
         });
         case UserActionTypes.UserUpdated: return adapter.updateOne(action.payload.partialUser, state);
         case UserActionTypes.UserDeleted: return adapter.removeOne(action.payload.id, state);

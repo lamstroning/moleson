@@ -1,11 +1,8 @@
-
 {
-	"http://localhost:4200": {
+	"/api": {
 		"target": "http://maxim.fvds.ru",
 		"secure": false,
-		"logLevel": "debug",
-		"pathRewrite": {
-			"^/http://localhost:4200/api": "http://maxim.fvds.ru/api"
-		}
+		"changeOrigin": true,
+		"logLevel": "debug"
 	}
 }

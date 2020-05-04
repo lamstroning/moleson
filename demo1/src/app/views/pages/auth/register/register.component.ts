@@ -13,6 +13,7 @@ import { AppState } from '../../../../core/reducers';
 import { AuthNoticeService, AuthService, Register, User } from '../../../../core/auth/';
 import { Subject } from 'rxjs';
 import { ConfirmPasswordValidator } from './confirm-password.validator';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
 	selector: 'kt-register',
@@ -25,7 +26,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	loading = false;
 	errors: any = [];
 
-	private unsubscribe: Subject<any>; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
+	private unsubscribe: Subject<any>;
+
+	// Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
 
 	/**
 	 * Component constructor
@@ -37,6 +40,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	 * @param store: Store<AppState>
 	 * @param fb: FormBuilder
 	 * @param cdr
+	 * @param http
 	 */
 	constructor(
 		private authNoticeService: AuthNoticeService,
@@ -45,7 +49,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 		private auth: AuthService,
 		private store: Store<AppState>,
 		private fb: FormBuilder,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
+		private http: HttpClient
 	) {
 		this.unsubscribe = new Subject();
 	}
@@ -133,35 +138,59 @@ export class RegisterComponent implements OnInit, OnDestroy {
 		if (!controls.agree.value) {
 			// you must agree the terms and condition
 			// checkbox cannot work inside mat-form-field https://github.com/angular/material2/issues/7891
-			this.authNoticeService.setNotice('You must agree the terms and condition', 'danger');
+			this.authNoticeService.setNotice('Вы не согласились с условиями', 'danger');
 			return;
 		}
 
 		const _user: User = new User();
 		_user.clear();
-		_user.email = controls.email.value;
-		_user.username = controls.username.value;
-		_user.fullname = controls.fullname.value;
-		_user.password = controls.password.value;
-		_user.roles = [];
+		_user.regDate.email = controls.email.value;
+		_user.regDate.username = controls.username.value;
+		_user.regDate.fullname = controls.fullname.value;
+		_user.regDate.password = controls.password.value;
 
-		this.auth.register(_user).pipe(
-			tap(user => {
-				if (user) {
-					this.store.dispatch(new Register({authToken: user.accessToken}));
-					// pass notice message to the login page
-					this.authNoticeService.setNotice(this.translate.instant('AUTH.REGISTER.SUCCESS'), 'success');
-					this.router.navigateByUrl('/auth/register/typeAccount/code');
-				} else {
-					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
-				}
-			}),
-			takeUntil(this.unsubscribe),
+		this.http.post<User>('/api/registration', _user.regDate).pipe(tap(user => {
+			if (user) {
+				this.store.dispatch(new Register({authToken: user.accessToken}));
+				this.authNoticeService.setNotice('Отлично', 'success');
+				// this.router.navigateByUrl('/auth/register/typeAccount/code');
+				this.router.navigateByUrl('/auth/login');
+			} else {
+				this.authNoticeService.setNotice('Такой пользователь уже существует', 'danger');
+				console.log(user);
+				this.loading = false;
+			}
+		}), takeUntil(this.unsubscribe),
 			finalize(() => {
 				this.loading = false;
 				this.cdr.markForCheck();
 			})
-		).subscribe();
+		).subscribe(null, err => {
+
+			if (err.data.errors.email !== undefined) {
+				this.authNoticeService.setNotice('Данный Email уже зарегистрирован', 'danger');
+			} else if (err.data.errors.username !== undefined) {
+				this.authNoticeService.setNotice('Данный логин уже занят', 'danger');
+			}
+		});
+
+		// this.auth.register(_user).pipe(
+		// 	tap(user => {
+		// 		if (user) {
+		// 			// this.store.dispatch(new Register({authToken: user.accessToken}));
+		// 			// pass notice message to the login page
+		// 			this.authNoticeService.setNotice(this.translate.instant('AUTH.REGISTER.SUCCESS'), 'success');
+		// 			this.router.navigateByUrl('/auth/register/typeAccount/code');
+		// 		} else {
+		// 			this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
+		// 		}
+		// 	}),
+		// 	takeUntil(this.unsubscribe),
+		// 	finalize(() => {
+		// 		this.loading = false;
+		// 		this.cdr.markForCheck();
+		// 	})
+		// ).subscribe(res => console.log(res), err => {this.loading = false; console.log(err)});
 	}
 
 	/**

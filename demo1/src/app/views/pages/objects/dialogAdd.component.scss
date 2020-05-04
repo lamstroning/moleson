@@ -39,3 +39,10 @@ input#pct {
 	top: 0;
 	opacity: 0;
 }
+.close-ico{
+	cursor: pointer;
+	background-image: url(/assets/media/icons/custom/close.svg);
+	width: 20px;
+	height: 20px;
+	transition: 0.2s;
+}

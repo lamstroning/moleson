@@ -117,9 +117,9 @@ export class ChangePasswordComponent implements OnInit {
 			return;
 		}
 
-		this.user.password = controls.password.value;
+		this.user.regDate.password = controls.password.value;
 		const updatedUser: Update<User> = {
-			id: this.user.id,
+			id: this.user._id,
 			changes: this.user
 		};
 

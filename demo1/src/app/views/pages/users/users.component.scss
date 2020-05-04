@@ -1,0 +1,24 @@
+.wait {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+.table-row {
+	padding: 10px 0;
+	background-color: #fcb12e;
+	color: white;
+	border-bottom: 1px solid #0a2439;
+}
+.table {
+	margin: 0 auto;
+	max-width: 980px;
+}
+.table-header {
+	padding: 10px 0;
+	border-bottom: 1px solid #0a2439;
+	background-color: #fcb12e;
+	color: white;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}

@@ -9,28 +9,29 @@ import { QueryParamsModel, QueryResultsModel } from '../../_base/crud';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
 
-const API_USERS_URL = 'api/users';
-const API_PERMISSION_URL = 'api/permissions';
-const API_ROLES_URL = 'api/roles';
+const API_USERS_URL = 'api';
+// const API_PERMISSION_URL = 'api/permissions';
+// const API_ROLES_URL = 'api/roles';
 
 @Injectable()
 export class AuthService {
     constructor(private http: HttpClient) {}
     // Authentication/Authorization
-    login(email: string, password: string): Observable<User> {
-        return this.http.post<User>(API_USERS_URL + '/login', { email, password });
+    login(email: string, password: string): Observable<UserResponse> {
+        return this.http.post<UserResponse>(API_USERS_URL + '/login', { email, password });
     }
 
     getUserByToken(): Observable<User> {
-        const userToken = localStorage.getItem(environment.authTokenKey);
-        let httpHeaders = new HttpHeaders();
-        httpHeaders = httpHeaders.set('Authorization', 'Bearer ' + userToken);
-        return this.http.get<User>(API_USERS_URL + '/byJWT', { headers: httpHeaders });
+    	const userToken = localStorage.getItem(environment.authTokenKey);
+    	let httpHeaders = new HttpHeaders();
+    	httpHeaders = httpHeaders.set('authorization',  userToken);
+    	return this.http.post<User>(API_USERS_URL + '/user/token', {}, {headers: httpHeaders });
     }
     register(user: User): Observable<any> {
         const httpHeaders = new HttpHeaders();
         httpHeaders.set('Content-Type', 'application/json');
-        return this.http.post<User>(API_USERS_URL + '/register', user, { headers: httpHeaders })
+        return this.http.post<User>(API_USERS_URL + '/registration', user)
+        // return this.http.post<User>(API_USERS_URL + '/registration', user.regDate, { headers: httpHeaders })
             .pipe(
                 map((res: User) => {
                     return res;
@@ -54,8 +55,11 @@ export class AuthService {
     }
 
 
-    getAllUsers(): Observable<User[]> {
-		return this.http.get<User[]>(API_USERS_URL);
+    getAllUsers(): Observable<any> {
+		const userToken = localStorage.getItem(environment.authTokenKey);
+		let httpHeaders = new HttpHeaders();
+		httpHeaders = httpHeaders.set('authorization',  userToken);
+		return this.http.post<any>(API_USERS_URL + '/admin/user/get', {}, {headers: httpHeaders });
     }
 
     getUserById(userId: number): Observable<User> {
@@ -73,74 +77,74 @@ export class AuthService {
 	updateUser(_user: User): Observable<any> {
         const httpHeaders = new HttpHeaders();
         httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.put(API_USERS_URL + 'updateUser', _user, { headers: httpHeaders });
+		      return this.http.put(API_USERS_URL + '/user/update', _user, { headers: httpHeaders });
 	}
 
     // CREATE =>  POST: add a new user to the server
-	createUser(user: User): Observable<User> {
-    	const httpHeaders = new HttpHeaders();
-     httpHeaders.set('Content-Type', 'application/json');
-		   return this.http.post<User>(API_USERS_URL + '/createUser', user, { headers: httpHeaders});
-	}
+	// createUser(user: User): Observable<User> {
+    // 	const httpHeaders = new HttpHeaders();
+    //  httpHeaders.set('Content-Type', 'application/json');
+	// 	   return this.http.post<User>(API_USERS_URL + '/createUser', user, { headers: httpHeaders});
+	// }
 
     // Method from server should return QueryResultsModel(items: any[], totalsCount: number)
 	// items => filtered/sorted result
-	findUsers(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.post<QueryResultsModel>(API_USERS_URL + '/findUsers', queryParams, { headers: httpHeaders});
-    }
+	// findUsers(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
+    //     const httpHeaders = new HttpHeaders();
+    //     httpHeaders.set('Content-Type', 'application/json');
+	// 	      return this.http.post<QueryResultsModel>(API_USERS_URL + '/findUsers', queryParams, { headers: httpHeaders});
+    // }
 
     // Permission
-    getAllPermissions(): Observable<Permission[]> {
-		return this.http.get<Permission[]>(API_PERMISSION_URL);
-    }
-
-    getRolePermissions(roleId: number): Observable<Permission[]> {
-        return this.http.get<Permission[]>(API_PERMISSION_URL + '/getRolePermission?=' + roleId);
-    }
-
-    // Roles
-    getAllRoles(): Observable<Role[]> {
-        return this.http.get<Role[]>(API_ROLES_URL);
-    }
-
-    getRoleById(roleId: number): Observable<Role> {
-		return this.http.get<Role>(API_ROLES_URL + `/${roleId}`);
-    }
-
-    // CREATE =>  POST: add a new role to the server
-	createRole(role: Role): Observable<Role> {
-		// Note: Add headers if needed (tokens/bearer)
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.post<Role>(API_ROLES_URL, role, { headers: httpHeaders});
-	}
-
-    // UPDATE => PUT: update the role on the server
-	updateRole(role: Role): Observable<any> {
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.put(API_ROLES_URL, role, { headers: httpHeaders });
-	}
-
-	// DELETE => delete the role from the server
-	deleteRole(roleId: number): Observable<Role> {
-		const url = `${API_ROLES_URL}/${roleId}`;
-		return this.http.delete<Role>(url);
-	}
+    // getAllPermissions(): Observable<Permission[]> {
+	// 	return this.http.get<Permission[]>(API_PERMISSION_URL);
+    // }
+	//
+    // getRolePermissions(roleId: number): Observable<Permission[]> {
+    //     return this.http.get<Permission[]>(API_PERMISSION_URL + '/getRolePermission?=' + roleId);
+    // }
+	//
+    // // Roles
+    // getAllRoles(): Observable<Role[]> {
+    //     return this.http.get<Role[]>(API_ROLES_URL);
+    // }
+	//
+    // getRoleById(roleId: number): Observable<Role> {
+	// 	return this.http.get<Role>(API_ROLES_URL + `/${roleId}`);
+    // }
+	//
+    // // CREATE =>  POST: add a new role to the server
+	// createRole(role: Role): Observable<Role> {
+	// 	// Note: Add headers if needed (tokens/bearer)
+    //     const httpHeaders = new HttpHeaders();
+    //     httpHeaders.set('Content-Type', 'application/json');
+	// 	      return this.http.post<Role>(API_ROLES_URL, role, { headers: httpHeaders});
+	// }
+	//
+    // // UPDATE => PUT: update the role on the server
+	// updateRole(role: Role): Observable<any> {
+    //     const httpHeaders = new HttpHeaders();
+    //     httpHeaders.set('Content-Type', 'application/json');
+	// 	      return this.http.put(API_ROLES_URL, role, { headers: httpHeaders });
+	// }
+	//
+	// // DELETE => delete the role from the server
+	// deleteRole(roleId: number): Observable<Role> {
+	// 	const url = `${API_ROLES_URL}/${roleId}`;
+	// 	return this.http.delete<Role>(url);
+	// }
 
     // Check Role Before deletion
-    isRoleAssignedToUsers(roleId: number): Observable<boolean> {
-        return this.http.get<boolean>(API_ROLES_URL + '/checkIsRollAssignedToUser?roleId=' + roleId);
-    }
-
-    findRoles(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
-        // This code imitates server calls
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.post<QueryResultsModel>(API_ROLES_URL + '/findRoles', queryParams, { headers: httpHeaders});
-	}
+    // isRoleAssignedToUsers(roleId: number): Observable<boolean> {
+    //     return this.http.get<boolean>(API_ROLES_URL + '/checkIsRollAssignedToUser?roleId=' + roleId);
+    // }
+	//
+    // findRoles(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
+    //     // This code imitates server calls
+    //     const httpHeaders = new HttpHeaders();
+    //     httpHeaders.set('Content-Type', 'application/json');
+	// 	      return this.http.post<QueryResultsModel>(API_ROLES_URL + '/findRoles', queryParams, { headers: httpHeaders});
+	// }
 
  	/*
  	 * Handle Http operation that failed.
@@ -158,4 +162,9 @@ export class AuthService {
             return of(result);
         };
     }
+}
+
+interface UserResponse {
+	data: User;
+	status: string;
 }

@@ -18,6 +18,7 @@ import {WaysComponent} from './count/ways/ways.component';
 
 import {CommonModule} from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ReferalComponent } from './referal/referal.component';
 
 @NgModule({
 	imports: [
@@ -77,8 +78,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 					{
 						path: 'payed',
 						component: PayedComponent
+					},
+					{
+						path: 'ref-link',
+						component: ReferalComponent
 					}
-
 				]
 			},
 		]),
@@ -100,6 +104,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 		ConclusionComponent,
 		TransactionComponent,
 		WaysComponent,
+		ReferalComponent,
 
 	]
 })

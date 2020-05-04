@@ -1,0 +1,7 @@
+<div class="link-block">
+<p *ngIf="user$ | async as _user">Ваша ссылка: <span id="copy-link">{{currentUrl + '/auth/register' + getPart + _user.data._id}}</span></p>
+	<div class="btn-link-block">
+		<button (click)="this.copyLink()">Скопировать</button>
+		<div id="copy-status"></div>
+	</div>
+</div>

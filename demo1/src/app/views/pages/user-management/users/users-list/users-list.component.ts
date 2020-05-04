@@ -176,22 +176,22 @@ export class UsersListComponent implements OnInit, OnDestroy {
 	 *
 	 * @param _item: User
 	 */
-	deleteUser(_item: User) {
-		const _title = 'User Delete';
-		const _description = 'Are you sure to permanently delete this user?';
-		const _waitDesciption = 'User is deleting...';
-		const _deleteMessage = `User has been deleted`;
-
-		const dialogRef = this.layoutUtilsService.deleteElement(_title, _description, _waitDesciption);
-		dialogRef.afterClosed().subscribe(res => {
-			if (!res) {
-				return;
-			}
-
-			this.store.dispatch(new UserDeleted({ id: _item.id }));
-			this.layoutUtilsService.showActionNotification(_deleteMessage, MessageType.Delete);
-		});
-	}
+	// deleteUser(_item: User) {
+	// 	const _title = 'User Delete';
+	// 	const _description = 'Are you sure to permanently delete this user?';
+	// 	const _waitDesciption = 'User is deleting...';
+	// 	const _deleteMessage = `User has been deleted`;
+	//
+	// 	const dialogRef = this.layoutUtilsService.deleteElement(_title, _description, _waitDesciption);
+	// 	dialogRef.afterClosed().subscribe(res => {
+	// 		if (!res) {
+	// 			return;
+	// 		}
+	//
+	// 		this.store.dispatch(new UserDeleted({ _id: _item._id }));
+	// 		this.layoutUtilsService.showActionNotification(_deleteMessage, MessageType.Delete);
+	// 	});
+	// }
 
 	/**
 	 * Fetch selected rows
@@ -200,9 +200,9 @@ export class UsersListComponent implements OnInit, OnDestroy {
 		const messages = [];
 		this.selection.selected.forEach(elem => {
 			messages.push({
-				text: `${elem.fullname}, ${elem.email}`,
-				id: elem.id.toString(),
-				status: elem.username
+				text: `${elem.regDate.fullname}, ${elem.regDate.email}`,
+				id: elem._id.toString(),
+				status: elem.regDate.username
 			});
 		});
 		this.layoutUtilsService.fetchElements(messages);
@@ -234,16 +234,16 @@ export class UsersListComponent implements OnInit, OnDestroy {
 	 *
 	 * @param user: User
 	 */
-	getUserRolesStr(user: User): string {
-		const titles: string[] = [];
-		each(user.roles, (roleId: number) => {
-			const _role = find(this.allRoles, (role: Role) => role.id === roleId);
-			if (_role) {
-				titles.push(_role.title);
-			}
-		});
-		return titles.join(', ');
-	}
+	// getUserRolesStr(user: User): string {
+	// 	const titles: string[] = [];
+	// 	each(user.roles, (roleId: number) => {
+	// 		const _role = find(this.allRoles, (role: Role) => role.id === roleId);
+	// 		if (_role) {
+	// 			titles.push(_role.title);
+	// 		}
+	// 	});
+	// 	return titles.join(', ');
+	// }
 
 	/**
 	 * Redirect to edit page

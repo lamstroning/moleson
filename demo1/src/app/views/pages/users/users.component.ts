@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../../core/auth/_services';
+import {User} from '../../../core/auth';
 
 @Component({
   selector: 'kt-users',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+	userList: User[];
+	constructor(private getUsers: AuthService) {
+  	}
 
-  ngOnInit() {
-  }
+ 	 ngOnInit() {
+		this.getUsers.getAllUsers().subscribe(next => {
+			console.log(next.data);
+			this.userList = next.data;
+		});
+  	}
 
 }

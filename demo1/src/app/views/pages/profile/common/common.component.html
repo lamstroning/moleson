@@ -21,19 +21,25 @@
 
 			</kt-portlet-header>
 			<kt-portlet-body>
-				<form>
+				<form *ngIf="user$ | async as _user">
 					<label class="active">Имя</label>
-					<input class="form-control" type="text" value="Алексей">
+					<input class="form-control" type="text" [(ngModel)]="name">
 					<label class="active">Фамилия</label>
-					<input class="form-control" value="Огородников" type="text">
+					<input class="form-control" [(ngModel)]="surname">
 					<label class="active">Пол</label>
-					<input class="form-control" value="Мужской" type="text">
-					<label class="active">День рождения</label>
-					<input class="form-control" value="9" type="text">
-					<label class="active">Месяц рождения</label>
-					<input class="form-control" value="Май" type="text">
-					<label class="active">Имя</label>
-					<input class="form-control" value="1986" type="text">
+<!--					<input class="form-control"  value="{{_user.data.gender}}" [(ngModel)]="gender" type="text">-->
+<!--					<label class="active">День рождения</label>-->
+<!--					<input class="form-control" value="9" type="text">-->
+<!--					<label class="active">Месяц рождения</label>-->
+<!--					<input class="form-control" value="Май" type="text">-->
+					<div class="input-group">
+						<input class="form-control" placeholder="dd/mm/yyyy" name="dp" value="{{birthday}}" (dateSelect)="formatDate()" [startDate]="{year: 1998, month: 1, day: 1}" [(ngModel)]="format" ngbDatepicker #d="ngbDatepicker">
+						<div class="input-group-append">
+							<button class="btn btn-custom" (click)="d.toggle() " type="button">
+								<i class="la la-calendar"></i>
+							</button>
+						</div>
+					</div>
 					<button class="btn full-width custom-catalog-btn" type="submit">Сохранить</button>
 				</form>
 			</kt-portlet-body>

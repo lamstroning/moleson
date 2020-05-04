@@ -8,6 +8,9 @@ import {ProfileComponent} from './profile.component';
 import {CommonComponent} from './common/common.component';
 import {VerificationComponent} from './verification/verification.component';
 import {SettingsComponent} from './settings/settings.component';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -34,6 +37,9 @@ import {SettingsComponent} from './settings/settings.component';
 				]
 			},
 		]),
+		CommonModule,
+		FormsModule,
+		NgbDatepickerModule,
 
 	],
 	providers: [],

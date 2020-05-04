@@ -78,9 +78,9 @@ export class UserEditComponent implements OnInit, OnDestroy {
 				this.store.pipe(select(selectUserById(id))).subscribe(res => {
 					if (res) {
 						this.user = res;
-						this.rolesSubject.next(this.user.roles);
-						this.addressSubject.next(this.user.address);
-						this.soicialNetworksSubject.next(this.user.socialNetworks);
+						// this.rolesSubject.next(this.user.roles);
+						// this.addressSubject.next(this.user.address);
+						// this.soicialNetworksSubject.next(this.user.socialNetworks);
 						this.oldUser = Object.assign({}, this.user);
 						this.initUser();
 					}
@@ -88,9 +88,9 @@ export class UserEditComponent implements OnInit, OnDestroy {
 			} else {
 				this.user = new User();
 				this.user.clear();
-				this.rolesSubject.next(this.user.roles);
-				this.addressSubject.next(this.user.address);
-				this.soicialNetworksSubject.next(this.user.socialNetworks);
+				// this.rolesSubject.next(this.user.roles);
+				// this.addressSubject.next(this.user.address);
+				// this.soicialNetworksSubject.next(this.user.socialNetworks);
 				this.oldUser = Object.assign({}, this.user);
 				this.initUser();
 			}
@@ -107,7 +107,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	 */
 	initUser() {
 		this.createForm();
-		if (!this.user.id) {
+		if (!this.user._id) {
 			this.subheaderService.setTitle('Create user');
 			this.subheaderService.setBreadcrumbs([
 				{ title: 'User Management', page: `user-management` },
@@ -120,7 +120,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		this.subheaderService.setBreadcrumbs([
 			{ title: 'User Management', page: `user-management` },
 			{ title: 'Users',  page: `user-management/users` },
-			{ title: 'Edit user', page: `user-management/users/edit`, queryParams: { id: this.user.id } }
+			{ title: 'Edit user', page: `user-management/users/edit`, queryParams: { id: this.user._id } }
 		]);
 	}
 
@@ -129,12 +129,12 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	 */
 	createForm() {
 		this.userForm = this.userFB.group({
-			username: [this.user.username, Validators.required],
-			fullname: [this.user.fullname, Validators.required],
-			email: [this.user.email, Validators.email],
-			phone: [this.user.phone],
-			companyName: [this.user.companyName],
-			occupation: [this.user.occupation]
+			username: [this.user.regDate.username, Validators.required],
+			fullname: [this.user.regDate.fullname, Validators.required],
+			email: [this.user.regDate.email, Validators.email],
+			// phone: [this.user.phone],
+			// companyName: [this.user.companyName],
+			// occupation: [this.user.occupation]
 		});
 	}
 
@@ -153,7 +153,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	 * @param isNew: boolean
 	 * @param id: number
 	 */
-	refreshUser(isNew: boolean = false, id = 0) {
+	refreshUser(isNew: boolean = false, id = '') {
 		let url = this.router.url;
 		if (!isNew) {
 			this.router.navigate([url], { relativeTo: this.activatedRoute });
@@ -197,10 +197,10 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
 		const editedUser = this.prepareUser();
 
-		if (editedUser.id > 0) {
-			this.updateUser(editedUser, withBack);
-			return;
-		}
+		// if (editedUser._id > 0) {
+		// 	this.updateUser(editedUser, withBack);
+		// 	return;
+		// }
 
 		this.addUser(editedUser, withBack);
 	}
@@ -212,20 +212,20 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		const controls = this.userForm.controls;
 		const _user = new User();
 		_user.clear();
-		_user.roles = this.rolesSubject.value;
-		_user.address = this.addressSubject.value;
-		_user.socialNetworks = this.soicialNetworksSubject.value;
-		_user.accessToken = this.user.accessToken;
-		_user.refreshToken = this.user.refreshToken;
+		// _user.roles = this.rolesSubject.value;
+		// _user.address = this.addressSubject.value;
+		// _user.socialNetworks = this.soicialNetworksSubject.value;
+		// _user.authorization = this.user.authorization;
+		// _user.refreshToken = this.user.refreshToken;
 		_user.pic = this.user.pic;
-		_user.id = this.user.id;
-		_user.username = controls.username.value;
-		_user.email = controls.email.value;
-		_user.fullname = controls.fullname.value;
-		_user.occupation = controls.occupation.value;
-		_user.phone = controls.phone.value;
-		_user.companyName = controls.companyName.value;
-		_user.password = this.user.password;
+		_user._id = this.user._id;
+		_user.regDate.username = controls.username.value;
+		_user.regDate.email = controls.email.value;
+		_user.regDate.fullname = controls.fullname.value;
+		// _user.occupation = controls.occupation.value;
+		// _user.phone = controls.phone.value;
+		// _user.companyName = controls.companyName.value;
+		_user.regDate.password = this.user.regDate.password;
 		return _user;
 	}
 
@@ -262,7 +262,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		// tslint:disable-next-line:prefer-const
 
 		const updatedUser: Update<User> = {
-			id: _user.id,
+			id: _user._id,
 			changes: _user
 		};
 		this.store.dispatch(new UserUpdated( { partialUser: updatedUser, user: _user }));
@@ -280,11 +280,11 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	 */
 	getComponentTitle() {
 		let result = 'Create user';
-		if (!this.user || !this.user.id) {
+		if (!this.user || !this.user._id) {
 			return result;
 		}
 
-		result = `Edit user - ${this.user.fullname}`;
+		result = `Edit user - ${this.user.regDate.fullname}`;
 		return result;
 	}
 

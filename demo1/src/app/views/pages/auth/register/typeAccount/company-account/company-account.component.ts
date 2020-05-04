@@ -85,41 +85,6 @@ export class CompanyAccountComponent implements OnInit {
 	/**
 	 * Form Submit
 	 */
-	submit() {
-		const controls = this.loginForm.controls;
-		/** check form */
-		if (this.loginForm.invalid) {
-			Object.keys(controls).forEach(controlName =>
-				controls[controlName].markAsTouched()
-			);
-			return;
-		}
-
-		this.loading = true;
-
-		const authData = {
-			email: controls.email.value,
-			password: controls.password.value
-		};
-		this.auth
-			.login(authData.email, authData.password)
-			.pipe(
-				tap(user => {
-					if (user) {
-						this.store.dispatch(new Login({authToken: user.accessToken}));
-						this.router.navigateByUrl(this.returnUrl); // Main page
-					} else {
-						this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
-					}
-				}),
-				takeUntil(this.unsubscribe),
-				finalize(() => {
-					this.loading = false;
-					this.cdr.markForCheck();
-				})
-			)
-			.subscribe();
-	}
 
 	/**
 	 * Checking control validation

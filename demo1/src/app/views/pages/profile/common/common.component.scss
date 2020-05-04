@@ -22,11 +22,10 @@ button.btn.full-width.custom-catalog-btn {
 }
 label.active {
 	position: relative;
-	top: 10px;
+	top: 4px;
 	color: white;
 }
 input.form-control {
-	margin-top: 10px;
 	background-color: #0a2439;
 	color: white;
 	border-color: #fcb12e;
@@ -36,4 +35,8 @@ button.btn.full-width.custom-catalog-btn {
 	color: white;
 	margin-left: 0;
 	margin-top: 10px;
+}
+.btn-custom {
+	background-color: #fcb12e;
+	color: white;
 }

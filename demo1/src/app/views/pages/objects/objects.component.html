@@ -5,24 +5,25 @@
 				<div class="row mt-2">
 <!--					<input type="text" [(ngModel)]="this.newName" id="newName" placeholder="Название">-->
 <!--					-->
-					<button class="btn custom-catalog-btn" id="newAdd" (click)="this.openDialog()">Добавить проект</button>
+					<button class="btn custom-catalog-btn" id="newAdd" (click)="this.openDialog(undefined, false)">Добавить проект</button>
 				</div>
 				<div class="row mt-4">
 					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Активно', $event.target)">Активные</button>
 					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Завершено', $event.target)">Завершенные</button>
 					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Ождиает', $event.target)">Не опубликовано</button>
 				</div>
-				<div *ngIf="ObjService.objects === undefined">
+				<div *ngIf="ObjService.franchises === undefined">
 					Проекты отсутсвуют
 				</div>
-				<div *ngFor="let item of ObjService.objects">
-					<div *ngIf="this.filter === undefined || this.filter === item.state" class="row mt-2">
+				<div *ngFor="let item of ObjService.franchises">
+					<!--<div  *ngIf="this.filter === undefined || item.status !== null && this.filter === item.status.title" class="row mt-2">-->
+					<div *ngIf="item.status !== null" class="row mt-2">
 						<div class="col-10 obj-row-name">{{item.name}}</div>
 						<div class="col-2">
 							<div class="obj-settings">
-								<div class="obj-name">{{item.state}}</div>
-								<div class="obj-edit"></div>
-								<div class="obj-remove" (click)="this.ObjService.removeItem(item.id)"></div>
+								<div class="obj-name">{{item.status.title}}</div>
+								<div class="obj-edit" (click)="this.openDialog(item, true)"></div>
+<!--								<div class="obj-remove" (click)="this.ObjService.removeItem(item.id)"></div>-->
 							</div>
 						</div>
 					</div>

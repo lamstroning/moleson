@@ -10,8 +10,8 @@ export class PartnersComponent implements OnInit {
 	menu: NavMenu[] = [
 		{name: 'Структура клиентов', link: '/partners/struct'},
 		{name: 'Зарегистрировать', link: '/partners/reg'},
-		{name: 'Партнёрский счёт', link: '/partners/count'}
-		// {name: 'Перевод средств', link: '/partners/payed'},
+		{name: 'Партнёрский счёт', link: '/partners/count'},
+		{name: 'Реферальная ссылка', link: '/partners/ref-link'},
 		];
 	constructor(router: Router) {
 		router.navigate(['/partners/struct']);

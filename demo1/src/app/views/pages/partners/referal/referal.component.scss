@@ -1,0 +1,28 @@
+.link-block {
+	display: flex;
+	justify-content: flex-start;
+	padding: 20px 50px;
+}
+
+.btn-link-block {
+	margin-left: 50px;
+}
+
+.btn-link-block > button {
+	background-color: #fcb12e;
+	border: none;
+	color: white;
+	padding: 5px;
+}
+
+div#copy-status {
+	font-size: 12px;
+}
+@media screen and (max-width:778px){
+	.link-block {
+		flex-direction: column;
+	}
+	.btn-link-block {
+		margin-left: 0px;
+	}
+}
