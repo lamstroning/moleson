@@ -38,6 +38,7 @@ import { HeaderMobileComponent } from './header/header-mobile/header-mobile.comp
 import { ErrorPageComponent } from './content/error-page/error-page.component';
 // import { PermissionEffects, permissionsReducer, RoleEffects, rolesReducer } from '../../core/auth';
 import { permissionsReducer, rolesReducer } from '../../core/auth';
+import {BalanceComponent} from '../partials/layout/topbar/balance/balance.component';
 
 @NgModule({
 	declarations: [
@@ -62,6 +63,7 @@ import { permissionsReducer, rolesReducer } from '../../core/auth';
 		MenuHorizontalComponent,
 
 		ErrorPageComponent,
+		BalanceComponent,
 	],
 	exports: [
 		BaseComponent,

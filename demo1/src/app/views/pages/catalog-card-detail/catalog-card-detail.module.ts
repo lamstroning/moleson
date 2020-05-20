@@ -12,6 +12,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FranchisesService} from '../../../core/franchises';
 
 @NgModule({
 	imports: [
@@ -31,7 +32,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 		MatButtonModule,
 		MatCheckboxModule,
 	],
-	providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}],
+	providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}, FranchisesService],
 	declarations: [
 		CatalogCardDetailComponent,
 		FirstDialog

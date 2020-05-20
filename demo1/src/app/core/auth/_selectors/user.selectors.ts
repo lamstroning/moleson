@@ -5,7 +5,7 @@ import { QueryResultsModel, HttpExtenstionsModel } from '../../_base/crud';
 // State
 import { UsersState } from '../_reducers/user.reducers';
 import { each } from 'lodash';
-import { User } from '../_models/user.model';
+import { User } from '..';
 
 
 export const selectUsersState = createFeatureSelector<UsersState>('users');
@@ -58,10 +58,6 @@ export const selectUsersShowInitWaitingMessage = createSelector(
 export const selectHasUsersInStore = createSelector(
     selectUsersState,
     queryResult => {
-        if (!queryResult.totalCount) {
-            return false;
-        }
-
-        return true;
+        return queryResult.totalCount;
     }
 );

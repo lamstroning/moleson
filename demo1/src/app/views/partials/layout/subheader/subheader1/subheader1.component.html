@@ -5,14 +5,17 @@
 			<h3 *ngIf="title" class="kt-subheader__title">{{title}}</h3>
 			<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 			<!--<h4 *ngIf="desc" class="kt-subheader__desc">{{desc}}</h4>-->
-			<h4 class="kt-subheader__desc">АО “Александр Брокер”</h4>
+<!--			<h4 class="kt-subheader__desc">АО “Александр Брокер”</h4>-->
 <!--			<a href="javascript:;" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">-->
 <!--				Add New-->
 <!--			</a>-->
 		</div>
 		<div class="kt-subheader__toolbar">
-			<a *ngFor="let item of this.subheaderService.filter" href="javascript:;" routerLink="/catalog-project" (click)="subheaderService.filterState(item)" [style.background-color]="{true: '#f1e8f5', false: 'white'}[item.active]" class="btn custom-catalog-btn">{{item.title}}</a>
-<!--			<a href="javascript:;" class="btn custom-catalog-btn">Избранные</a>-->
+
+			<!--			<a *ngFor="let item of this.subheaderService.filter" href="javascript:;" routerLink="/catalog-project" (click)="subheaderService.filterState(item)" [style.background-color]="{true: '#f1e8f5', false: 'white'}[item.active]" class="btn custom-catalog-btn">{{item.title}}</a>-->
+
+
+			<!--			<a href="javascript:;" class="btn custom-catalog-btn">Избранные</a>-->
 <!--			<a href="javascript:;" class="btn custom-catalog-btn">Проверенные</a>-->
 			<div class="kt-subheader__wrapper">
 				<!--<a href="javascript:;" class="btn kt-subheader__btn-secondary">Today</a>-->
@@ -30,25 +33,30 @@
 <!--				</a>-->
 
 				<div ngbDropdown [placement]="'bottom-right'" id="choice-regions" class="dropdown dropdown-inline" ngbTooltip="Выбрать регион">
-					<a ngbDropdownToggle href="javascript:;" class="custom-dropdown-region">
-						Москвоская область
-						<i class="kt-menu__ver-arrow la la-angle-right"></i>
-					</a>
-					<div ngbDropdownMenu class="dropdown-menu dropdown-menu-fit dropdown-menu-md custom-dropdown-region-list">
-						<ul class="kt-nav">
-							<li class="kt-nav__item">Московская область</li>
-							<li class="kt-nav__item">Алтайский край</li>
-							<li class="kt-nav__item">Краснодарский край</li>
-							<li class="kt-nav__item">Красноярский край</li>
-							<li class="kt-nav__item">Приморский край</li>
-							<li class="kt-nav__item">Ставропольский край</li>
-							<li class="kt-nav__item">Хабаровский край</li>
-							<li class="kt-nav__item">Амурская область</li>
-							<li class="kt-nav__item">Республика Крым</li>
-							<li class="kt-nav__item">г. Севастополь</li>
-							<li class="kt-nav__item">Архангельская область</li>
-						</ul>
-					</div>
+<!--					<a ngbDropdownToggle href="javascript:;" class="custom-dropdown-region">-->
+<!--						Москвоская область-->
+<!--						<i class="kt-menu__ver-arrow la la-angle-right"></i>-->
+<!--					</a>-->
+<!--					<div ngbDropdownMenu class="dropdown-menu dropdown-menu-fit dropdown-menu-md custom-dropdown-region-list">-->
+<!--						<ul class="kt-nav">-->
+<!--							<li class="kt-nav__item">Московская область</li>-->
+<!--							<li class="kt-nav__item">Алтайский край</li>-->
+<!--							<li class="kt-nav__item">Краснодарский край</li>-->
+<!--							<li class="kt-nav__item">Красноярский край</li>-->
+<!--							<li class="kt-nav__item">Приморский край</li>-->
+<!--							<li class="kt-nav__item">Ставропольский край</li>-->
+<!--							<li class="kt-nav__item">Хабаровский край</li>-->
+<!--							<li class="kt-nav__item">Амурская область</li>-->
+<!--							<li class="kt-nav__item">Республика Крым</li>-->
+<!--							<li class="kt-nav__item">г. Севастополь</li>-->
+<!--							<li class="kt-nav__item">Архангельская область</li>-->
+<!--						</ul>-->
+<!--					</div>-->
+
+
+
+
+
 <!--					<div ngbDropdownMenu class="dropdown-menu dropdown-menu-fit dropdown-menu-md">-->
 <!--						&lt;!&ndash;begin::Nav&ndash;&gt;-->
 <!--						<ul class="kt-nav">-->

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { User } from '../_models/user.model';
 import { Permission } from '../_models/permission.model';
 import { Role } from '../_models/role.model';
-import { catchError, map } from 'rxjs/operators';
+import {catchError, concatMap, map} from 'rxjs/operators';
 import { QueryParamsModel, QueryResultsModel } from '../../_base/crud';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
@@ -17,8 +17,16 @@ const API_USERS_URL = 'api';
 export class AuthService {
     constructor(private http: HttpClient) {}
     // Authentication/Authorization
-    login(email: string, password: string): Observable<UserResponse> {
-        return this.http.post<UserResponse>(API_USERS_URL + '/login', { email, password });
+    login(email: string, password: string): Observable<User> {
+        return this.http.post<any>(API_USERS_URL + '/login', { email, password }).pipe(
+        	concatMap(next => {
+        		if (next.status === 'success') {
+					return of<User>(next.data);
+				} else {
+        			return undefined;
+				}
+        	})
+		);
     }
 
     getUserByToken(): Observable<User> {
@@ -54,6 +62,12 @@ export class AuthService {
 	    );
     }
 
+	getReferralUsers() {
+		const userToken = localStorage.getItem(environment.authTokenKey);
+		let httpHeaders = new HttpHeaders();
+		httpHeaders = httpHeaders.set('authorization',  userToken);
+		return this.http.post<any>(API_USERS_URL + '/user/referral', {}, {headers: httpHeaders });
+	}
 
     getAllUsers(): Observable<any> {
 		const userToken = localStorage.getItem(environment.authTokenKey);
@@ -74,10 +88,26 @@ export class AuthService {
     }
 
     // UPDATE => PUT: update the user on the server
-	updateUser(_user: User): Observable<any> {
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.put(API_USERS_URL + '/user/update', _user, { headers: httpHeaders });
+	updateUser(data: any): Observable<any> {
+		const userToken = localStorage.getItem(environment.authTokenKey);
+		let httpHeaders = new HttpHeaders();
+		httpHeaders = httpHeaders.set('authorization',  userToken);
+		return this.http.post<any>(API_USERS_URL + '/user/update', {
+			fullName:  data.fullName,
+			avatar: data.avatar,
+			passport: data.passport,
+			email: data.email,
+			gender: data.gender,
+			birthday: data.birthday.day + '.' + data.birthday.month + '.' + data.birthday.year,
+			citizenship: data.citizenship,
+			passportId: data.passportId,
+			issued: data.issued,
+			dateIssued: data.dateIssued,
+			departmentCode: data.departmentCode,
+			registrationAddress: data.registrationAddress,
+			SNILS: data.SNILS,
+			INN: data.INN,
+		}, { headers: httpHeaders });
 	}
 
     // CREATE =>  POST: add a new user to the server
@@ -164,7 +194,7 @@ export class AuthService {
     }
 }
 
-interface UserResponse {
+export interface UserResponse {
 	data: User;
 	status: string;
 }

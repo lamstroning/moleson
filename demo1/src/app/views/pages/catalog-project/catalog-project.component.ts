@@ -9,7 +9,7 @@ import { LayoutConfigService } from '../../../core/_base/layout';
 export class CatalogProjectComponent implements OnInit {
 
 
-  constructor(private layoutConfigService: LayoutConfigService) {
+  constructor() {
 
   }
 

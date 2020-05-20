@@ -14,6 +14,9 @@ import * as objectPath from 'object-path';
 // Layout
 import { LayoutConfigService, MenuAsideService, MenuOptions, OffcanvasOptions } from '../../../core/_base/layout';
 import { HtmlClassService } from '../html-class.service';
+import {currentUser} from '../../../core/auth';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../core/reducers';
 
 @Component({
 	selector: 'kt-aside-left',
@@ -68,6 +71,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 	 * @param router: Router
 	 * @param render: Renderer2
 	 * @param cdr: ChangeDetectorRef
+	 * @param store
 	 */
 	constructor(
 		public htmlClassService: HtmlClassService,
@@ -75,7 +79,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		public layoutConfigService: LayoutConfigService,
 		private router: Router,
 		private render: Renderer2,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
+		private store: Store<AppState>
 	) {
 	}
 
@@ -222,5 +227,11 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		}
 
 		return toggle;
+	}
+	checkPermission(publicPermissions: boolean) {
+		const user = this.store.select(currentUser);
+		let checkPermissions = false;
+		user.subscribe(next => checkPermissions = next.data.accessLevel.permissions.length > 15);
+		return publicPermissions || checkPermissions;
 	}
 }

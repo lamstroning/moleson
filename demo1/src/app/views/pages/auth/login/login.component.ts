@@ -143,9 +143,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 			.login(authData.email, authData.password)
 			.pipe(
 				tap(user => {
-					if (user.status === 'success') {
-						this.store.dispatch(new Login({authToken: user.data.accessToken}));
-						console.log(user.data.accessToken);
+					if (user) {
+						this.store.dispatch(new Login({authToken: user.accessToken}));
+						console.log(user.accessToken);
 						this.router.navigateByUrl(this.returnUrl); // Main page
 					} else {
 						this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
@@ -205,7 +205,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 			return false;
 		}
 
-		const result = control.hasError(validationType) && (control.dirty || control.touched);
-		return result;
+		return control.hasError(validationType) && (control.dirty || control.touched);
 	}
 }

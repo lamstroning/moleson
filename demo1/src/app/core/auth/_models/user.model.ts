@@ -1,11 +1,13 @@
 import { BaseModel } from '../../_base/crud';
 import {RegUserMoleson} from './RegData.model';
+import {AccessLevel} from './accsessLevel.model';
 
 export class User extends BaseModel {
 	INN: string;
+	accessLevel: AccessLevel;
 	SNILS: string;
 	amountOfPurchases: number;
-	balance: number;
+	money: number;
 	birthday: string;
 	citizenship: string;
 	dateCreate: number;
@@ -30,14 +32,17 @@ export class User extends BaseModel {
 	urlMailConfirmation: string;
 	username: string;
 	pic: string;
+	avatar: string;
+	passport: string;
 	_id: string;
 	accessToken: string;
 	clear(): void {
+		this.accessLevel = new AccessLevel();
 		this.regDate = new RegUserMoleson();
 		this.INN = '';
 		this.SNILS = '';
 		this.amountOfPurchases = 0;
-		this.balance = 0;
+		this.money = 0;
 		this.pic = './assets/media/users/default.jpg';
 		this.birthday = '';
 		this.citizenship = '';
@@ -53,6 +58,8 @@ export class User extends BaseModel {
 		this.isVerified = false;
 		this.isVerifiedMail = false;
 		this.passportId = '';
+		this.passport = '';
+		this.avatar = '';
 		this.password = '';
 		this.level = 0;
 		this.accessToken = '';

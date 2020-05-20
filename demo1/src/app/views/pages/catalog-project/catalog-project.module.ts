@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
 import { PartialsModule } from '../../partials/partials.module';
 import {CatalogProjectComponent} from './catalog-project.component';
+import {FranchisesService} from '../../../core/franchises';
 
 @NgModule({
 	imports: [
@@ -19,7 +20,9 @@ import {CatalogProjectComponent} from './catalog-project.component';
 			},
 		]),
 	],
-	providers: [],
+	providers: [
+		FranchisesService
+	],
 	declarations: [
 		CatalogProjectComponent,
 	]

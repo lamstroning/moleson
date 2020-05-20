@@ -19,6 +19,7 @@ import {WaysComponent} from './count/ways/ways.component';
 import {CommonModule} from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ReferalComponent } from './referal/referal.component';
+import {MatProgressSpinnerModule} from '@angular/material';
 
 @NgModule({
 	imports: [
@@ -88,6 +89,7 @@ import { ReferalComponent } from './referal/referal.component';
 		]),
 		CommonModule,
 		MatCheckboxModule,
+		MatProgressSpinnerModule,
 
 	],
 	providers: [],

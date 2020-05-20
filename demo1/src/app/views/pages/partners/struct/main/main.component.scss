@@ -1,39 +1,28 @@
-.comrade:first-child>.comrade__info {
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
+.wait {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
 }
-.comrade__info--top {
+.table-row {
+	padding: 10px 0;
 	background-color: #fcb12e;
 	color: white;
-	border: none;
-	border-top: 1px solid #0a2439;
+	border-bottom: 1px solid #0a2439;
 }
-.comrade__info {
-	display: flex;
-	flex-flow: row nowrap;
-	align-items: center;
-	margin: 0 0 -1px;
-	padding: 0;
-	list-style: none;
-	font-size: 14px;
-	line-height: 1;
-	border: 1px solid #0a2439;
+.table {
+	margin: 0 auto;
+	max-width: 980px;
 }
-ul.comrade__info.comrade__info--top {
-	display: flex;
-	justify-content: flex-start;
+.table-header {
+	padding: 10px 0;
+	border-bottom: 1px solid #0a2439;
+	background-color: #fcb12e;
+	color: white;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
-
-li.comrade__data {
-	flex: 1;
-	padding: 20px 0;
-}
-
-li.comrade__data:first-child {
-	padding: 0 40px;
-	flex: 0;
-}
-ul.comrade__head {
-	display: flex;
-	list-style: none;
+.warning-msg {
+	font-size: 30px;
+	text-align: center;
 }

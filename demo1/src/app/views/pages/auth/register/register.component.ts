@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	registerForm: FormGroup;
 	loading = false;
 	errors: any = [];
-
+	refId: string;
 	private unsubscribe: Subject<any>;
 
 	// Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
@@ -64,6 +64,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	 */
 	ngOnInit() {
 		this.initRegisterForm();
+		this.checkCookie();
 	}
 
 	/*
@@ -74,7 +75,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
 		this.unsubscribe.complete();
 		this.loading = false;
 	}
-
+	checkCookie() {
+		const cookie = document.cookie.split(';');
+		for (const elemCook of cookie) {
+			if (elemCook.indexOf('refId') !== -1) {
+				this.refId = elemCook.split('=')[1];
+				console.log(this.refId);
+				return ;
+			}
+		}
+	}
 	/**
 	 * Form initalization
 	 * Default params, validators
@@ -148,6 +158,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 		_user.regDate.username = controls.username.value;
 		_user.regDate.fullname = controls.fullname.value;
 		_user.regDate.password = controls.password.value;
+		_user.regDate.referral = this.refId;
 
 		this.http.post<User>('/api/registration', _user.regDate).pipe(tap(user => {
 			if (user) {

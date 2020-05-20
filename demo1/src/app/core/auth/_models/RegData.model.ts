@@ -3,13 +3,13 @@ export class RegUserMoleson {
 	password: string;
 	email: string;
 	fullname: string;
-	// referral: string;
+	referral: string;
 
 	clear() {
 		this.username = '';
 		this.password = '';
 		this.email = '';
 		this.fullname = '';
-		// this.referral = '';
+		this.referral = '';
 	}
 }

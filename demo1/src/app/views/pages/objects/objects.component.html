@@ -8,22 +8,26 @@
 					<button class="btn custom-catalog-btn" id="newAdd" (click)="this.openDialog(undefined, false)">Добавить проект</button>
 				</div>
 				<div class="row mt-4">
-					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Активно', $event.target)">Активные</button>
-					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Завершено', $event.target)">Завершенные</button>
-					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Ождиает', $event.target)">Не опубликовано</button>
+					<button *ngFor="let statusItem of status" class="btn custom-catalog-btn category-btn" (click)="this.switchState(statusItem.title, $event.target)">{{statusItem.title}}</button>
+<!--					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Активно', $event.target)">Активные</button>-->
+<!--					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Завершено', $event.target)">Завершенные</button>-->
+<!--					<button class="btn custom-catalog-btn category-btn" (click)="this.switchState('Ождиает', $event.target)">Не опубликовано</button>-->
 				</div>
-				<div *ngIf="ObjService.franchises === undefined">
+				<div *ngIf="!loading && result.length === 0">
 					Проекты отсутсвуют
 				</div>
-				<div *ngFor="let item of ObjService.franchises">
+				<div *ngIf="loading">
+					<mat-spinner></mat-spinner>
+				</div>
+				<div *ngFor="let item of result">
 					<!--<div  *ngIf="this.filter === undefined || item.status !== null && this.filter === item.status.title" class="row mt-2">-->
-					<div *ngIf="item.status !== null" class="row mt-2">
+					<div *ngIf="filter === undefined || filter === item.status.title" class="row mt-2">
 						<div class="col-10 obj-row-name">{{item.name}}</div>
 						<div class="col-2">
 							<div class="obj-settings">
 								<div class="obj-name">{{item.status.title}}</div>
 								<div class="obj-edit" (click)="this.openDialog(item, true)"></div>
-<!--								<div class="obj-remove" (click)="this.ObjService.removeItem(item.id)"></div>-->
+								<div class="obj-remove" (click)="removeFranchise(item._id)"></div>
 							</div>
 						</div>
 					</div>

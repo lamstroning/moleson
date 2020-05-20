@@ -8,10 +8,11 @@ import { PartialsModule } from '../../partials/partials.module';
 import {DialogAddComponent, ObjectsComponent} from './objects.component';
 import {FormsModule} from '@angular/forms';
 import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
-import {Franchises, ObjectsService} from './objects.service';
+import {FranchisesService} from '../../../core/franchises';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material';
 
 
 @NgModule({
@@ -30,11 +31,12 @@ import {MatInputModule} from '@angular/material/input';
 		MatFormFieldModule,
 		MatIconModule,
 		MatInputModule,
+		MatProgressSpinnerModule,
 	],
 	providers: [
 		{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
 		{ provide: MAT_DIALOG_DATA, useValue: {data: undefined}},
-		ObjectsService
+		FranchisesService
 	],
 	entryComponents: [DialogAddComponent],
 	declarations: [

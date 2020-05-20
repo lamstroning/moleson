@@ -1,6 +1,12 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { Franchises, ObjectsService} from './objects.service';
+import {FranchisesService} from '../../../core/franchises';
+import {Franchises, FranchisesStatus} from '../../../core/franchises/_service/franchises.service';
+import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../core/reducers';
+import {HttpClient} from '@angular/common/http';
+
 
 @Component({
 	selector: 'kt-objects',
@@ -10,9 +16,19 @@ import { Franchises, ObjectsService} from './objects.service';
 export class ObjectsComponent implements OnInit {
 	filter: string;
 	result: Franchises[];
-	constructor(public dialog: MatDialog, private ObjService: ObjectsService) {
-	}
+	status: FranchisesStatus[] = [];
+	loading = true;
+	constructor(public dialog: MatDialog,
+				         private ObjService: FranchisesService,
+				         private router: Router,
+				         private store: Store<AppState>,
+				         private cdr: ChangeDetectorRef) {
 
+	}
+	removeFranchise(id: string) {
+		this.ObjService.deleteFranchise(id);
+		this.getFranchise();
+	}
 	openDialog(data: Franchises, mode: boolean): void {
 		const dialogRef = this.dialog.open(DialogAddComponent, {
 			width: '50vw',
@@ -23,8 +39,9 @@ export class ObjectsComponent implements OnInit {
 				data
 			}
 		});
-		dialogRef.afterClosed().subscribe(result => {
+		dialogRef.afterClosed().subscribe(() => {
 			console.log('good');
+			this.getFranchise();
 		});
 	}
 
@@ -43,8 +60,27 @@ export class ObjectsComponent implements OnInit {
 			this.filter = state;
 		}
 	}
+	getFranchise() {
+		this.loading = true;
+		if (this.result === undefined || this.result.length !== 0) {
+			this.result = [];
+		}
+		this.ObjService.getFranchises().subscribe(res => {
+			this.result.push(res);
+		}, err => console.log(err), () => {
+			this.loading = false;
+			this.cdr.detectChanges();
+		});
+	}
+	getFranchiseStatus() {
+		this.ObjService.getStatus().subscribe(res => {
+			this.status.push(res);
+			this.cdr.detectChanges();
+		});
+	}
 	ngOnInit() {
-		this.ObjService.getFranchises();
+		this.getFranchise();
+		this.getFranchiseStatus();
 	}
 }
 
@@ -65,12 +101,36 @@ export class DialogAddComponent {
 	picture: File;
 	editMode: boolean;
 	urlImg: string;
+
+	stateList: FranchisesStatus[] = [];
 	constructor(public dialogRef: MatDialogRef<DialogAddComponent>,
-						       @Inject(MAT_DIALOG_DATA) public data: any, private serv: ObjectsService) {
+						       @Inject(MAT_DIALOG_DATA) public data: any, private serv: FranchisesService, private http: HttpClient) {
 		this.urlImg = '/assets/media/icons/empty-img.svg';
-		const fs = new FileReader();
-		const Img = new Image();
-		Img.src = data.data.picture;
+		serv.getStatus().subscribe(res => {
+			this.stateList.push(res);
+		});
+// 		const Img = new Image();
+// 		if (data.data !== undefined) {
+// 			const xhr = new XMLHttpRequest();
+//
+// // Use JSFiddle logo as a sample image to avoid complicating
+// // this example with cross-domain issues.
+// 			xhr.open( 'GET', 'https://fiddle.jshell.net/img/logo.png', true );
+//
+// // Ask for the result as an ArrayBuffer.
+// 			xhr.responseType = 'blob';
+//
+// 			xhr.onload = function( ) {
+// 				const blob = this.response;
+// 				const reader = new FileReader();
+// 				reader.onload = () => {
+// 					document.getElementById('imgs').src = reader.result;
+// 				};
+// 				reader.readAsDataURL(blob);
+// 			};
+//
+// 			xhr.send();
+// 		}
 
 		if (data.mode) {
 			this.urlImg = data.data.picture;
@@ -83,9 +143,9 @@ export class DialogAddComponent {
 			this.detailedDescription = data.data.detailedDescription;
 			this.picture = data.data.picture;
 			this.editMode = data.data.editMode;
-			// console.log(fs.readAsDataURL(data.data.picture));
 		}
 	}
+
 	collectionData() {
 		const fd = new FormData();
 		fd.append('name', this.newName);
@@ -112,7 +172,6 @@ export class DialogAddComponent {
 		fls.readAsDataURL(img.files[0]);
 		fls.addEventListener('load', () => {
 			document.getElementById('imgs').style.backgroundImage = 'url(' + fls.result + ')';
-			// this.picture = fls.result;
 			}, false);
 	}
 }

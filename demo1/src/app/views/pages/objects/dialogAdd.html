@@ -1,7 +1,3 @@
-<!--<kt-portlet [class]="'kt-portlet&#45;&#45;height-fluid kt-custom-chart'">-->
-<!--	<kt-portlet-header [title]="'Добавить'">-->
-<!--	</kt-portlet-header>-->
-<!--	<kt-portlet-body>-->
 <div class="close">
 	<div class="close-ico" (click)="dialogRef.close()"></div>
 </div>
@@ -14,10 +10,8 @@
 			<div class="col-9">
 
 				<select id="newState" class="form-control" value="Активно" [(ngModel)]="newState">
-					<option *ngFor="let status of serv.franchisesStatus" selected="selected" value="{{status._id}}">{{status.title}}</option>
-<!--					<option selected="selected" value="Активно">Активно</option>-->
-<!--					<option value="Завершено">Завершено</option>-->
-<!--					<option value="Ожидает">Ожидает</option>-->
+					<option *ngFor="let status of stateList" selected="selected"
+							value="{{status._id}}">{{status.title}}</option>
 				</select>
 			</div>
 		</div>
@@ -26,13 +20,13 @@
 				<label class="inputName">Наименование</label>
 			</div>
 			<div class="col-9">
-								<input class="form-control" [(ngModel)]="newName">
-
+				<input class="form-control" [(ngModel)]="newName">
 			</div>
 		</div>
-		<div class="row">					<div class="col-12 col-md-3">
-			<label class="inputName">Сумма инвестиций</label>
-		</div>
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<label class="inputName">Сумма инвестиций</label>
+			</div>
 
 			<div class="col-9"><input class="form-control" type="text" [(ngModel)]="money"></div>
 		</div>
@@ -71,12 +65,10 @@
 <div class="row">
 	<div class="col-12">
 		<label class="inputName">Детальное описание</label>
-		<textarea class="form-control"  [(ngModel)]="detailedDescription"></textarea>
+		<textarea class="form-control" [(ngModel)]="detailedDescription"></textarea>
 	</div>
 </div>
 <div class="row"></div>
 
 <button *ngIf="data.mode" class="btn custom-catalog-btn" (click)="this.edit()">Изменить</button>
 <button *ngIf="!data.mode" class="btn custom-catalog-btn" (click)="this.addNew()">Добавить</button>
-<!--	</kt-portlet-body>-->
-<!--</kt-portlet>-->

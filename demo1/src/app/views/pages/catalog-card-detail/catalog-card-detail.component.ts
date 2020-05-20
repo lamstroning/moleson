@@ -4,6 +4,10 @@ import {SubheaderService} from '../../../core/_base/layout';
 import {CatalogItem} from '../../../core/_base/layout/services/subheader.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {FranchisesService} from '../../../core/franchises';
+import {Franchises} from '../../../core/franchises/_service/franchises.service';
+import {Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
 @Component({
 	selector: 'kt-catalog-card-detail',
@@ -12,22 +16,13 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 
 export class CatalogCardDetailComponent implements OnInit {
-	catalogItem: CatalogItem;
+	catalogItem: Franchises;
 	precent: string;
 	constructor(private activateRoute: ActivatedRoute,
 				         public subheaderService: SubheaderService,
 				         private router: Router,
-				         public dialog: MatDialog) {
-		for (const item of subheaderService.catalog) {
-			if (item.id === +activateRoute.snapshot.params.id) {
-				this.catalogItem = item;
-				this.precent = subheaderService.getPrecent(item.price, item.introduced);
-				break ;
-			}
-		}
-		if (this.catalogItem === undefined) {
-			router.navigate(['error/404']);
-		}
+				         public dialog: MatDialog,
+				         private franchisesService: FranchisesService) {
 	}
 	openDialog() {
 		this.dialog.open(FirstDialog, {
@@ -39,8 +34,49 @@ export class CatalogCardDetailComponent implements OnInit {
 		});
 	}
 
+
 	ngOnInit() {
+		let id: string;
+		this.activateRoute.params.subscribe(params => id = params.id);
+		this.franchisesService.getFranchises().pipe(
+			filter( searchId => searchId._id === id)
+		).subscribe(res => {
+			console.log (res);
+			if (res) {
+				this.catalogItem = res;
+				if (window.location.href.indexOf('localhost:4200') !== -1) {
+					let localPic = this.catalogItem.picture.split('/');
+					localPic[0] = 'http://maxim.fvds.ru';
+					this.catalogItem.picture = localPic.join('/');
+					console.log(res.picture);
+				}
+
+			} else {
+				this.router.navigateByUrl('error/404');
+			}
+		}, err => console.log(err), () => {
+			console.log('complate');
+		});
 	}
+
+	// ngOnInit() {
+	// 	let id: string;
+	// 	this.activateRoute.params.subscribe(params => id = params.id);
+	// 	if (id === undefined) {
+	// 		this.router.navigateByUrl('error/404');
+	// 	}
+	// 	let dataArray: any[];
+	// 	this.franchisesService.getFranchises().pipe().subscribe(res => {
+	// 		dataArray = res;
+	// 		const obser = new Observable<Franchises>(observer => {
+	// 			for (const franchiseElement of dataArray) {
+	// 				observer.next(franchiseElement);
+	// 			}
+	// 			observer.complete();
+	// 		});
+	// 		obser.pipe(filter(nextId => nextId._id === id)).subscribe(finishElement => this.catalogItem = finishElement);
+	// 	});
+	// }
 
 }
 

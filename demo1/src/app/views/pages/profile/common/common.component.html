@@ -6,12 +6,17 @@
 
 			</kt-portlet-header>
 			<kt-portlet-body>
-				<div class="profile-img-block">
-					<div class="profile-img"></div>
-				</div>
-				<div class="profile-img-change">
-					<button type="submit" class="btn full-width custom-catalog-btn">Изменить фото</button>
-				</div>
+
+					<div class="profile-img-block">
+						<div class="profile-img"  id="pict-load"></div>
+
+					</div>
+					<div class="profile-img-change">
+						<label for="pict">
+							<button type="submit" id="btn-load" class="btn full-width custom-catalog-btn">Изменить фото</button>
+							<input type="file" id="pict" name="pick-load" (change)="loadImg($event.target)" style="opacity: 0">
+						</label>
+					</div>
 			</kt-portlet-body>
 		</kt-portlet>
 	</div>
@@ -22,25 +27,21 @@
 			</kt-portlet-header>
 			<kt-portlet-body>
 				<form *ngIf="user$ | async as _user">
-					<label class="active">Имя</label>
-					<input class="form-control" type="text" [(ngModel)]="name">
-					<label class="active">Фамилия</label>
-					<input class="form-control" [(ngModel)]="surname">
-					<label class="active">Пол</label>
-<!--					<input class="form-control"  value="{{_user.data.gender}}" [(ngModel)]="gender" type="text">-->
-<!--					<label class="active">День рождения</label>-->
-<!--					<input class="form-control" value="9" type="text">-->
-<!--					<label class="active">Месяц рождения</label>-->
-<!--					<input class="form-control" value="Май" type="text">-->
+					<label class="active">ФИО</label>
+					<input class="form-control mb-2" type="text" [(ngModel)]="fullName" [ngModelOptions]="{standalone: true}">
+<!--					<label class="active">Фамилия</label>-->
+<!--					<input class="form-control" [(ngModel)]="surname">-->
+<!--					<label class="active">Пол</label>-->
+<!--					<input class="form-control" [(ngModel)]="gender">-->
 					<div class="input-group">
-						<input class="form-control" placeholder="dd/mm/yyyy" name="dp" value="{{birthday}}" (dateSelect)="formatDate()" [startDate]="{year: 1998, month: 1, day: 1}" [(ngModel)]="format" ngbDatepicker #d="ngbDatepicker">
+						<input class="form-control" placeholder="dd/mm/yyyy" name="dp" value="{{birthday}}"  [startDate]="{year: 1998, month: 1, day: 1}" [(ngModel)]="birthday" ngbDatepicker #d="ngbDatepicker">
 						<div class="input-group-append">
 							<button class="btn btn-custom" (click)="d.toggle() " type="button">
 								<i class="la la-calendar"></i>
 							</button>
 						</div>
 					</div>
-					<button class="btn full-width custom-catalog-btn" type="submit">Сохранить</button>
+					<button class="btn full-width custom-catalog-btn" (click)="saveData()" type="submit">Сохранить</button>
 				</form>
 			</kt-portlet-body>
 		</kt-portlet>
@@ -51,14 +52,12 @@
 
 			</kt-portlet-header>
 			<kt-portlet-body>
-				<form>
-					<label class="active">Телефон</label>
-					<input class="form-control" value="79023232323" type="text">
-					<button class="btn full-width  custom-catalog-btn" type="submit">Изменить номер</button>
-					<label class="active">Skype</label>
-					<input class="form-control" value="Skype" type="text">
+				<form *ngIf="user$ | async as _user">
+<!--					<label class="active">Телефон</label>-->
+<!--					<input class="form-control" value="" type="text">-->
+<!--					<button class="btn full-width  custom-catalog-btn" type="submit">Изменить номер</button>-->
 					<label class="active">Email</label>
-					<input class="form-control" value="sbn@mail.ru" type="text">
+					<input class="form-control" value="{{_user.data.email}}" type="text">
 					<button class="btn full-width custom-catalog-btn" type="submit">Сохранить</button>
 				</form>
 			</kt-portlet-body>

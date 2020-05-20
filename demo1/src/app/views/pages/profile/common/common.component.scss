@@ -2,6 +2,9 @@ button.btn.custom-catalog-btn {
 	background-color: #fcb12e;
 
 }
+#btn-load {
+	pointer-events: none;
+}
 button.btn.custom-catalog-btn:hover {
 	background-color: #fcb12e;
 }

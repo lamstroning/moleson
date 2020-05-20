@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	// Public properties
 	title = 'Metronic';
 	loader: boolean;
+	refId: string;
 	private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
 
 	/**
@@ -69,8 +70,22 @@ export class AppComponent implements OnInit, OnDestroy {
 			}
 		});
 		this.unsubscribe.push(routerSubscription);
+		if (this.saveCookie()) {
+			document.cookie = 'refId=' + this.refId;
+		}
 	}
-
+	saveCookie() {
+		const href = window.location.search;
+		const result = href.substring(1).split('&');
+		for (const param of result) {
+			const GETElement = param.split('=');
+			if (GETElement[0] === 'refID') {
+				this.refId = GETElement[1];
+				return true;
+			}
+		}
+		return false;
+	}
 	/**
 	 * On Destroy
 	 */
