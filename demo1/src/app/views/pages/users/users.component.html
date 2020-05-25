@@ -1,9 +1,11 @@
 <div class="table">
 	<div class="row table-header">
 		<div class="col-3">ID</div>
-		<div class="col-3">Имя пользователя</div>
-		<div class="col-3">Email </div>
-		<div class="col-3">Баланс </div>
+		<div class="col-2">Имя пользователя</div>
+		<div class="col-2">Email </div>
+		<div class="col-2">Баланс </div>
+		<div class="col-1">Level </div>
+		<div class="col-2"></div>
 	</div>
 	<div *ngIf="userList === undefined" class="wait">
 		<mat-spinner></mat-spinner>
@@ -11,9 +13,11 @@
 	<div *ngFor="let user of userList">
 		<div class="row table-row">
 			<div class="col-3">{{user._id}}</div>
-			<div class="col-3">{{user.username}}</div>
-			<div class="col-3">{{user.email}}</div>
-			<div class="col-3">{{user.balance}}</div>
+			<div class="col-2">{{user.username}}</div>
+			<div class="col-2">{{user.email}}</div>
+			<div class="col-2">{{user.balance}}</div>
+			<div class="col-1">{{user.level}}</div>
+<!--			<div class="col-2"><div class="btn border-white text-white" >Изменить</div></div>-->
 		</div>
 	</div>
 </div>

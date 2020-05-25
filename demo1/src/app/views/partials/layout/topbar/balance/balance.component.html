@@ -1,0 +1,6 @@
+<div *ngIf="user$ | async as _user" class="balance-table">
+	<div class="balance-title">Баланс:</div>
+	<div class="balance-count">{{_user.data.balance}}</div>
+	<div class="balance-current-valet">RUB</div>
+	<div class="balance-btn btn btn-outline-brand btn-upper btn-sm btn-bold" (click)="openDialog()">Пополнить</div>
+</div>

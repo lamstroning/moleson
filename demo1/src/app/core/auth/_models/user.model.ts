@@ -36,6 +36,7 @@ export class User extends BaseModel {
 	passport: string;
 	_id: string;
 	accessToken: string;
+	balance: number;
 	clear(): void {
 		this.accessLevel = new AccessLevel();
 		this.regDate = new RegUserMoleson();

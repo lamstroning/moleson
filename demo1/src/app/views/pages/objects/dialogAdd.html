@@ -28,7 +28,10 @@
 				<label class="inputName">Сумма инвестиций</label>
 			</div>
 
-			<div class="col-9"><input class="form-control" type="text" [(ngModel)]="money"></div>
+			<div class="col-9 position-relative">
+				<input class="form-control" type="text" [(ngModel)]="money">
+				<div class="current-val">$</div>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-3">

@@ -143,6 +143,14 @@ export class MenuConfig {
 					page: '/referal',
 					public: false
 				},
+				{
+					title: 'Уровни',
+					root: true,
+					bullet: 'dot',
+					icon: 'flaticon2-browser-2',
+					page: '/lvlEdit',
+					public: false
+				},
 			]
 		},
 	};

@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 // Components
 import {BaseComponent} from './views/theme/base/base.component';
+import { LevelEditComponent } from './views/pages/admin/level-edit/level-edit.component';
 import {ErrorPageComponent} from './views/theme/content/error-page/error-page.component';
 // Auth
 import {AuthGuard} from './core/auth';
@@ -93,6 +94,7 @@ const routes: Routes = [
 				},
 			},
 			{path: 'error/:type', component: ErrorPageComponent},
+			{path: 'lvlEdit', component: LevelEditComponent},
 			{path: '', redirectTo: 'dashboard', pathMatch: 'full'},
 			{path: '**', redirectTo: 'dashboard', pathMatch: 'full'},
 		],

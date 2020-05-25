@@ -1,0 +1,36 @@
+.balance-table {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	.balance-count {
+		margin-left: 5px;
+		margin-right: 2px;
+	}
+	> .balance-btn {
+		margin: 0 10px;
+		opacity: 0.5;
+		color: white !important;
+		transition: 0.2s;
+		background-color: #fcb12e !important;
+		border-color: #fcb12e !important;
+	}
+	> .balance-btn:hover {
+		opacity: 1;
+	}
+}
+
+
+.balance-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 20px;
+	h3 {
+		color: #fcb12e;
+		margin: 0 auto;
+	}
+	.count-money {
+		margin: 20px 0;
+		width: 150px;
+	}
+}

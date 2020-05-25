@@ -1,0 +1,11 @@
+<h2 class="text-white">{{data.title}}</h2>
+	<label class="active">Уровень реферала
+		<input class="form-control" type="number" [(ngModel)]="lvlReferral" name="lvlReferral">
+	</label><br>
+	<label class="active">Уровень пользователя
+		<input class="form-control" type="number" [(ngModel)]="lvlUser" name="lvlUser">
+	</label><br>
+	<label class="active">Коэффициент
+		<input class="form-control" type="number" [(ngModel)]="coefficient" name="coefficient">
+	</label><br>
+<div class="btn btn-primary d-block" (click)="send()">Подвердить</div>

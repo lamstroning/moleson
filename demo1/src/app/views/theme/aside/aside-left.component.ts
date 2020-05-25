@@ -17,6 +17,7 @@ import { HtmlClassService } from '../html-class.service';
 import {currentUser} from '../../../core/auth';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../core/reducers';
+import {from, of} from 'rxjs';
 
 @Component({
 	selector: 'kt-aside-left',
@@ -231,7 +232,16 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 	checkPermission(publicPermissions: boolean) {
 		const user = this.store.select(currentUser);
 		let checkPermissions = false;
-		user.subscribe(next => checkPermissions = next.data.accessLevel.permissions.length > 15);
+		from(user).subscribe(next => {
+			if (next !== undefined) {
+				checkPermissions = next.data.accessLevel.permissions.length > 15;
+			} else {
+				checkPermissions = false;
+			}
+		}, err => console.log (err),
+			() => {
+			this.cdr.detectChanges();
+		});
 		return publicPermissions || checkPermissions;
 	}
 }

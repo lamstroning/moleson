@@ -12,10 +12,15 @@ import { ECommerceModule } from './apps/e-commerce/e-commerce.module';
 import { UserManagementModule } from './user-management/user-management.module';
 import { MyPageComponent } from './my-page/my-page.component';
 import {RouterModule} from '@angular/router';
+import {LevelEditComponent, LvlDialogComponent} from './admin/level-edit/level-edit.component';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatProgressSpinnerModule} from '@angular/material';
 
 @NgModule({
-	declarations: [MyPageComponent],
+	declarations: [MyPageComponent, LevelEditComponent, LvlDialogComponent],
 	exports: [],
+	entryComponents: [
+		LvlDialogComponent
+	],
 	imports: [
 		CommonModule,
 		HttpClientModule,
@@ -26,8 +31,11 @@ import {RouterModule} from '@angular/router';
 		ECommerceModule,
 		UserManagementModule,
 		RouterModule,
+		MatProgressSpinnerModule
 	],
-	providers: []
+	providers: [
+		{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
+		]
 })
 export class PagesModule {
 }

@@ -104,7 +104,7 @@ const routes: Routes = [
 			multi: true
 		},
 	],
-	exports: [AuthComponent, VerificationComponent],
+	exports: [AuthComponent, VerificationComponent, AuthNoticeComponent],
 	declarations: [
 		AuthComponent,
 		LoginComponent,

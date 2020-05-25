@@ -6,10 +6,9 @@
 
 			</kt-portlet-header>
 			<kt-portlet-body>
-
-					<div class="profile-img-block">
-						<div class="profile-img"  id="pict-load"></div>
-
+					<div class="profile-img-block" *ngIf="user$ | async as _user">
+<!--						<div class="profile-img"  id="pict-load"></div>-->
+						<canvas  id="pict-load" [style.background-img]="_user.data.avatar"></canvas>
 					</div>
 					<div class="profile-img-change">
 						<label for="pict">
@@ -34,7 +33,7 @@
 <!--					<label class="active">Пол</label>-->
 <!--					<input class="form-control" [(ngModel)]="gender">-->
 					<div class="input-group">
-						<input class="form-control" placeholder="dd/mm/yyyy" name="dp" value="{{birthday}}"  [startDate]="{year: 1998, month: 1, day: 1}" [(ngModel)]="birthday" ngbDatepicker #d="ngbDatepicker">
+						<input class="form-control" placeholder="dd/mm/yyyy" name="dp" value="{{birthday}}"  [startDate]="{year: 1998, month: 1, day: 1}" [(ngModel)]="startDate" ngbDatepicker #d="ngbDatepicker">
 						<div class="input-group-append">
 							<button class="btn btn-custom" (click)="d.toggle() " type="button">
 								<i class="la la-calendar"></i>

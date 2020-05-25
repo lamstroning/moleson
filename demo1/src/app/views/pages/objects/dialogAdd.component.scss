@@ -10,6 +10,17 @@
 label.inputName {
 	color: #fcb12e;
 }
+.current-val {
+	position: absolute;
+	right: 70px;
+	height: 100%;
+	align-items: center;
+	display: flex;
+	font-size: 22px;
+	padding-bottom: 6px;
+	top: 0;
+	color: #fcb12e;
+}
 .form-control  {
 	margin-left: 20px;
 	width: 80%;

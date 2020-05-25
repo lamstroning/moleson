@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../../../core/auth/_services';
 
 @Component({
@@ -8,7 +8,7 @@ import {AuthService} from '../../../../../core/auth/_services';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private cdr: ChangeDetectorRef) { }
 
   userList: ReferralUsers[];
   ngOnInit() {
@@ -29,7 +29,10 @@ export class MainComponent implements OnInit {
 			this.userList = undefined;
 		}
 		  console.log(this.userList);
-	});
+	}, error => console.log(error), () => {
+  		this.cdr.detectChanges();
+	}
+	);
   }
 }
 

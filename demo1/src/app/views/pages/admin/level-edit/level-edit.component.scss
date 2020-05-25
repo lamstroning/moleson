@@ -1,0 +1,54 @@
+.wait {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+.table-row {
+	padding: 10px 0;
+	background-color: #fcb12e;
+	color: white;
+	border-bottom: 1px solid #0a2439;
+}
+.table {
+	margin: 0 auto;
+	max-width: 980px;
+}
+.table-header {
+	padding: 10px 0;
+	border-bottom: 1px solid #0a2439;
+	background-color: #fcb12e;
+	color: white;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.row.table-header > div {
+	display: flex;
+	align-items: center;
+}
+.btn {
+	transition: 0.2s;
+	background-color: #fcb12e;
+	:hover{
+		background-color: white;
+	}
+}
+
+.form-control {
+	width: 100%;
+}
+.btn.active {
+	background-color: white!important;
+	color: black!important;
+}
+label.active {
+	width: 100%;
+	color: #fcb12e;
+	font-size: 20px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	/* display: none; <- Crashes Chrome on hover */
+	-webkit-appearance: none;
+	margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

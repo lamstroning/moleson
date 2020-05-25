@@ -1,0 +1,244 @@
+<kt-portlet [class]="'kt-portlet--height-fluid kt-custom-chart'">
+	<kt-portlet-header [title]="'График'">
+
+	</kt-portlet-header>
+	<kt-portlet-body>
+		<section class="group">
+			<form class="report-settings" method="post" id="graphData">
+				<div class="group__head group__nav">
+					<div class="controls group__controls">
+
+
+						<div class="controls__elem controls__elem--acc-type" id="statusUserGraph">
+							<div class="selector controls-select has-selected-item">
+								<input class="selector__inp" type="hidden" value="0" name="statusGraph"
+									   id="statusGraph">
+								<div class="selector__value" data-val="0">Любой статус</div>
+								<div class="selector__drop">
+									<ul class="selector__list">
+										<li data-val="0" class="is-active">Любой статус</li>
+										<li data-val="client">Клиент</li>
+										<li data-val="partner">Партнер</li>
+										<li data-val="specialist">Специалист</li>
+										<li data-val="master">Мастер</li>
+										<li data-val="expert">Эксперт</li>
+										<li data-val="pro">Профессионал</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="controls__elem controls__elem--acc-type">
+							<div class="selector controls-select has-selected-item">
+								<input class="selector__inp" type="hidden" value="0" name="ordersGraph"
+									   id="ordersGraph">
+								<div class="selector__value" data-val="0">Все</div>
+								<div class="selector__drop">
+									<ul class="selector__list">
+										<li data-val="0" class="is-active">Все</li>
+										<li data-val="yes">Есть</li>
+										<li data-val="no">Нет</li>
+										<li data-val="overdue">Просрочка</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="controls__elem controls__elem--icon-btn">
+							<button class="btn btn--blue controls__icon-btn icon-refresh-white" id="graphButton"
+									title="Применить"></button>
+						</div>
+
+
+					</div>
+				</div>
+			</form>
+			<div class="group__body">
+				<div class="card group__segment">
+					<div class="card__head">
+						<h5 class="card__title">
+							Гражданство </h5>
+					</div>
+					<div class="card__body">
+						<div class="card__bar-chart js-highcharts-pie js-bar-chart-percent" id="highchart_01"
+							 data-chart-info="[{&quot;name&quot;:&quot;Филиппины&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;Турция&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;Румыния&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;Ирландия&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;Вьетнам&quot;, &quot;val&quot;:7},{&quot;name&quot;:&quot;Болгария&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;Алжир&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;Таджикистан&quot;, &quot;val&quot;:3},{&quot;name&quot;:&quot;Молдова&quot;, &quot;val&quot;:3},{&quot;name&quot;:&quot;Литва&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;Израиль&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;Казахстан&quot;, &quot;val&quot;:2},{&quot;name&quot;:&quot;Беларусь&quot;, &quot;val&quot;:3},{&quot;name&quot;:&quot;Украина&quot;, &quot;val&quot;:35},{&quot;name&quot;:&quot;Россия&quot;, &quot;val&quot;:306}]">
+							<ul class="bar-chart">
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.2724795640326975%;"></b>
+										<span>Филиппины — 1 (0.3 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.2724795640326975%;"></b>
+										<span>Турция — 1 (0.3 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.2724795640326975%;"></b>
+										<span>Румыния — 1 (0.3 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.2724795640326975%;"></b>
+										<span>Ирландия — 1 (0.3 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 1.9073569482288828%;"></b>
+										<span>Вьетнам — 7 (1.9 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.2724795640326975%;"></b>
+										<span>Болгария — 1 (0.3 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.2724795640326975%;"></b>
+										<span>Алжир — 1 (0.3 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.8174386920980926%;"></b>
+										<span>Таджикистан — 3 (0.8 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.8174386920980926%;"></b>
+										<span>Молдова — 3 (0.8 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.2724795640326975%;"></b>
+										<span>Литва — 1 (0.3 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.2724795640326975%;"></b>
+										<span>Израиль — 1 (0.3 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.544959128065395%;"></b>
+										<span>Казахстан — 2 (0.5 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.8174386920980926%;"></b>
+										<span>Беларусь — 3 (0.8 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 9.536784741144414%;"></b>
+										<span>Украина — 35 (9.5 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 83.37874659400545%;"></b>
+										<span>Россия — 306 (83.4 %)</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="card group__segment">
+					<div class="card__head">
+						<h5 class="card__title">
+							Статус партнёра </h5>
+					</div>
+					<div class="card__body">
+						<div class="card__bar-chart js-highcharts-pie js-bar-chart-percent" id="highchart_02"
+							 data-chart-info="[{&quot;name&quot;:&quot;Мастер&quot;, &quot;val&quot;:3},{&quot;name&quot;:&quot;Партнер&quot;, &quot;val&quot;:56},{&quot;name&quot;:&quot;Клиент&quot;, &quot;val&quot;:369},{&quot;name&quot;:&quot;Специалист&quot;, &quot;val&quot;:2}]">
+							<ul class="bar-chart">
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.6976744186046512%;"></b>
+										<span>Мастер — 3 (0.7 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 13.023255813953488%;"></b>
+										<span>Партнер — 56 (13.0 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 85.81395348837209%;"></b>
+										<span>Клиент — 369 (85.8 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 0.46511627906976744%;"></b>
+										<span>Специалист — 2 (0.5 %)</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="card group__segment">
+					<div class="card__head">
+						<h5 class="card__title">
+							Сумма покупок </h5>
+					</div>
+					<div class="card__body">
+						<div class="card__bar-chart js-highcharts-pie js-bar-chart-percent" id="highchart_03"
+							 data-chart-info="[{&quot;name&quot;:&quot;до 500&quot;, &quot;val&quot;:8},{&quot;name&quot;:&quot;500-2000&quot;, &quot;val&quot;:23},{&quot;name&quot;:&quot;2000-5000&quot;, &quot;val&quot;:5},{&quot;name&quot;:&quot;5000-15000&quot;, &quot;val&quot;:1},{&quot;name&quot;:&quot;больше 15000&quot;, &quot;val&quot;:1}]">
+							<ul class="bar-chart">
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 21.052631578947366%;"></b>
+										<span>до 500 — 8 (21.1 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 60.526315789473685%;"></b>
+										<span>500-2000 — 23 (60.5 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 13.157894736842104%;"></b>
+										<span>2000-5000 — 5 (13.2 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 2.631578947368421%;"></b>
+										<span>5000-15000 — 1 (2.6 %)</span>
+									</div>
+								</li>
+								<li class="bar-chart__item">
+									<div class="bar-chart__line">
+										<b style="width: 2.631578947368421%;"></b>
+										<span>больше 15000 — 1 (2.6 %)</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</kt-portlet-body>
+</kt-portlet>

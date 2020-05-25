@@ -16,7 +16,7 @@
 		<kt-auth-notice></kt-auth-notice>
 
 		<!--begin::Form-->
-		<form class="kt-form" [formGroup]="loginForm" action="/login" autocomplete="off">
+		<form class="kt-form" [formGroup]="loginForm" id="demo-form" action="/login" autocomplete="off">
 			<div class="form-group">
 				<mat-form-field>
 					<div class="row">
@@ -65,8 +65,21 @@
 					</a>
 				</div>
 			</div>
+<!--			<script>-->
+<!--                function onSubmit(token) {-->
+<!--                    document.getElementById("demo-form").submit();-->
+<!--                }-->
+<!--			</script>-->
 			<div class="kt-login__actions">
-				<button (click)="submit()" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">Войти</button>
+				<button (click)="submit()"
+						[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}"
+						id="kt_login_signin_submit"
+						class="btn btn-primary btn-elevate kt-login__btn-primary g-recaptcha"
+						data-sitekey="reCAPTCHA_site_key"
+						data-callback='onSubmit'
+						data-action='submit'
+
+				>Войти</button>
 			</div>
 			<!--end::Action-->
 		</form>

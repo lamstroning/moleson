@@ -13,7 +13,11 @@ import {UserResponse} from '../../../../core/auth/_services/auth.service';
 export class CommonComponent implements OnInit {
 	user$: Observable<UserResponse>;
 	user: User;
-
+	startDate = {
+		day: 0,
+		month: 0,
+		year: 0
+	};
 	avatar: string;
 	passport: string;
 	email: string;
@@ -82,14 +86,18 @@ export class CommonComponent implements OnInit {
 			this.SNILS = next.data.SNILS === undefined  ? ' ' : next.data.SNILS ;
 			this.INN = next.data.INN === undefined ? ' ' : next.data.INN ;
 		}, err => console.log(err), () => {
-			this.cdr.detectChanges();
+			const format = this.birthday.split('.');
+			this.startDate.day = +format[0];
+			this.startDate.month = +format[1];
+			this.startDate.year = +format[2];
 			console.log('update!!');
+			this.cdr.detectChanges();
 		});
 	}
 }
 
 interface ReqServerSend {
-	avatar: string;
+	avatar: any;
 	passport: string;
 	email: string;
 	fullName: string;

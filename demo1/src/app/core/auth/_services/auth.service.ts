@@ -30,10 +30,10 @@ export class AuthService {
     }
 
     getUserByToken(): Observable<User> {
-    	const userToken = localStorage.getItem(environment.authTokenKey);
-    	let httpHeaders = new HttpHeaders();
-    	httpHeaders = httpHeaders.set('authorization',  userToken);
-    	return this.http.post<User>(API_USERS_URL + '/user/token', {}, {headers: httpHeaders });
+    	// const userToken = localStorage.getItem(environment.authTokenKey);
+    	// let httpHeaders = new HttpHeaders();
+    	// httpHeaders = httpHeaders.set('authorization',  userToken);
+    	return this.http.post<User>(API_USERS_URL + '/user/token', {}, {headers:  this.getUserTokenHeader() });
     }
     register(user: User): Observable<any> {
         const httpHeaders = new HttpHeaders();
@@ -63,35 +63,36 @@ export class AuthService {
     }
 
 	getReferralUsers() {
-		const userToken = localStorage.getItem(environment.authTokenKey);
-		let httpHeaders = new HttpHeaders();
-		httpHeaders = httpHeaders.set('authorization',  userToken);
-		return this.http.post<any>(API_USERS_URL + '/user/referral', {}, {headers: httpHeaders });
+		return this.http.post<any>(API_USERS_URL + '/user/referral', {}, {headers:  this.getUserTokenHeader() });
 	}
 
     getAllUsers(): Observable<any> {
-		const userToken = localStorage.getItem(environment.authTokenKey);
-		let httpHeaders = new HttpHeaders();
-		httpHeaders = httpHeaders.set('authorization',  userToken);
-		return this.http.post<any>(API_USERS_URL + '/admin/user/get', {}, {headers: httpHeaders });
+		return this.http.post<any>(API_USERS_URL + '/admin/user/get', {}, {headers: this.getUserTokenHeader() });
     }
 
     getUserById(userId: number): Observable<User> {
 		return this.http.get<User>(API_USERS_URL + `/${userId}`);
 	}
 
-
+	getUserTokenHeader(): HttpHeaders {
+		const userToken = localStorage.getItem(environment.authTokenKey);
+		let httpHeaders = new HttpHeaders();
+		httpHeaders = httpHeaders.set('authorization',  userToken);
+  		return (httpHeaders);
+	}
     // DELETE => delete the user from the server
 	deleteUser(userId: number) {
 		const url = `${API_USERS_URL}/${userId}`;
 		return this.http.delete(url);
     }
-
+	inviteUser(body: InviteUser): Observable<any> {
+		return this.http.post<any>(API_USERS_URL + '/user/referral/registration', body, {headers: this.getUserTokenHeader()});
+	}
     // UPDATE => PUT: update the user on the server
 	updateUser(data: any): Observable<any> {
-		const userToken = localStorage.getItem(environment.authTokenKey);
-		let httpHeaders = new HttpHeaders();
-		httpHeaders = httpHeaders.set('authorization',  userToken);
+		// const userToken = localStorage.getItem(environment.authTokenKey);
+		// let httpHeaders = new HttpHeaders();
+		// httpHeaders = httpHeaders.set('authorization',  userToken);
 		return this.http.post<any>(API_USERS_URL + '/user/update', {
 			fullName:  data.fullName,
 			avatar: data.avatar,
@@ -107,7 +108,20 @@ export class AuthService {
 			registrationAddress: data.registrationAddress,
 			SNILS: data.SNILS,
 			INN: data.INN,
-		}, { headers: httpHeaders });
+		}, { headers: this.getUserTokenHeader() });
+	}
+
+	getLvl(): Observable<any> {
+		return this.http.post<any>(API_USERS_URL + '/admin/referral/lvl/get', {}, {headers: this.getUserTokenHeader()});
+	}
+	addLvl(data: EditLvl): Observable<any> {
+		return this.http.post<any>(API_USERS_URL + '/admin/referral/lvl/new', data, {headers: this.getUserTokenHeader()});
+	}
+	removeLvl(id: string) {
+		return this.http.post<any>(API_USERS_URL + '/admin/referral/lvl/delete', {_id: id}, {headers: this.getUserTokenHeader()});
+	}
+	editLvl(data: EditLvl): Observable<any> {
+		return this.http.post<any>(API_USERS_URL + '/admin/referral/lvl/edit', data, {headers: this.getUserTokenHeader()});
 	}
 
     // CREATE =>  POST: add a new user to the server
@@ -194,6 +208,17 @@ export class AuthService {
     }
 }
 
+export interface EditLvl {
+	_id: string;
+	lvlReferral: number;
+	lvlUser: number;
+	coefficient: number;
+}
+export interface InviteUser {
+	fullname: string;
+	username: string;
+	email: string;
+}
 export interface UserResponse {
 	data: User;
 	status: string;
