@@ -10,6 +10,32 @@
 label.inputName {
 	color: #fcb12e;
 }
+.stocks-count {
+	display: flex;
+	align-items: center;
+	.counter-change {
+		font-size: 50px;
+		padding: 0 20px;
+		color: #fcb12e;
+		cursor: pointer;
+		user-select: none;
+	}
+	input {
+		width: 50px;
+		height: 50px;
+		background-color: transparent;
+		color: #fcb12e;
+		border: 1px solid #fcb12e;
+		text-align: center;
+		font-size: 15px;
+	}
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		/*display: none;  <- Crashes Chrome on hover */
+		-webkit-appearance: none;
+		margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+	}
+}
 .current-val {
 	position: absolute;
 	right: 70px;

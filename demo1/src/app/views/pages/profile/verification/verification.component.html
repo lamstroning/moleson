@@ -4,10 +4,119 @@
 		<kt-portlet-header [title]="'Верификация'">
 
 		</kt-portlet-header>
-		<kt-portlet-body>
-			<div class="page-nav__about">Вы уже успешно прошли верфифкацию, если вы хотите изменить свои данные, пройдите верификацию повторно</div>
+		<kt-portlet-body *ngIf="$user | async as _user">
+			<div class="page-nav__about" *ngIf="_user.data.isVerified">Вы уже успешно прошли верфифкацию, если вы хотите изменить свои данные, пройдите верификацию повторно</div>
+			<div class="page-nav__about" *ngIf="!_user.data.isVerified">Пожалуйста, пройдите верификацию</div>
 			<form>
-				<button class="btn full-width custom-catalog-btn" type="submit">Повторно подвердить Верификацию</button>
+				<div class="row mb-5">
+					<div class="col-12 col-md-4">
+						<div class="mb-4 text-center">Фото с паспортом</div>
+						<label id="photo" for="inp-photo" class="dialog-img" [style.background-image]="'url(' + avatarImg + ')'">
+							<input  type="file" id="inp-photo" (change)="addImgMini(1, $event.target)">
+						</label>
+					</div>
+					<div class="col-12 col-md-4">
+						<div class="mb-4 text-center">Первый разворот паспорта</div>
+						<label id="pass-img-1" for="inp-pass-1" class="dialog-img" [style.background-image]="'url(' + pass1Img + ')'">
+							<input  type="file" id="inp-pass-1" (change)="addImgMini(2, $event.target)">
+						</label>
+					</div>
+					<div class="col-12 col-md-4">
+						<div class="mb-4 text-center">Второй разворот паспорта</div>
+						<label id="pass-img-2" for="inp-pass-2" class="dialog-img" [style.background-image]="'url(' + pass2Img + ')'">
+							<input  type="file" id="inp-pass-2" (change)="addImgMini(3, $event.target)">
+						</label>
+					</div>
+				</div>
+<!--				<div class="row">-->
+<!--					<div class="col-12 col-md-6">-->
+<!--						<div id="drop-area-avatar" class="drop-area" [class.active-drop]="dragStart">-->
+<!--							<div class="drop-area-label">Перетащите сюда файл</div>-->
+<!--							<label class="active">Ваше фото с паспортом-->
+<!--								<input class="form-control" (change)="addImgMini(1, $event.target)" type="file">-->
+<!--							</label>-->
+<!--							<div class="img-area">-->
+<!--								<div class="img-item" *ngIf="avatarImg !== undefined" [style.background-image]="'url(' + avatarImg + ')'"></div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="col-12 col-md-6">-->
+<!--						<div id="drop-area-pass" class="drop-area" [class.active-drop]="dragStart">-->
+<!--							<div class="drop-area-label">Перетащите сюда файл</div>-->
+<!--						<label class="active">Скан пасспорта-->
+<!--							<input class="form-control" type="file" multiple>-->
+<!--						</label>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<label class="active">ФИО
+							<input class="form-control" [(ngModel)]="fullName" type="text">
+						</label>
+					</div>
+					<div class="col-12 col-md-6">
+						<label class="active">Пол
+							<input class="form-control" [(ngModel)]="gender" type="text">
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<label class="active">Дата рождения
+							<input class="form-control" [(ngModel)]="birthday" type="text">
+						</label>
+					</div>
+					<div class="col-12 col-md-6">
+						<label class="active">Гражданство
+							<input class="form-control" [(ngModel)]="citizenship" type="text">
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<label class="active">Номер паспорта
+							<input class="form-control" [(ngModel)]="passportId" type="text">
+						</label>
+					</div>
+					<div class="col-12 col-md-6">
+						<label class="active">Кем выдан
+							<input class="form-control" [(ngModel)]="issued" type="text">
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<label class="active">Дата выдачи
+							<input class="form-control" [(ngModel)]="dateIssued" type="text">
+						</label>
+					</div>
+					<div class="col-12 col-md-6">
+						<label class="active">Код подразделения
+							<input class="form-control" [(ngModel)]="departmentCode" type="text">
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<label class="active">Адрес регистрации
+							<input class="form-control" [(ngModel)]="registrationAddress" type="text">
+						</label>
+					</div>
+					<div class="col-12 col-md-6">
+						<label class="active">СНИЛС
+							<input class="form-control" [(ngModel)]="SNILS" type="text">
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<label class="active">ИНН
+							<input class="form-control" [(ngModel)]="INN" type="text">
+						</label>
+					</div>
+				</div>
+				<button class="btn full-width custom-catalog-btn" (click)="submit()" type="submit">{{_user.data.isVerified ? 'Повторно ' : ''}}Подвердить верификацию</button>
 			</form>
 		</kt-portlet-body>
 	</kt-portlet>

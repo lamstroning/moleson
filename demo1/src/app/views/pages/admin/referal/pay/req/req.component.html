@@ -1,0 +1,38 @@
+<div class="table-container">
+	<div class="container-fluid mt-5 table-main">
+		<div class="row header-row row-table">
+			<div class="col-3" style="max-width: 150px">
+				<div class="row">
+					<div class="col-12 d-flex">
+						<mat-checkbox id="all" (click)="this.allCheckClick()" name="agree"></mat-checkbox>
+						<button class="btn-toggle-burger" style="opacity: 0">
+							<span></span>
+						</button>
+						<div class="id-col">ID</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">Пользователь</div>
+			<div class="col-2">Сумма</div>
+			<div class="col-2">Платежная система</div>
+			<div class="col-2">Статус</div>
+		</div>
+		<div *ngFor="let col of rows" class="row row-table">
+			<div class="col-3" style="max-width: 150px">
+				<div class="row">
+					<div class="col-12 d-flex">
+						<mat-checkbox [checked]="col.checked" name="agree"></mat-checkbox>
+						<button class="btn-toggle-burger">
+							<span></span>
+						</button>
+						<div class="id-col">{{col.id}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">{{col.user}}</div>
+			<div class="col-2">{{col.cost}}</div>
+			<div class="col-2">{{col.paySystem}}</div>
+			<div class="col-2">{{col.state}}</div>
+		</div>
+	</div>
+</div>

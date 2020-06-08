@@ -1,4 +1,3 @@
-
 <div class="catalog-detail">
 	<div class="row">
 		<div class="col-xl-8 p-0">
@@ -10,9 +9,9 @@
 			<div class="catalog-detail-info-block">
 				<div class="catalog-detail-info-block-cost">
 					<div class="catalog-detail-info-block-price">
-						${{catalogItem.money}}
+						${{this.money}}
 					</div>
-					<div class="catalog-detail-info">Общая сумма инвестиций</div >
+					<div class="catalog-detail-info">Общая сумма инвестиций</div>
 				</div>
 				<div class="catalog-detail-info-block-info">
 					<h3 class="catalog-detail-title">Краткое описание проекта</h3>
@@ -21,27 +20,84 @@
 					</div>
 				</div>
 				<div class="progress-bar-container">
-					<div class="progress-bar-done">
-						<div class="progress-bar-done-section">
-<!--							<b>{{subheaderService.getPrecent(this.catalogItem.money, this.catalogItem.introduced)}}% </b> <span> Проинвестировно</span>-->
-							<b>{{catalogItem.payback}} </b> <span> Проинвестировно</span>
+					<div class="progress-bar-done" [class.hide-bar]="buyStocks === 0">
+						<div class="progress-bar-done-section done">
+							<b>{{catalogItem.purchasedShares + buyStocks}} </b> <span> Будет проинвестировно</span>
 						</div>
-						<div class="progress-bar-done-section">
-<!--							<b>{{this.catalogItem.money - this.catalogItem.introduced}}$</b> <span> осталось</span>-->
-							<b>{{catalogItem.payback}} </b>
+						<div class="progress-bar-done-section done">
+							<span> Останется</span><b> {{maxCountStock - buyStocks}} </b>
 						</div>
 					</div>
-					<div class="progress-bar-count-investor"><b>63 </b> <span> Инвестора</span></div>
+					<div class="progress-bar-done">
+						<div class="progress-bar-done-section">
+							<b>{{catalogItem.purchasedShares}} </b> <span> Проинвестировно</span>
+						</div>
+						<div class="progress-bar-done-section">
+							<span> Осталось</span><b> {{maxCountStock}} </b>
+						</div>
+					</div>
+					<div class="progress-bar-count-investor"><b class="mr-2">{{catalogItem.investors.length}} </b>
+						<span> Инвестора</span></div>
 					<div class="kt-widget12__progress">
 						<div class="progress kt-progress--sm">
-<!--							<div class="progress-bar bg-success" role="progressbar" [style.width]="subheaderService.getPrecent(this.catalogItem.price, this.catalogItem.introduced) + '%'"-->
-							<div class="progress-bar bg-success" role="progressbar" [style.width]="catalogItem.payback / (catalogItem.money / 100) + '%'"
+							<!--							<div class="progress-bar bg-success" role="progressbar" [style.width]="subheaderService.getPrecent(this.catalogItem.price, this.catalogItem.introduced) + '%'"-->
+							<div class="progress-bar bg-success" role="progressbar" [style.width]="getPrecent('old')"
 								 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-								<div class="bg-success-remains">{{catalogItem.payback}}$</div></div>
+								<div class="bg-success-remains">{{getPrecent('old')}}</div>
+							</div>
+							<div class="progress-bar bg-success new-color" role="progressbar" [style.width]="getPrecent('new')"
+								 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+								<div class="bg-success-remains">{{getPrecent('new')}}</div>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="maxCountStock !== 0" class="row mt-5">
+						<div class="col-12">
+							<div class="row">
+								<div class="col-12 buy-result text-center">
+									{{'Купить ' + this.buyStocks + ' шт.'}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 buy-result text-center">
+									{{'$ ' + this.buyStocks * catalogItem.stock.price}}
+								</div>
+							</div>
+							<div *ngIf="this.buyStocks * catalogItem.stock.price" class="row">
+
+							</div>
+							<div class="row">
+								<div class="col-1">
+									<div class="custom-btn" (click)="buyStocks = buyStocks < 0 ? 0 : buyStocks - 1">-
+									</div>
+								</div>
+								<div class="col-10">
+									<mat-slider [max]="catalogItem.stocks - catalogItem.purchasedShares"
+												[min]="0"
+												[step]="1"
+												[thumbLabel]="false"
+												[color]="'primary'"
+												[(ngModel)]="this.buyStocks"></mat-slider>
+								</div>
+								<div class="col-1">
+									<div class="custom-btn"
+										 (click)="buyStocks = buyStocks >= maxCountStock ? maxCountStock : buyStocks + 1">
+										+
+									</div>
+								</div>
+							</div>
+
+							<div class="catalog-detail-info-block-btn" [class.disabled-btn]="buyStocks === 0" (click)="buy()">
+								Инвестировать
+							</div>
+						</div>
+					</div>
+					<div *ngIf="maxCountStock === 0" class="row mt-5">
+						<div class="col-12 buy-result">
+							Все акции проданы
 						</div>
 					</div>
 				</div>
-<!--				<div (click)="openDialog()" class="catalog-detail-info-block-btn">Инвестировать</div>-->
 			</div>
 		</div>
 	</div>
@@ -54,49 +110,49 @@
 		</div>
 	</div>
 	<div class="row mt-5">
-<!--		<div class="col-xl-6">-->
-<!--			<h2 class="catalog-detail-title">Особенности проекта</h2>-->
-<!--			<div class="catalog-detail-desc">-->
-<!--				<ul class="style-line">-->
-<!--					<li>Коттеджный посёлок расположен на первой береговой линии от реки Волга</li>-->
-<!--					<li>Транспортная доступность: 7 минут от центра Твери; скоростное шоссе до Москвы</li>-->
-<!--					<li>Охраняемая огороженная территория посёлка</li>-->
-<!--				</ul>-->
-<!--				<div class="row tizer-row">-->
-<!--					<div class="col-4">-->
-<!--						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer1.svg'"></div>-->
-<!--						<div class="tizer-item-cost">1500$</div>-->
-<!--						<div class="tizer-item-title">Минимальная сумма</div>-->
-<!--					</div>-->
-<!--					<div class="col-4">-->
-<!--						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer2.svg'"></div>-->
-<!--						<div class="tizer-item-cost">15 000$</div>-->
-<!--						<div class="tizer-item-title">Средний доход</div>-->
-<!--					</div>-->
-<!--					<div class="col-4">-->
-<!--						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer3.svg'"></div>-->
-<!--						<div class="tizer-item-cost">3 месяца</div>-->
-<!--						<div class="tizer-item-title">Средний период окупаемости</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--		<div class="col-xl-6">-->
-<!--			<h2 class="catalog-detail-title">Преимущества проекта</h2>-->
-<!--			<div class="catalog-detail-desc">-->
-<!--				<ul>-->
-<!--					<li>хорошая экология</li>-->
-<!--					<li>красота природы</li>-->
-<!--					<li>близость леса и водоёма</li>-->
-<!--					<li>Единый стиль</li>-->
-<!--					<li>Благоустроенные общественные рекреационные зоны</li>-->
-<!--					<li>Спортивно-оздоровительная инфраструктура</li>-->
-<!--					<li>Близость городской инфраструктуры (детские сады, школы, мед. учреждения)</li>-->
-<!--					<li>Благоустроенная рекреационная зона с пляжем и лодочной станцией</li>-->
-<!--					<li>Безопасность (ограждённая территория/КПП на въездах/система видеонаблюдения/круглосуточное патрулирование)</li>-->
-<!--				</ul>-->
-<!--			</div>-->
-<!--		</div>-->
+		<!--		<div class="col-xl-6">-->
+		<!--			<h2 class="catalog-detail-title">Особенности проекта</h2>-->
+		<!--			<div class="catalog-detail-desc">-->
+		<!--				<ul class="style-line">-->
+		<!--					<li>Коттеджный посёлок расположен на первой береговой линии от реки Волга</li>-->
+		<!--					<li>Транспортная доступность: 7 минут от центра Твери; скоростное шоссе до Москвы</li>-->
+		<!--					<li>Охраняемая огороженная территория посёлка</li>-->
+		<!--				</ul>-->
+		<!--				<div class="row tizer-row">-->
+		<!--					<div class="col-4">-->
+		<!--						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer1.svg'"></div>-->
+		<!--						<div class="tizer-item-cost">1500$</div>-->
+		<!--						<div class="tizer-item-title">Минимальная сумма</div>-->
+		<!--					</div>-->
+		<!--					<div class="col-4">-->
+		<!--						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer2.svg'"></div>-->
+		<!--						<div class="tizer-item-cost">15 000$</div>-->
+		<!--						<div class="tizer-item-title">Средний доход</div>-->
+		<!--					</div>-->
+		<!--					<div class="col-4">-->
+		<!--						<div class="tizer-item-img" [inlineSVG]="'./assets/media/icons/svg/tizer/tizer3.svg'"></div>-->
+		<!--						<div class="tizer-item-cost">3 месяца</div>-->
+		<!--						<div class="tizer-item-title">Средний период окупаемости</div>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--		<div class="col-xl-6">-->
+		<!--			<h2 class="catalog-detail-title">Преимущества проекта</h2>-->
+		<!--			<div class="catalog-detail-desc">-->
+		<!--				<ul>-->
+		<!--					<li>хорошая экология</li>-->
+		<!--					<li>красота природы</li>-->
+		<!--					<li>близость леса и водоёма</li>-->
+		<!--					<li>Единый стиль</li>-->
+		<!--					<li>Благоустроенные общественные рекреационные зоны</li>-->
+		<!--					<li>Спортивно-оздоровительная инфраструктура</li>-->
+		<!--					<li>Близость городской инфраструктуры (детские сады, школы, мед. учреждения)</li>-->
+		<!--					<li>Благоустроенная рекреационная зона с пляжем и лодочной станцией</li>-->
+		<!--					<li>Безопасность (ограждённая территория/КПП на въездах/система видеонаблюдения/круглосуточное патрулирование)</li>-->
+		<!--				</ul>-->
+		<!--			</div>-->
+		<!--		</div>-->
 	</div>
 </div>
 

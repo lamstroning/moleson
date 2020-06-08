@@ -85,10 +85,13 @@ export class AuthService {
 		const url = `${API_USERS_URL}/${userId}`;
 		return this.http.delete(url);
     }
+	updateAvatar(file: any): Observable<any> {
+		return this.http.post<any>(API_USERS_URL + '/user/update/avatar', file, {headers: this.getUserTokenHeader()});
+	}
 	inviteUser(body: InviteUser): Observable<any> {
 		return this.http.post<any>(API_USERS_URL + '/user/referral/registration', body, {headers: this.getUserTokenHeader()});
 	}
-    // UPDATE => PUT: update the user on the server
+	// UPDATE => PUT: update the user on the server
 	updateUser(data: any): Observable<any> {
 		// const userToken = localStorage.getItem(environment.authTokenKey);
 		// let httpHeaders = new HttpHeaders();
@@ -99,7 +102,7 @@ export class AuthService {
 			passport: data.passport,
 			email: data.email,
 			gender: data.gender,
-			birthday: data.birthday.day + '.' + data.birthday.month + '.' + data.birthday.year,
+			birthday: data.birthday,
 			citizenship: data.citizenship,
 			passportId: data.passportId,
 			issued: data.issued,
@@ -110,7 +113,9 @@ export class AuthService {
 			INN: data.INN,
 		}, { headers: this.getUserTokenHeader() });
 	}
-
+	updateRefLink(newLink: string): Observable<any> {
+    	return this.http.post<any>(API_USERS_URL + '/user/update/referralLink', {link: newLink}, {headers: this.getUserTokenHeader()});
+	}
 	getLvl(): Observable<any> {
 		return this.http.post<any>(API_USERS_URL + '/admin/referral/lvl/get', {}, {headers: this.getUserTokenHeader()});
 	}

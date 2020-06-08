@@ -23,6 +23,7 @@
 }
 .catalog-detail-info-block-btn {
 	cursor: pointer;
+	transition: 0.2s;
 	justify-content: center;
 	display: flex;
 	align-items: center;
@@ -104,8 +105,10 @@ h3.catalog-detail-title{
 
 .kt-widget12__progress {
 	margin: 20px 0;
+	position: relative;
 }
 .progress-bar-done {
+	transition: 0.2s;
 	display: flex;
 	justify-content: space-between;
 	color: #fcb12e;
@@ -322,4 +325,56 @@ div#kt_wrapper {
 }
 body {
 	color: #fcb12e;
+}
+::ng-deep {
+	.mat-primary .mat-slider-track-fill, .mat-primary .mat-slider-thumb, .mat-primary .mat-slider-thumb-label  {
+		background-color: #fcb12e!important;
+	}
+	.mat-slider-horizontal {
+		width: 100%;
+	}
+}
+.buy-result {
+	font-size: 20px;
+	color: #fcb12e;
+}
+.custom-btn {
+	font-size: 30px;
+	display: flex;
+	user-select: none;
+	justify-content: center;
+	height: 48px;
+	width: 30px;
+	transition: 0.4s;
+	cursor: pointer;
+	align-items: center;
+	background-color: #0a2439;
+	color: #fcb12e;
+	&:hover {
+		color: #5a4c34;
+	}
+}
+.disabled-btn {
+	pointer-events: none;
+	background-color: #3a3a3a;
+	color: black;
+}
+.progress-bar-done-section.done {
+	* {
+		color: lightgreen!important;
+	}
+}
+.progress-bar-done.hide-bar {
+	opacity: 0!important;
+	user-select: none;
+}
+.progress-bar.bg-success {
+	position: relative;
+	z-index: 1;
+}
+.progress-bar.bg-success.new-color {
+	background-color: lightgreen!important;
+	position: absolute;
+	left: 0;
+	z-index: 0;
 }

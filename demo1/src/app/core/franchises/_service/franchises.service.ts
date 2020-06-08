@@ -35,7 +35,7 @@ export class FranchisesService {
 			);
 	}
 	update(body: any) {
-		this.http.post<any>('/api/user/franchises/edit', body, {headers: this.httpHeaders})
+		this.http.post<any>('/api/admin/franchises/edit', body, {headers: this.httpHeaders})
 			.pipe(map(state => console.log(state.status)))
 			.subscribe(next => {
 				console.log(next);
@@ -43,12 +43,25 @@ export class FranchisesService {
 		this.getFranchises();
 	}
 	addNew(body: any) {
-		this.http.post<any>('/api/user/franchises/new', body, {headers: this.httpHeaders})
+		this.http.post<any>('/api/admin/franchises/new', body, {headers: this.httpHeaders})
 			.pipe(map(state => console.log(state.status)))
 			.subscribe(next => {
 				console.log(next);
 			});
 		this.getFranchises();
+	}
+	createStocks(body: any): Observable<any> {
+		return this.http.post<any>('/api/admin/stocks/new', body, {headers: this.httpHeaders});
+	}
+	getStocks(): Observable<any> {
+		return this.http.post<any>( '/api/admin/stocks/get', {}, {headers: this.httpHeaders})
+			.pipe(concatMap( res => {
+				return from<Stock[]>(res.data);
+			})
+		);
+	}
+	buyFranchises(body: any): Observable<any> {
+		return this.http.post<any>('/api/user/franchises/pay', body, {headers: this.httpHeaders});
 	}
 }
 
@@ -60,7 +73,6 @@ export interface FranchisesStatus {
 }
 
 export interface Franchises {
-	money: number;
 	dateCreate: number;
 	investors: [];
 	isEdit: boolean;
@@ -74,5 +86,13 @@ export interface Franchises {
 	picture: string;
 	user: string;
 	__v: number;
+	stock: Stock;
+	stocks: number;
+	purchasedShares: number;
 }
 
+export interface Stock {
+	name: string;
+	_id: string;
+	price: number;
+}

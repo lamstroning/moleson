@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {currentUser, User} from '../../../../../core/auth';
+import {currentUser} from '../../../../../core/auth';
 import {Observable} from 'rxjs';
 import {AppState} from '../../../../../core/reducers';
-import {MatDialog} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {UserResponse} from '../../../../../core/auth/_services/auth.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'kt-balance',
@@ -23,8 +24,18 @@ export class BalanceComponent implements OnInit {
 		this.user$ = this.store.pipe(select(currentUser));
 	}
 	openDialog() {
-  		const dialogRef = this.dialog.open(DialogContentExampleDialog);
-	}
+  		this.user$.subscribe(res => {
+  			if (res) {
+  				console.log(res);
+  				const id = res.data._id;
+				const dialogRef = this.dialog.open(DialogPayComponent, {
+					data: {
+						id
+					}
+				});
+			}
+		});
+  	}
 
 }
 @Component({
@@ -32,4 +43,15 @@ export class BalanceComponent implements OnInit {
 	templateUrl: './balance-dialog.component.html',
 	styleUrls: ['./balance.component.scss']
 })
-export class DialogContentExampleDialog {}
+export class DialogPayComponent {
+	url: SafeUrl;
+	constructor(
+				public dialogRef: MatDialogRef<DialogPayComponent>,
+				@Inject(MAT_DIALOG_DATA) public data: any,
+				private sanitizer: DomSanitizer
+			) {
+		console.log(data.id);
+		this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
+			'https://moleson.payrexx.com/pay?tid=7df69168&referenceId=' + data.id + '&appview=1');
+	}
+}

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
+	MAT_DIALOG_DATA,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatAutocompleteModule,
 	MatButtonModule,
@@ -75,7 +76,7 @@ import {WidgetModule} from './content/widgets/widget.module';
 import {InlineSVGModule} from 'ng-inline-svg';
 import {CartComponent} from './layout/topbar/cart/cart.component';
 import { NavmenuComponent } from './layout/navmenu/navmenu.component';
-import {DialogContentExampleDialog} from './layout/topbar/balance/balance.component';
+import {DialogPayComponent} from './layout/topbar/balance/balance.component';
 
 @NgModule({
 	declarations: [
@@ -110,14 +111,14 @@ import {DialogContentExampleDialog} from './layout/topbar/balance/balance.compon
 		UserProfile2Component,
 		UserProfile3Component,
 		CartComponent,
-		DialogContentExampleDialog,
+		DialogPayComponent,
 
 		ErrorComponent,
 
 		NavmenuComponent,
 	],
 	entryComponents: [
-		DialogContentExampleDialog
+		DialogPayComponent
 	],
 	exports: [
 		WidgetModule,
@@ -197,7 +198,8 @@ import {DialogContentExampleDialog} from './layout/topbar/balance/balance.compon
 		NgbTooltipModule,
 	],
 	providers: [
-		{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+		{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+		{ provide: MAT_DIALOG_DATA, useValue: {data: undefined}}
 	]
 })
 export class PartialsModule {

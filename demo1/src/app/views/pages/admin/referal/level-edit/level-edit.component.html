@@ -1,0 +1,27 @@
+<div class="table mt-5">
+	<div class="row table-header">
+		<div class="col-3 justify-content-center">Уровень реферала</div>
+		<div class="col-3 justify-content-center">Уровень пользователя</div>
+		<div class="col-3 justify-content-center">Коэффицент</div>
+		<div class="col-3">
+			<div class="btn border-white text-white"  (click)="openDialog($event.target, undefined, 'Добавить уровень')">Добавить</div>
+		</div>
+	</div>
+	<div *ngIf="lvl === undefined" class="wait">
+		<mat-spinner></mat-spinner>
+	</div>
+	<div *ngFor="let levelElement of lvl">
+		<div class="row table-row">
+			<div class="col-3 text-center">{{levelElement.lvlReferral}}</div>
+			<div class="col-3 text-center">{{getLevel(levelElement.lvlUser)}}</div>
+			<div class="col-3 text-center">{{+levelElement.coefficient * 100}}%</div>
+			<div class="col-1">
+				<div class="obj-edit" title="изменить" (click)="openDialog($event.target, levelElement._id, 'Изменить уровень')"></div>
+			</div>
+			<div class="col-1">
+				<div class="obj-remove"  title="удалить" (click)="remove(levelElement._id)"></div>
+			</div>
+
+		</div>
+	</div>
+</div>

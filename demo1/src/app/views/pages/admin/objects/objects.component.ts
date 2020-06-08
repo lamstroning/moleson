@@ -1,10 +1,10 @@
 import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {FranchisesService} from '../../../core/franchises';
-import {Franchises, FranchisesStatus} from '../../../core/franchises/_service/franchises.service';
+import {FranchisesService} from '../../../../core/franchises';
+import {Franchises, FranchisesStatus, Stock} from '../../../../core/franchises/_service/franchises.service';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {AppState} from '../../../core/reducers';
+import {AppState} from '../../../../core/reducers';
 import {HttpClient} from '@angular/common/http';
 
 
@@ -18,11 +18,13 @@ export class ObjectsComponent implements OnInit {
 	result: Franchises[];
 	status: FranchisesStatus[] = [];
 	loading = true;
-	constructor(public dialog: MatDialog,
-				         private ObjService: FranchisesService,
-				         private router: Router,
-				         private store: Store<AppState>,
-				         private cdr: ChangeDetectorRef) {
+	constructor(
+		public dialog: MatDialog,
+		private ObjService: FranchisesService,
+		private router: Router,
+		private store: Store<AppState>,
+		private cdr: ChangeDetectorRef
+	) {
 
 	}
 	removeFranchise(id: string) {
@@ -93,7 +95,6 @@ export class ObjectsComponent implements OnInit {
 export class DialogAddComponent {
 	newState: string;
 	newName: string;
-	money: string;
 	profitability: string;
 	payback: string;
 	shortDescription: string;
@@ -101,61 +102,62 @@ export class DialogAddComponent {
 	picture: File;
 	editMode: boolean;
 	urlImg: string;
-
+	fileName: string;
+	fileType: string;
+	stock: string;
+	stockList: Stock[] = [];
 	stateList: FranchisesStatus[] = [];
+	stocksCount = 1;
+	_id: string;
 	constructor(public dialogRef: MatDialogRef<DialogAddComponent>,
 						       @Inject(MAT_DIALOG_DATA) public data: any, private serv: FranchisesService, private http: HttpClient) {
 		this.urlImg = '/assets/media/icons/empty-img.svg';
 		serv.getStatus().subscribe(res => {
 			this.stateList.push(res);
 		});
-// 		const Img = new Image();
-// 		if (data.data !== undefined) {
-// 			const xhr = new XMLHttpRequest();
-//
-// // Use JSFiddle logo as a sample image to avoid complicating
-// // this example with cross-domain issues.
-// 			xhr.open( 'GET', 'https://fiddle.jshell.net/img/logo.png', true );
-//
-// // Ask for the result as an ArrayBuffer.
-// 			xhr.responseType = 'blob';
-//
-// 			xhr.onload = function( ) {
-// 				const blob = this.response;
-// 				const reader = new FileReader();
-// 				reader.onload = () => {
-// 					document.getElementById('imgs').src = reader.result;
-// 				};
-// 				reader.readAsDataURL(blob);
-// 			};
-//
-// 			xhr.send();
-// 		}
+		serv.getStocks().subscribe(res => {
+			this.stockList.push(res);
+		});
+
 
 		if (data.mode) {
 			this.urlImg = data.data.picture;
 			this.newState = data.data.status._id;
+			this.stock = data.data.stock;
 			this.newName = data.data.name;
-			this.money = data.data.money;
 			this.profitability = data.data.profitability;
 			this.payback = data.data.payback;
 			this.shortDescription = data.data.shortDescription;
 			this.detailedDescription = data.data.detailedDescription;
-			this.picture = data.data.picture;
+			this._id = data.data._id;
+			this.stocksCount = data.data.stocks;
+			this.stock = data.data.stock;
+			// this.picture = data.data.picture;
 			this.editMode = data.data.editMode;
+			this.loadImg();
+			// this.picture = fetch(data.data.picture).then(res => res.blob()).then(blob => img.src = URL.createObjectURL(blob));
 		}
 	}
-
+	changeCount(count) {
+		this.stocksCount += count;
+		if (this.stocksCount < 1) {
+			this.stocksCount = 1;
+		}
+	}
 	collectionData() {
 		const fd = new FormData();
 		fd.append('name', this.newName);
 		fd.append('status', this.newState);
-		fd.append('money', this.money);
 		fd.append('profitability', this.profitability);
 		fd.append('payback', this.payback);
 		fd.append('shortDescription', this.shortDescription);
 		fd.append('detailedDescription', this.detailedDescription);
 		fd.append('picture', this.picture, this.picture.name);
+		fd.append('stock', this.stock);
+		fd.append('stocks', this.stocksCount + '');
+		if (this.data.mode) {
+			fd.append('_id', this._id);
+		}
 		return fd;
 	}
 	edit() {
@@ -166,8 +168,44 @@ export class DialogAddComponent {
 		this.serv.addNew(this.collectionData());
 		this.dialogRef.close();
 	}
+	loadImg() {
+		const img = new Image();
+		img.src = 'http://maxim.fvds.ru' + this.data.data.picture.substr(1);
+		this.getFileNameFromURL(img.src);
+		console.log(img.src);
+		const canvas = document.createElement('canvas');
+		canvas.width = 200;
+		canvas.height = 300;
+		const context = canvas.getContext('2d');
+		context.drawImage(img, 0, 0);
+
+		canvas.toBlob(blob => {
+			console.log(blob);
+			this.picture = new File([blob], this.fileName, {
+				type: 'text/' + this.fileType
+			});
+			console.log(this.picture);
+		}, 'image/' + this.fileType);
+	}
+	getFileNameFromURL(url: string) {
+		const posUrl: number = url.lastIndexOf('/');
+		if (posUrl === -1) {
+			return (url);
+		}
+		this.fileName = url.substr(posUrl + 1);
+		const pos: number = this.fileName.lastIndexOf('.');
+		if (pos === -1) {
+			return ;
+		}
+		this.fileType = this.fileName.substr(pos + 1);
+		if (this.fileType === 'jpg') {
+			this.fileType = 'jpeg';
+			console.log('image/' + this.fileType);
+		}
+	}
 	addImage(img: any) {
 		this.picture = img.files[0];
+		console.log(this.picture);
 		const fls = new FileReader();
 		fls.readAsDataURL(img.files[0]);
 		fls.addEventListener('load', () => {

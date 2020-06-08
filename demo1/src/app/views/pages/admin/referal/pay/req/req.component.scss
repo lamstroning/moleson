@@ -2,6 +2,9 @@
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 }
+.table-container{
+	overflow-x: auto;
+}
 .row-table {
 	border-bottom:1px solid #0a2439;
 	color: white;
@@ -10,8 +13,7 @@
 	background-color: #fcb12e;
 }
 .table-main {
-	min-width: 500px;
-	overflow-x: auto;
+	min-width: 700px;
 }
 .id-col {
 	width: 14px;

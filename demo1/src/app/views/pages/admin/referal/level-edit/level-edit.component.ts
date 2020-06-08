@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
-import {AuthService, EditLvl} from '../../../../core/auth/_services/auth.service';
+import {AuthService, EditLvl} from '../../../../../core/auth/_services/auth.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {DialogAddComponent} from '../../objects/objects.component';
 import {updateLocale} from 'moment';
@@ -24,6 +24,7 @@ export class LevelEditComponent implements OnInit {
 			element.classList.remove('active');
 			console.log(`Dialog result: ${result}`);
 			this.updateLvlList();
+			this.cdr.detectChanges();
 		});
 	}
 	remove(id: string) {
@@ -49,7 +50,15 @@ export class LevelEditComponent implements OnInit {
   ngOnInit() {
 	  this.updateLvlList();
   }
-
+	getLevel(lvlId: number) {
+  		if (lvlId === 1) {
+			return ('Агент');
+		} else if (lvlId === 2) {
+			return ('Инвест-агент');
+		} else if (lvlId === 3) {
+			return ('Инвест-брокер');
+		}
+	}
 }
 @Component({
 	selector: 'kt-lvl-dialog',
@@ -60,6 +69,11 @@ export class LvlDialogComponent implements OnInit {
 	coefficient: string;
 	lvlUser: string;
 	lvlReferral: string;
+	selectUsersLvl = [
+		{value: 1, viewValue: 'Агент'},
+		{value: 2, viewValue: 'Инвест-агент'},
+		{value: 3, viewValue: 'Инвест-брокер'}
+	];
 	// constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 	constructor(
 		public dialogRef: MatDialogRef<DialogAddComponent>,

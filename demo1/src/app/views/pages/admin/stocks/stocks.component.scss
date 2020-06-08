@@ -10,9 +10,21 @@
 	color: white;
 	border-bottom: 1px solid #0a2439;
 }
+.form-control {
+	background-color: #0a2439;
+	color: white;
+	width: 30%;
+	border-color: #fcb12e;
+}
 .table {
 	margin: 0 auto;
-	max-width: 980px;
+	width: 100%;
+}
+@media screen and (max-width: 768px) {
+	.full-width-mobile {
+		margin-top: 20px;
+		width: 100%;
+	}
 }
 .table-header {
 	padding: 10px 0;
@@ -33,7 +45,18 @@
 		background-color: white;
 	}
 }
-
+.custom-color {
+	color: #fcb12e;
+	::ng-deep .mat-select-value, ::ng-deep .mat-select-arrow, ::ng-deep .mat-form-field-label {
+		color: #fcb12e;
+	}
+	::ng-deep .mat-form-field-appearance-legacy.mat-form-field-wrapper {
+		padding: 20px 0;
+	}
+}
+.custom-panel {
+	background-color: #0a2439;
+}
 .form-control {
 	width: 100%;
 }
@@ -51,4 +74,22 @@ input::-webkit-inner-spin-button {
 	/* display: none; <- Crashes Chrome on hover */
 	-webkit-appearance: none;
 	margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.obj-edit {
+	background-image: url(/assets/media/icons/edit-w.svg);
+	min-width: 20px;
+	height: 20px;
+	cursor: pointer;
+	margin-left: 10px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.obj-remove {
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-size: contain;
+	min-width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	background-image: url(/assets/media/icons/svg/cross-w.svg);
 }

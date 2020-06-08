@@ -177,7 +177,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
 				this.cdr.markForCheck();
 			})
 		).subscribe(null, err => {
-
 			if (err.data.errors.email !== undefined) {
 				this.authNoticeService.setNotice('Данный Email уже зарегистрирован', 'danger');
 			} else if (err.data.errors.username !== undefined) {

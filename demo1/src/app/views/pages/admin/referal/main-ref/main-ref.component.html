@@ -1,0 +1,36 @@
+<div class="table-container">
+	<div class="container-fluid mt-5 table-main">
+		<div class="row header-row row-table">
+			<div class="col-3" style="max-width: 150px;">
+				<div class="row">
+					<div class="col-12 d-flex">
+					<mat-checkbox id="all" (click)="this.allCheckClick()" name="agree"></mat-checkbox>
+					<button class="btn-toggle-burger" style="opacity: 0">
+						<span></span>
+					</button>
+						<div class="id-col">ID</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">Логин</div>
+			<div class="col-3">Фамилия имя</div>
+			<div class="col-3">Email</div>
+		</div>
+		<div *ngFor="let col of rows" class="row row-table">
+			<div class="col-3" style="max-width: 150px;">
+				<div class="row">
+					<div class="col-12 d-flex">
+						<mat-checkbox name="agree" [checked]="col.checked"></mat-checkbox>
+						<button class="btn-toggle-burger">
+							<span></span>
+						</button>
+						<div class="id-col">{{col.id}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">{{col.login}}</div>
+			<div class="col-3">{{col.sName + ' '}}{{col.name}}</div>
+			<div class="col-3">{{col.email}}</div>
+		</div>
+	</div>
+</div>

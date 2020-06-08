@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 // Components
 import {BaseComponent} from './views/theme/base/base.component';
-import { LevelEditComponent } from './views/pages/admin/level-edit/level-edit.component';
 import {ErrorPageComponent} from './views/theme/content/error-page/error-page.component';
 // Auth
 import {AuthGuard} from './core/auth';
@@ -17,7 +16,7 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'users',
-				loadChildren: () => import('app/views/pages/users/users.module').then(m => m.UsersModule)
+				loadChildren: () => import('app/views/pages/admin/users/users.module').then(m => m.UsersModule)
 			},
 			{
 				path: 'terminal',
@@ -25,7 +24,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'referal',
-				loadChildren: () => import('app/views/pages/referal/referal.module').then(m => m.ReferalModule),
+				loadChildren: () => import('app/views/pages/admin/referal/referal.module').then(m => m.ReferalModule),
 			},
 			{
 				path: 'profile',
@@ -33,7 +32,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'objects',
-				loadChildren: () => import('app/views/pages/objects/objects.module').then(m => m.ObjectsModule),
+				loadChildren: () => import('app/views/pages/admin/objects/objects.module').then(m => m.ObjectsModule),
 			},
 			{
 				path: 'partners',
@@ -84,6 +83,10 @@ const routes: Routes = [
 				loadChildren: () => import('app/views/theme/content/builder/builder.module').then(m => m.BuilderModule),
 			},
 			{
+				path: 'stocks',
+				loadChildren: () => import('app/views/pages/admin//stocks/stocks.module').then(m => m.StocksModule),
+			},
+			{
 				path: 'error/403',
 				component: ErrorPageComponent,
 				data: {
@@ -94,7 +97,6 @@ const routes: Routes = [
 				},
 			},
 			{path: 'error/:type', component: ErrorPageComponent},
-			{path: 'lvlEdit', component: LevelEditComponent},
 			{path: '', redirectTo: 'dashboard', pathMatch: 'full'},
 			{path: '**', redirectTo: 'dashboard', pathMatch: 'full'},
 		],

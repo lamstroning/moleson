@@ -1,6 +1,7 @@
 .link-block {
 	display: flex;
 	justify-content: flex-start;
+	flex-direction: column;
 	padding: 20px 50px;
 }
 
@@ -25,4 +26,8 @@ div#copy-status {
 	.btn-link-block {
 		margin-left: 0px;
 	}
+}
+.btn-primary {
+	background-color: #fcb12e;
+	color: white;
 }

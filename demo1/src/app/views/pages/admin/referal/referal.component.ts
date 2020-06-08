@@ -10,8 +10,8 @@ export class ReferalComponent implements OnInit {
 
 	menu: NavMenu[] = [
 		{name: 'Партнеры', link: '/referal/main'},
-		{name: 'Уровни', link: '/referal/lvl'},
 		{name: 'Выплаты', link: '/referal/pay'},
+		{name: 'Уровень', link: '/referal/lvl'},
 	];
 	constructor(router: Router) {
 		router.navigate(['/referal/main']);

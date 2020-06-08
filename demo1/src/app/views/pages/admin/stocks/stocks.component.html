@@ -1,0 +1,40 @@
+<div class="container">
+	<form>
+		<div class="row">
+			<div class="col-12 col-md-4">
+				<label class="active">Название</label>
+				<input class="form-control" [(ngModel)]="name" name="name" type="text">
+			</div>
+			<div class="col-12 col-md-4">
+				<label class="active">Цена</label>
+				<input class="form-control" [(ngModel)]="price" name="price"type="text">
+			</div>
+			<div class="col-12 col-md-4 d-flex align-items-end">
+				<div class="btn bnt-primary full-width-mobile" (click)="addStock()">Добавить</div>
+			</div>
+		</div>
+	</form>
+	<div class="table mt-5">
+		<div class="row table-header">
+			<div class="col-6 justify-content-center">Название</div>
+			<div class="col-6 justify-content-center">Цена</div>
+			<!--		<div class="col-3 justify-content-center">Коэффицент</div>-->
+			<!--		<div class="col-3">-->
+			<!--			<div class="btn border-white text-white"  (click)="openDialog($event.target, undefined, 'Добавить уровень')">Добавить</div>-->
+			<!--		</div>-->
+		</div>
+		<div *ngIf="stocksList === undefined" class="wait">
+			<mat-spinner></mat-spinner>
+		</div>
+		<div *ngFor="let stock of stocksList">
+			<div class="row table-row">
+				<div class="col-6 text-center">{{stock.name}}</div>
+				<div class="col-6 text-center">{{stock.price}}</div>
+				<!--<div class="col-1">
+					<div class="obj-remove"  title="удалить" (click)="remove(stock._id)"></div>
+				</div>-->
+
+			</div>
+		</div>
+	</div>
+</div>

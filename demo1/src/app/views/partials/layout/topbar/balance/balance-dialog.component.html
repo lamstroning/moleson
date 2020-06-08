@@ -9,5 +9,10 @@
 <!--	<button class="btn btn-primary">Пополнить</button>-->
 <!--</div>-->
 <div class="balance-form">
-	<iframe src="https://moleson.payrexx.com/pay?tid=5&contact_email=test@gmail.com" width="530" height="700">
+	<div class="close">
+		<div class="close-ico" (click)="dialogRef.close()"></div>
+	</div>
+<!--	<iframe [src]="url" width="530" height="700">-->
+	<iframe [src]="url"  width="530" height="700">
+<!--	<iframe src="https://moleson.payrexx.com/pay?tid=7df69168&amp;referenceId=5ea416bf933d1a287a09181c&amp;appview=1"  width="530" height="700">-->
 	</iframe></div>

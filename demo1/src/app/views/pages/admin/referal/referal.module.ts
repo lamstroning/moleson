@@ -2,17 +2,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 // Core Module
-import { CoreModule } from '../../../core/core.module';
-import { PartialsModule } from '../../partials/partials.module';
+import { CoreModule } from '../../../../core/core.module';
+import { PartialsModule } from '../../../partials/partials.module';
 import {ReferalComponent} from './referal.component';
 import {PayComponent} from './pay/pay.component';
 import {ReqComponent} from './pay/req/req.component';
-import {LvlComponent} from './lvl/lvl.component';
 import {StateComponent} from './pay/state/state.component';
 import {MainRefComponent} from './main-ref/main-ref.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {LevelEditComponent, LvlDialogComponent} from './level-edit/level-edit.component';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatFormFieldModule, MatProgressSpinnerModule, MatSelectModule} from '@angular/material';
+
 
 
 @NgModule({
@@ -39,12 +41,12 @@ import {FormsModule} from '@angular/forms';
 						]
 					},
 					{
-						path: 'lvl',
-						component: LvlComponent
-					},
-					{
 						path: 'main',
 						component: MainRefComponent
+					},
+					{
+						path: 'lvl',
+						component: LevelEditComponent,
 					},
 				]
 			},
@@ -52,15 +54,24 @@ import {FormsModule} from '@angular/forms';
 		MatCheckboxModule,
 		CommonModule,
 		FormsModule,
+		MatProgressSpinnerModule,
+		MatSelectModule,
 
 	],
+	entryComponents: [
+		LvlDialogComponent
+	],
 	declarations: [
+		LvlDialogComponent,
 		ReferalComponent,
-		LvlComponent,
+		LevelEditComponent,
 		PayComponent,
 		ReqComponent,
 		StateComponent,
 		MainRefComponent
+	],
+	providers: [
+		{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
 	]
 })
 export class ReferalModule {

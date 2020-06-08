@@ -15,6 +15,68 @@ button.btn.full-width.custom-catalog-btn {
 	margin-left: 0;
 	margin-top: 10px;
 }
+.form-control {
+	width: 100%;
+}
+label.active {
+	width: 100%;
+}
+
+.drop-area.active-drop {
+	.drop-area-label {
+		opacity: 1;
+	}
+}
+.dialog-img {
+	height: 200px;
+	position: relative;
+	background-position-x: 50%;
+	width: 100%;
+	background-image: url(/assets/media/icons/empty-img.svg);
+	background-size: contain;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	input {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+}
+input.form-control {
+	background-color: #0a2439;
+	color: white;
+	border-color: #fcb12e;
+}
+.drop-area {
+	position: relative;
+	.img-area {
+		pointer-events: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		top:0;
+		justify-content: flex-end;
+		.img-item {
+			height: 38px;
+			width: 60px;
+			background-size: cover;
+			margin-top: 19px;
+			background-repeat: no-repeat;
+		}
+	}
+	.drop-area-label {
+		user-select: none;
+		opacity: 0;
+		transition: 0.2s;
+		position: absolute;
+		right: 0;
+		color: #fcb12e;
+		font-size: 13px;
+	}
+}
+
 .page-nav__about{
 	max-width: 780px;
 	font-size: 15px;

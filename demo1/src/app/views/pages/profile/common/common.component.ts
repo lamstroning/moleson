@@ -58,20 +58,26 @@ export class CommonComponent implements OnInit {
 	};
 		this.auth.updateUser(req).subscribe(res => console.log(res));
 	}
+
 	loadImg(img: any) {
 		this.avatar = img.files[0];
+		const fd = new FormData();
+		fd.append('avatar', this.avatar);
 		const fls = new FileReader();
 		fls.readAsDataURL(img.files[0]);
 		fls.addEventListener('load', () => {
 			document.getElementById( 'pict-load').style.backgroundImage = 'url(' + fls.result + ')';
+			this.auth.updateAvatar(fd).subscribe(
+				res => console.log(res),
+				err => console.log(err)
+			);
 		}, false);
 	}
 	ngOnInit() {
 		this.user$ = this.store.pipe(select(currentUser));
-
 		this.user$.subscribe(next => {
 			console.log(next.data.birthday);
-			this.avatar = next.data.avatar === undefined ? ' ' : next.data.avatar;
+			this.avatar = next.data.picture === undefined ? ' ' : next.data.picture;
 			this.email = next.data.email === undefined ? ' ' : next.data.email ;
 			this.passportId = next.data.passportId === undefined ? ' ' : next.data.passportId ;
 			this.birthday = next.data.birthday === undefined  ? ' ' : next.data.birthday ;

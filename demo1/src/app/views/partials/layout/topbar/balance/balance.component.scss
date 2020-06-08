@@ -19,7 +19,18 @@
 	}
 }
 
-
+.close-ico{
+	cursor: pointer;
+	background-image: url(/assets/media/icons/custom/close.svg);
+	width: 20px;
+	height: 20px;
+	transition: 0.2s;
+}
+.close {
+	display: flex;
+	justify-content: flex-end;
+	padding: 10px;
+}
 .balance-form {
 	display: flex;
 	flex-direction: column;

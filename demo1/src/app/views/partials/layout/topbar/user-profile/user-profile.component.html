@@ -5,7 +5,8 @@
 			<span class="kt-header__topbar-username kt-hidden-mobile" *ngIf="greeting">{{_user.data.fullname}}</span>
 <!--			<span class="kt-header__topbar-username kt-hidden-mobile" *ngIf="greeting">Александр</span>-->
 			<i *ngIf="icon" class="flaticon2-user-outline-symbol"></i>
-			<img *ngIf="avatar" class="img-avatar" alt="Pic" [attr.src]="'./assets/media/icons/svg/profile.svg'">
+<!--			<img *ngIf="avatar" class="img-avatar" alt="Pic" [attr.src]="_user.data.avatar === undefined ? './assets/media/icons/svg/profile.svg' : _user.data.avatar;">-->
+			<img *ngIf="avatar" class="img-avatar" alt="Pic" [attr.src]="{false: _user.data.picture, true: './assets/media/icons/svg/profile.svg'}[_user.data.picture === undefined]">
 			<span *ngIf="badge" class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">{{_user.data.fullname}}</span>
 <!--			<span *ngIf="badge" class="kt-badge kt-badge&#45;&#45;username kt-badge&#45;&#45;unified-success kt-badge&#45;&#45;lg kt-badge&#45;&#45;rounded kt-badge&#45;&#45;bold">Александр</span>-->
 		</div>
@@ -15,7 +16,7 @@
 		<div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(./assets/media/misc/custom/bg-1.png)">
 			<div class="kt-user-card__avatar">
 <!--				<img alt="Pic" [attr.src]="_user.pic"/>-->
-				<img alt="Pic" class="img-avatar" [attr.src]="'./assets/media/icons/svg/profile.svg'"/>
+				<img alt="Pic" class="img-avatar" [attr.src]="{false: _user.data.picture, true: './assets/media/icons/svg/profile.svg'}[_user.data.picture === undefined]"/>
 				<span [hidden]="true" class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">
 					{{_user.data.fullname}}
 <!--					Александр-->

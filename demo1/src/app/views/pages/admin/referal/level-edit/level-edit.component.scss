@@ -1,0 +1,84 @@
+.wait {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+.table-row {
+	padding: 10px 0;
+	background-color: #fcb12e;
+	color: white;
+	border-bottom: 1px solid #0a2439;
+}
+.table {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 980px;
+}
+.table-header {
+	padding: 10px 0;
+	border-bottom: 1px solid #0a2439;
+	background-color: #fcb12e;
+	color: white;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.row.table-header > div {
+	display: flex;
+	align-items: center;
+}
+.btn {
+	transition: 0.2s;
+	background-color: #fcb12e;
+	:hover{
+		background-color: white;
+	}
+}
+.custom-color {
+	color: #fcb12e;
+	::ng-deep .mat-select-value, ::ng-deep .mat-select-arrow, ::ng-deep .mat-form-field-label {
+		color: #fcb12e;
+	}
+	::ng-deep .mat-form-field-appearance-legacy.mat-form-field-wrapper {
+		padding: 20px 0;
+	}
+}
+.custom-panel {
+	background-color: #0a2439;
+}
+.form-control {
+	width: 100%;
+}
+.btn.active {
+	background-color: white!important;
+	color: black!important;
+}
+label.active {
+	width: 100%;
+	color: #fcb12e;
+	font-size: 20px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	/* display: none; <- Crashes Chrome on hover */
+	-webkit-appearance: none;
+	margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.obj-edit {
+	background-image: url(/assets/media/icons/edit-w.svg);
+	min-width: 20px;
+	height: 20px;
+	cursor: pointer;
+	margin-left: 10px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.obj-remove {
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-size: contain;
+	min-width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	background-image: url(/assets/media/icons/svg/cross-w.svg);
+}

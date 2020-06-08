@@ -25,16 +25,6 @@
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-3">
-				<label class="inputName">Сумма инвестиций</label>
-			</div>
-
-			<div class="col-9 position-relative">
-				<input class="form-control" type="text" [(ngModel)]="money">
-				<div class="current-val">$</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12 col-md-3">
 				<label class="inputName">Доходность</label>
 			</div>
 			<div class="col-9"><input class="form-control" type="text" [(ngModel)]="profitability"></div>
@@ -71,7 +61,22 @@
 		<textarea class="form-control" [(ngModel)]="detailedDescription"></textarea>
 	</div>
 </div>
-<div class="row"></div>
+<div class="row">
+	<div class="col-5">
+		<label for="addStocks" class="inputName">Тип и количество акций</label>
+		<select id="addStocks" class="form-control" [(ngModel)]="stock">
+			<option *ngFor="let stockItem of stockList" selected="selected"
+					value="{{stockItem._id}}">{{stockItem.name}}</option>
+		</select>
+	</div>
+	<div class="col-3">
+		<div class="stocks-count">
+			<div class="counter-change" (click)="changeCount(1)">+</div>
+			<input type="number" min="1" [(ngModel)]="stocksCount">
+			<div class="counter-change" (click)="changeCount(-1)">-</div>
+		</div>
+	</div>
+</div>
 
-<button *ngIf="data.mode" class="btn custom-catalog-btn" (click)="this.edit()">Изменить</button>
-<button *ngIf="!data.mode" class="btn custom-catalog-btn" (click)="this.addNew()">Добавить</button>
+<button *ngIf="data.mode" class="btn custom-catalog-btn mt-2" (click)="this.edit()">Изменить</button>
+<button *ngIf="!data.mode" class="btn custom-catalog-btn mt-2" (click)="this.addNew()">Добавить</button>

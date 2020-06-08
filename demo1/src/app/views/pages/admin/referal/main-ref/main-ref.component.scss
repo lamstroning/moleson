@@ -9,13 +9,15 @@
 	padding: 10px 0;
 	background-color: #fcb12e;
 }
+.table-main {
+	min-width: 700px;
+}
 .id-col {
 	width: 14px;
 	text-align: center;
 	padding-top: 2px;
 }
-.table-main {
-	min-width: 500px;
+.table-container {
 	overflow-x: auto;
 }
 button.btn-toggle-burger {

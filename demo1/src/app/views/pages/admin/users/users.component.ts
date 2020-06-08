@@ -1,11 +1,11 @@
 import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
-import {AuthService} from '../../../core/auth/_services';
-import {currentUser, User} from '../../../core/auth';
+import {AuthService} from '../../../../core/auth/_services';
+import {currentUser, User} from '../../../../core/auth';
 import {Store} from '@ngrx/store';
-import {AppState} from '../../../core/reducers';
+import {AppState} from '../../../../core/reducers';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
-import {DialogData} from '../material/popups-and-modals/dialog/dialog.component';
+import {DialogData} from '../../material/popups-and-modals/dialog/dialog.component';
 import {from} from 'rxjs';
 
 @Component({

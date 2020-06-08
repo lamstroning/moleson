@@ -104,17 +104,6 @@ export class MenuConfig {
 					page: '/catalog-project',
 					public: true
 				},
-				// {
-				// section: ' ',
-				// public: true
-				// },
-				// {
-				// 	title: 'Верификация',
-				// 	root: true,
-				// 	bullet: 'dot',
-				// 	icon: 'flaticon2-browser-2',
-				// 	public: true
-				// },
 				{
 					section: 'Администрирование',
 					public: false
@@ -124,14 +113,14 @@ export class MenuConfig {
 					root: true,
 					bullet: 'dot',
 					page: '/users',
-					icon: 'flaticon2-browser-2',
+					icon: 'flaticon2-user',
 					public: false
 				},
 				{
 					title: 'Объекты',
 					root: true,
 					bullet: 'dot',
-					icon: 'flaticon2-browser-2',
+					icon: 'flaticon2-zig-zag-line-sign',
 					page: '/objects',
 					public: false
 				},
@@ -139,16 +128,16 @@ export class MenuConfig {
 					title: 'Реферальная система',
 					root: true,
 					bullet: 'dot',
-					icon: 'flaticon2-browser-2',
+					icon: 'flaticon2-add',
 					page: '/referal',
 					public: false
 				},
 				{
-					title: 'Уровни',
+					title: 'Акции/паи',
 					root: true,
 					bullet: 'dot',
-					icon: 'flaticon2-browser-2',
-					page: '/lvlEdit',
+					icon: 'flaticon2-graphic',
+					page: '/stocks',
 					public: false
 				},
 			]

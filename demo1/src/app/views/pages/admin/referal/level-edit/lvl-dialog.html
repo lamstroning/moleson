@@ -1,0 +1,18 @@
+<h2 class="text-white">{{data.title}}</h2>
+	<label class="active">Уровень реферала
+		<input class="form-control" type="number" [(ngModel)]="lvlReferral" name="lvlReferral">
+	</label><br>
+	<label class="active">
+		<mat-form-field class="w-100 custom-color">
+			<mat-select placeholder="Уровень пользователя" [(ngModel)]="lvlUser" panelClass="custom-panel">
+				<mat-option *ngFor="let lvl of selectUsersLvl" [value]="lvl.value">
+					{{ lvl.viewValue }}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+	</label><br>
+	<label class="active">Коэффициент
+		<input class="form-control" type="number" [(ngModel)]="coefficient" name="coefficient">
+	</label><br>
+<div class="btn btn-primary d-block mt-2" (click)="send()">Подвердить</div>

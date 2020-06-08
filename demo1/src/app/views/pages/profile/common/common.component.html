@@ -8,10 +8,11 @@
 			<kt-portlet-body>
 					<div class="profile-img-block" *ngIf="user$ | async as _user">
 <!--						<div class="profile-img"  id="pict-load"></div>-->
-						<canvas  id="pict-load" [style.background-img]="_user.data.avatar"></canvas>
+						<div  id="pict-load" [style.background-image]="
+						this.avatar === ' ' ? 'url(./assets/media/icons/svg/profile.svg)' : 'url(' + this.avatar + ')'"></div>
 					</div>
 					<div class="profile-img-change">
-						<label for="pict">
+						<label class="label-for-pict" for="pict">
 							<button type="submit" id="btn-load" class="btn full-width custom-catalog-btn">Изменить фото</button>
 							<input type="file" id="pict" name="pick-load" (change)="loadImg($event.target)" style="opacity: 0">
 						</label>
@@ -32,14 +33,22 @@
 <!--					<input class="form-control" [(ngModel)]="surname">-->
 <!--					<label class="active">Пол</label>-->
 <!--					<input class="form-control" [(ngModel)]="gender">-->
+					<label class="active">Дата рождения</label>
 					<div class="input-group">
 						<input class="form-control" placeholder="dd/mm/yyyy" name="dp" value="{{birthday}}"  [startDate]="{year: 1998, month: 1, day: 1}" [(ngModel)]="startDate" ngbDatepicker #d="ngbDatepicker">
+
 						<div class="input-group-append">
 							<button class="btn btn-custom" (click)="d.toggle() " type="button">
 								<i class="la la-calendar"></i>
 							</button>
 						</div>
 					</div>
+					<label class="active">Email</label>
+					<input class="form-control" value="{{_user.data.email}}" type="text">
+					<label class="active">Телефон</label>
+					<input class="form-control" value="" type="text">
+					<label class="active">Страна</label>
+					<input class="form-control" value="" type="text">
 					<button class="btn full-width custom-catalog-btn" (click)="saveData()" type="submit">Сохранить</button>
 				</form>
 			</kt-portlet-body>
@@ -55,8 +64,10 @@
 <!--					<label class="active">Телефон</label>-->
 <!--					<input class="form-control" value="" type="text">-->
 <!--					<button class="btn full-width  custom-catalog-btn" type="submit">Изменить номер</button>-->
-					<label class="active">Email</label>
-					<input class="form-control" value="{{_user.data.email}}" type="text">
+					<label>Skype</label>
+					<input class="form-control" value="" type="text">
+					<label>Facebook</label>
+					<input class="form-control" value="" type="text">
 					<button class="btn full-width custom-catalog-btn" type="submit">Сохранить</button>
 				</form>
 			</kt-portlet-body>

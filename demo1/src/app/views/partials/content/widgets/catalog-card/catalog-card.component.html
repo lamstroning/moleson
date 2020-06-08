@@ -63,7 +63,7 @@
 		<div class="card-item-img" [style.background-image]="'url('+item.picture+')'">
 			<div class="card-item-img-row">
 				<div *ngIf="item.status != null" class="card-item-marker">{{item.status.title}}</div>
-				<div class="card-item-cost">{{item.money}}$</div>
+				<div class="card-item-cost">{{item.stocks * item.stock.price}}$</div>
 			</div>
 			<div class="card-item-img-row">
 				<div class="card-item-title">{{item.name}}</div>
