@@ -5,6 +5,12 @@ import {MatDialog} from '@angular/material';
 import {FranchisesService} from '../../../core/franchises';
 import {Franchises} from '../../../core/franchises/_service/franchises.service';
 import {filter} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {UserResponse} from '../../../core/auth/_services/auth.service';
+import {currentUser, User} from '../../../core/auth';
+import {select, Store} from '@ngrx/store';
+import {AppState} from '../../../core/reducers';
+import {UserService} from '../../../core/user';
 
 @Component({
 	selector: 'kt-catalog-card-detail',
@@ -15,15 +21,20 @@ import {filter} from 'rxjs/operators';
 export class CatalogCardDetailComponent implements OnInit {
 	catalogItem: Franchises;
 	money: number;
+	userBalance: number;
 	buyStocks = 0;
 	maxCountStock;
-
+	// user$: Observable<UserResponse>;
+	user: User;
 	constructor(private activateRoute: ActivatedRoute,
-				         public subheaderService: SubheaderService,
-				         private router: Router,
-				         public dialog: MatDialog,
-				         private franchisesService: FranchisesService,
-				         private cdr: ChangeDetectorRef) {
+				public subheaderService: SubheaderService,
+				private router: Router,
+				public dialog: MatDialog,
+				private franchisesService: FranchisesService,
+				private cdr: ChangeDetectorRef,
+				private store: Store<AppState>,
+				private userService: UserService
+	) {
 	}
 
 	getPrecent(type: string) {
@@ -35,6 +46,9 @@ export class CatalogCardDetailComponent implements OnInit {
 	}
 
 	buy() {
+		if (this.userBalance < this.buyStocks * this.catalogItem.stock.price) {
+			return ;
+		}
 		this.franchisesService.buyFranchises({
 			_id: this.catalogItem._id,
 			stocks: this.buyStocks
@@ -50,8 +64,15 @@ export class CatalogCardDetailComponent implements OnInit {
 				this.cdr.detectChanges();
 			});
 	}
-
+	async getUser() {
+		this.user = this.userService.user;
+		this.userBalance = this.user.balance;
+	}
 	ngOnInit() {
+		this.getUser();
+		// this.store.pipe(select(currentUser)).subscribe(user => {
+		// 	this.userBalance = user.data.balance;
+		// });
 		let id: string;
 		this.activateRoute.params.subscribe(params => id = params.id);
 		this.franchisesService.getFranchises().pipe(

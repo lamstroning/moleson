@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FranchisesService} from '../../../core/franchises';
+import {UserService} from '../../../core/user';
 
 @NgModule({
 	imports: [
@@ -30,7 +31,7 @@ import {FranchisesService} from '../../../core/franchises';
 		MatButtonModule,
 		MatCheckboxModule,
 	],
-	providers: [ FranchisesService],
+	providers: [ FranchisesService, UserService],
 	declarations: [
 		CatalogCardDetailComponent,
 	],

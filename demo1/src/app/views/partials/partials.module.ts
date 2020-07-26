@@ -77,6 +77,7 @@ import {InlineSVGModule} from 'ng-inline-svg';
 import {CartComponent} from './layout/topbar/cart/cart.component';
 import { NavmenuComponent } from './layout/navmenu/navmenu.component';
 import {DialogPayComponent} from './layout/topbar/balance/balance.component';
+import {UserService} from '../../core/user';
 
 @NgModule({
 	declarations: [
@@ -198,6 +199,7 @@ import {DialogPayComponent} from './layout/topbar/balance/balance.component';
 		NgbTooltipModule,
 	],
 	providers: [
+		UserService,
 		{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
 		{ provide: MAT_DIALOG_DATA, useValue: {data: undefined}}
 	]

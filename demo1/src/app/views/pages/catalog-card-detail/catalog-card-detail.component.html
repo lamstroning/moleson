@@ -63,19 +63,20 @@
 									{{'$ ' + this.buyStocks * catalogItem.stock.price}}
 								</div>
 							</div>
-							<div *ngIf="this.buyStocks * catalogItem.stock.price" class="row">
-
+							<div *ngIf="this.buyStocks * catalogItem.stock.price > userBalance" class="row position-relative">
+								У вас не достаточно средств
 							</div>
 							<div class="row">
 								<div class="col-1">
-									<div class="custom-btn" (click)="buyStocks = buyStocks < 0 ? 0 : buyStocks - 1">-
+									<div class="custom-btn" (click)="buyStocks = buyStocks <= 0 ? 0 : buyStocks - 1">
+										-
 									</div>
 								</div>
 								<div class="col-10">
 									<mat-slider [max]="catalogItem.stocks - catalogItem.purchasedShares"
 												[min]="0"
 												[step]="1"
-												[thumbLabel]="false"
+												[thumbLabel]="true"
 												[color]="'primary'"
 												[(ngModel)]="this.buyStocks"></mat-slider>
 								</div>
@@ -87,7 +88,7 @@
 								</div>
 							</div>
 
-							<div class="catalog-detail-info-block-btn" [class.disabled-btn]="buyStocks === 0" (click)="buy()">
+							<div class="catalog-detail-info-block-btn" [class.disabled-btn]="buyStocks === 0 || buyStocks * catalogItem.stock.price > userBalance" (click)="buy()">
 								Инвестировать
 							</div>
 						</div>

@@ -72,5 +72,6 @@ export class User extends BaseModel {
 		this.urlMailConfirmation = '';
 		this.username = '';
 		this._id = '';
+		this.balance = 0;
 	}
 }
